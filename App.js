@@ -44,24 +44,20 @@ const App = () => {
             </View>
             
             <View style={[styles.contanier]}>
+                
                 <ScrollView showsVerticalScrollIndicator={false}>
 
                     <FlexBox />
 
-                    <GoalInput 
-                        placeholder='Enter your goal...'
-                        onAddGoal={onSubmit}
-                    />
+                    <GoalInput placeholder='Enter your goal...' onAddGoal={onSubmit} />
 
                     {courseGoal.map(item => {
-                        return (
-                            <GoalItem
-                                text={item.text}
-                                id={item.id}
-                                onDelete={deletGoal}
-                                key={item.id}
-                            />
-                        )
+                        return <GoalItem
+                            text={item.text}
+                            id={item.id}
+                            onDelete={deletGoal}
+                            key={item.id}
+                        />
                     })}
                 </ScrollView>
             </View>
