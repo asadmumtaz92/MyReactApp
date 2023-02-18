@@ -7,7 +7,7 @@ import {
     View,
 } from 'react-native'
 
-const { width, height } = Dimensions.get('window')
+const width = Dimensions.get('window').width
 
 import MyButton from './ui/MyButton'
 import Title from './ui/Title'
@@ -20,7 +20,7 @@ const GameOverScreen = ({ reStartGame, choosenNumber, noOfRounds }) => {
     return (
         <SafeAreaView style={styles.container}>
 
-            <Title style={{ fontSize: 33}} title={`GAME OVER`} />
+            <Title style={{ fontSize: width < 390 ? 27 : 33}} title={`GAME OVER`} />
 
             <Image source={overImage} style={styles.image} resizeMode="contain" />
 
@@ -43,14 +43,13 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     image: {
-        height: width * 0.8,
-        width: width * 0.9,
+        height: width < 390 ? 250 : 350,
+        width: width < 390 ? 250 : 350,
     },
     btnBox: {
-        marginTop: 20,
-        width: '60%',
+        width: width < 390 ? '70%' : '60%',
         marginTop: 5,
-        height: 44,
+        height: 40,
     },
 })
 

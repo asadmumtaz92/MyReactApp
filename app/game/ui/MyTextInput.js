@@ -4,7 +4,7 @@ import {
     Keyboard,
 } from 'react-native'
 
-import { gStyles } from '../styles/globalStyle'
+import { gStyles } from '../../styles/globalStyle'
 
 const MyTextInput = ({ placeholder, onSubmit, }) => {
 
