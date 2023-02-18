@@ -3,8 +3,11 @@ import {
     SafeAreaView,
     StyleSheet,
     Dimensions,
+    StatusBar,
     Image,
     View,
+    useWindowDimensions,
+    Platform, // for auto update height & width of devices 
 } from 'react-native'
 
 const width = Dimensions.get('window').width
@@ -20,9 +23,11 @@ const GameOverScreen = ({ reStartGame, choosenNumber, noOfRounds }) => {
     return (
         <SafeAreaView style={styles.container}>
 
+            <StatusBar barStyle='light-content' />
+            
             <Title style={{ fontSize: width < 390 ? 27 : 33}} title={`GAME OVER`} />
 
-            <Image source={overImage} style={styles.image} resizeMode="contain" />
+            <Image source={overImage} style={styles.image} resizeMode="cover" />
 
             <View style={styles.btnBox}>
                 <MyButton
@@ -43,12 +48,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     image: {
-        height: width < 390 ? 250 : 350,
-        width: width < 390 ? 250 : 350,
+        height: width * 0.8, // width < 390 ? width * 0.8 : width * 0.8,
+        width: width * 0.9,
     },
     btnBox: {
+        marginTop: Platform.select({ios: 5, android: 6}),
         width: width < 390 ? '70%' : '60%',
-        marginTop: 5,
         height: 40,
     },
 })
