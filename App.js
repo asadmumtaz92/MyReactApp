@@ -1,80 +1,90 @@
 import React, { useState } from 'react'
 import {
-    SafeAreaView,
+    ImageBackground,
     StyleSheet,
     View,
-    Image,
-    ScrollView,
 } from 'react-native'
 
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { gStyles } from './app/styles/globalStyle'
+import { Colors } from './app/styles/color'
 
-import Header from './app/components/Header'
-import FlexBox from './app/components/FlexBox'
-import GoalInput from './app/components/GoalInput'
-import GoalItem from './app/components/GoalItem'
+import Title from './app/game/ui/Title'
 
-const image_1 = require('./app/assets/snapcode.png')
+import StartGameScreen from './app/game/StartScreen'
+import GameScreen from './app/game/GameScreen'
+import GameOverScree from './app/game/GameOverScree'
+
+let background = require('./app/assets/background.png')
+const background2 = require('./app/assets/sea.jpg')
 
 const App = () => {
 
-    const [courseGoal, setCourseGoal] = useState([])
-    const onSubmit = (text) => {
-        setCourseGoal((currentGoal) => [
+    const [choosenNumber, setChoosenNumber] = useState(null)
+    const [gameOver, setGameOver] = useState(false)
+    
+    const handleUserNumber = (number) => {
+        setChoosenNumber(number)
+    }
+    
+    const [guessedData, setGuessedData] = useState([])
+    const storeData = ( newRndNum ) => {
+        setGuessedData((currentGoal) => [
+            { id: guessedData.length, num: newRndNum },
             ...currentGoal,
-            { text: text, id: courseGoal.length },
         ])
     }
-    const deletGoal = (id) => {
-        setCourseGoal((currentGoal) => {
-            return currentGoal.filter((goal) => goal.id !== id )
-        })
+
+    const reStartGame = () => {
+        setChoosenNumber(null)
+        setGameOver(false)
+        setGuessedData([])
+    }
+
+    const gameOvers = () => {
+        setGameOver(true)
+    }
+
+    let screen;
+    if (choosenNumber == null) {
+        screen = <StartGameScreen pickedNumber={handleUserNumber} />
+    }
+    else if (choosenNumber != null) {
+        screen = <GameScreen choosenNumber={choosenNumber} gameOvers={gameOvers} storeDatas={storeData} />
+    }
+
+    if (gameOver == true) {
+        // background = background2
+        screen = <GameOverScree reStartGame={reStartGame} choosenNumber={choosenNumber} noOfRounds={guessedData.length} />
     }
 
     return (
-        <SafeAreaView style={{flex:1}}>
+        <ImageBackground 
+            source={gameOver == true ? background2 : background} resizeMode="cover"
+            style={styles.contanier} imageStyle={styles.backgroundImage}
+        >
+            <View style={styles.view}>
 
-            <Header title='REACT NATIVE COURSE' />
+                {screen}
 
-            <View style={{flexDirection:'row', justifyContent:'space-between', marginTop:10, paddingHorizontal:10}}>
-                <Image source={image_1} style={styles.image} resizeMode='cover' />
-                <Image source={image_1} style={styles.image} resizeMode='contain' />
-                <Image source={image_1} style={styles.image} resizeMode='center' />
-                <Image source={image_1} style={styles.image} resizeMode='stretch' />
+                {choosenNumber != null && gameOver == false
+                    && <Title style={{paddingTop: 0}} title={`Your Choosen Number is: ${choosenNumber}`} />
+                }
             </View>
-            
-            <View style={[styles.contanier]}>
-                
-                <ScrollView showsVerticalScrollIndicator={false}>
-
-                    <FlexBox />
-
-                    <GoalInput placeholder='Enter your goal...' onAddGoal={onSubmit} />
-
-                    {courseGoal.map(item => {
-                        return <GoalItem
-                            text={item.text}
-                            id={item.id}
-                            onDelete={deletGoal}
-                            key={item.id}
-                        />
-                    })}
-                </ScrollView>
-            </View>
-
-        </SafeAreaView>
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
     contanier: {
-        paddingHorizontal: 20,
-        width: '100%',
+        backgroundColor: Colors.bgColor,
         flex: 1,
     },
-    image: {
-        height: 50,
-        width: 50,
+    backgroundImage: {
+        opacity: 0.65,
+    },
+    view: {
+        marginBottom: 15,
+        flex: 1,
     },
 })
 
