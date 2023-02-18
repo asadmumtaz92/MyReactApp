@@ -1,5 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import {
+    StyleSheet,
+    Dimensions,
+    Text,
+    View,
+} from 'react-native'
+
+const width = Dimensions.get('window').width
 
 import { Colors } from '../../styles/color'
 import { gStyles } from '../../styles/globalStyle'
@@ -17,7 +24,9 @@ const GuessBox = ({ currentGuess }) => {
 
 const styles = StyleSheet.create({
     guessBox: {
+        width: width < 390 ? '70%' : '80%',
         borderColor: Colors.buttonColor,
+        height: width < 390 ? 70 : 90,
         justifyContent: 'center',
         borderStyle: 'dashed',
         alignItems: 'center',
@@ -25,14 +34,12 @@ const styles = StyleSheet.create({
         borderRadius: 14,
         borderWidth: 3,
         marginTop: 20,
-        width: '80%',
-        height: 90,
     },
     guessBoxText: {
+        fontSize: width < 390 ? 24 : 28,
         color: Colors.buttonColor,
         marginHorizontal: 20,
         marginTop: 0,
-        fontSize: 28,
     },
 })
 

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import {
     SafeAreaView,
     StyleSheet,
+    Dimensions,
     FlatList,
     Alert,
     View,
 } from 'react-native'
 
-import { Colors } from '../styles/color'
 import { gStyles } from '../styles/globalStyle'
 
 import Instruction from './ui/Instruction'
@@ -15,6 +15,8 @@ import MyButton from './ui/MyButton'
 import GuessBox from './ui/GuessBox'
 import Title from './ui/Title'
 import Item from './ui/Item'
+
+const width = Dimensions.get('window').width
 
 let minBoundary = 1
 let maxBoundary = 100
@@ -126,14 +128,14 @@ const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound=() =
 
 const styles = StyleSheet.create({
     textStyle: {
+        fontSize: width < 390 ? 16 : 20,
         paddingVertical: 7,
         fontWeight: '900',
-        fontSize: 20,
     },
     logBox: {
+        width: width < 390 ? '80%' : '90%',
         alignSelf: 'center',
         marginTop: 20,
-        width: '90%',
         flex: 1,
     },
 })

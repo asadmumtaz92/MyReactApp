@@ -1,5 +1,12 @@
 import React from 'react'
-import { StyleSheet, TouchableOpacity, Text } from 'react-native'
+import {
+    TouchableOpacity,
+    StyleSheet,
+    Dimensions,
+    Text,
+} from 'react-native'
+
+const width = Dimensions.get('window').width
 
 import { Colors } from '../../styles/color'
 
@@ -38,11 +45,11 @@ const styles = StyleSheet.create({
         },
     },
     btnText: {
-        paddingVertical: 10,
+        paddingVertical: width < 390 ? 7 : 10,
+        fontSize: width < 390 ? 14 : 17,
         textAlign: 'center',
         color: Colors.white,
         fontWeight: '600',
-        fontSize: 16,
     },
 })
 

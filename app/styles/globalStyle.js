@@ -1,27 +1,30 @@
-import { StyleSheet } from 'react-native';
-import { Colors } from './color';
+import {
+    StyleSheet,
+    Dimensions,
+} from 'react-native';
+
+import { Colors } from './color'
+
+const width = Dimensions.get('window').width
 
 export const gStyles = StyleSheet.create({
-    bg: {
-        backgroundColor: Colors.bgColor
-    },
     title: {
+        fontSize: width < 390 ? 19 : 22,
         color: Colors.buttonColor,
         alignSelf: 'center',
-        fontWeight:'700',
+        fontWeight: '700',
         marginTop: 20,
-        fontSize: 22,
     },
     card: {
+        paddingVertical: width < 390 ? 15 : 25,
+        marginTop: width < 390 ? '15%' : '25%',
+        paddingBottom: width < 390 ? 20 : 30,
         backgroundColor: Colors.buttonColor,
+        width: width < 390 ? '80%' : '90%',
         shadowColor: Colors.black,
+        paddingHorizontal: 20,
         alignSelf: 'center',
-        paddingVertical: 25,
-        paddingBottom: 30,
-        marginTop: '25%',
         borderRadius: 8,
-        width: '90%',
-        padding: 20,
 
         elevation: 10,
         shadowOpacity: 0.6,
@@ -38,14 +41,14 @@ export const gStyles = StyleSheet.create({
     },
     ip: {
         borderBottomColor: Colors.bgColor,
+        lineHeight: width < 390 ? 25 : 30,
+        fontSize: width < 390 ? 20 : 25,
         color: Colors.bgColor,
         borderBottomWidth: 1,
         alignSelf: 'center',
         textAlign: 'center',
         fontWeight: '700',
         marginBottom: 20,
-        lineHeight: 30,
-        fontSize: 25,
         height: 40,
         padding: 0,
         width: 45,
