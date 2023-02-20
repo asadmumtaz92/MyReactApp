@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.6,
         shadowRadius: 2,
         shadowOffset: {
-            width: 2, // for left & right
+            width: 1, // for left & right
             height: 1, // for top & bottom
         },
     },
