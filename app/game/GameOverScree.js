@@ -48,11 +48,14 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     image: {
-        height: width * 0.8, // width < 390 ? width * 0.8 : width * 0.8,
+        height: width * 0.8,
         width: width * 0.9,
     },
     btnBox: {
-        marginTop: Platform.select({ios: 5, android: 6}),
+        marginTop: Platform.select({
+            ios: 5,
+            android: 6,
+        }),
         width: width < 390 ? '70%' : '60%',
         height: 40,
     },

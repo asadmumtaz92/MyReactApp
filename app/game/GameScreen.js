@@ -32,7 +32,7 @@ const genrateRandomNumber = (min, max, exclude) => {
     }
 }
 
-const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound=() => { } }) => {
+const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound = () => { } }) => {
 
     useEffect(() => {
         minBoundary = 1

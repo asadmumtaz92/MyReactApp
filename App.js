@@ -1,90 +1,102 @@
 import React, { useState } from 'react'
 import {
-    ImageBackground,
+    TouchableOpacity,
+    NativeModules,
     StyleSheet,
+    Platform,
+    Image,
+    Text,
     View,
 } from 'react-native'
 
-import { gStyles } from './app/styles/globalStyle'
 import { Colors } from './app/styles/color'
 
-import Title from './app/game/ui/Title'
+import Game from './app/game/index'
+import Food from './app/FoodApp/index'
 
-import StartGameScreen from './app/game/StartScreen'
-import GameScreen from './app/game/GameScreen'
-import GameOverScree from './app/game/GameOverScree'
+const close = require('./app/assets/close.png')
 
-let background = require('./app/assets/background.png')
-const background2 = require('./app/assets/sea.jpg')
+const { StatusBarManager } = NativeModules;
 
 const App = () => {
 
-    const [choosenNumber, setChoosenNumber] = useState(null)
-    const [gameOver, setGameOver] = useState(false)
-    
-    const handleUserNumber = (number) => {
-        setChoosenNumber(number)
-    }
-    
-    const [guessedData, setGuessedData] = useState([])
-    const storeData = ( newRndNum ) => {
-        setGuessedData((currentGoal) => [
-            { id: guessedData.length, num: newRndNum },
-            ...currentGoal,
-        ])
+    const [choosenApp, setChoosenApp] = useState(null)
+
+    const changeScreen = (appStatus) => {
+        console.log(appStatus)
+        setChoosenApp(appStatus)
     }
 
-    const reStartGame = () => {
-        setChoosenNumber(null)
-        setGameOver(false)
-        setGuessedData([])
-    }
+    const screenOptions = () =>{
+        return (
+            <View style={styles.view}>
+                <TouchableOpacity onPress={() => changeScreen('game')} style={styles.btn}>
+                    <Text style={styles.btnText}>Game App</Text>
+                </TouchableOpacity>
 
-    const gameOvers = () => {
-        setGameOver(true)
-    }
-
-    let screen;
-    if (choosenNumber == null) {
-        screen = <StartGameScreen pickedNumber={handleUserNumber} />
-    }
-    else if (choosenNumber != null) {
-        screen = <GameScreen choosenNumber={choosenNumber} gameOvers={gameOvers} storeDatas={storeData} />
-    }
-
-    if (gameOver == true) {
-        // background = background2
-        screen = <GameOverScree reStartGame={reStartGame} choosenNumber={choosenNumber} noOfRounds={guessedData.length} />
+                <TouchableOpacity onPress={() => changeScreen('food')} style={styles.btn}>
+                    <Text style={styles.btnText}>Food App</Text>
+                </TouchableOpacity>
+            </View>
+        )
     }
 
     return (
-        <ImageBackground 
-            source={gameOver == true ? background2 : background} resizeMode="cover"
-            style={styles.contanier} imageStyle={styles.backgroundImage}
-        >
-            <View style={styles.view}>
+        <View style={styles.contanier}>
 
-                {screen}
+            {choosenApp != null
+                && <TouchableOpacity style={styles.close} onPress={() => { setChoosenApp(null) }}>
+                    <Image source={close} />
+                </TouchableOpacity>
+            }
+            
+            {choosenApp == 'game' 
+                ? <Game />
+                : choosenApp == 'food' 
+                    ? <Food />
+                    : screenOptions()
+            }
 
-                {choosenNumber != null && gameOver == false
-                    && <Title style={{paddingTop: 0}} title={`Your Choosen Number is: ${choosenNumber}`} />
-                }
-            </View>
-        </ImageBackground>
+        </View>
+
     )
 }
 
 const styles = StyleSheet.create({
     contanier: {
-        backgroundColor: Colors.bgColor,
+        backgroundColor: Colors.white,
         flex: 1,
     },
-    backgroundImage: {
-        opacity: 0.65,
+    close: {
+        top: Platform.select({
+            ios: StatusBarManager.HEIGHT + 5,
+            android: 5,
+        }),
+        position: 'absolute',
+        right: 10,
+        zIndex: 2,
     },
+
     view: {
-        marginBottom: 15,
+        justifyContent:'center',
+        alignItems: 'center',
+        minWidth: '100%',
+        width: '100%',
         flex: 1,
+    },
+    btn: {
+        backgroundColor: Colors.buttonColor,
+        alignSelf: 'center',
+        marginVertical: 10,
+        borderRadius: 5,
+        width: '60%',
+    },
+    btnText: {
+        color: Colors.white,
+        paddingVertical: 10,
+        textAlign: 'center',
+        fontWeight: '500',
+        fontSize: 18,
     },
 })
 
