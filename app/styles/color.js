@@ -1,10 +1,12 @@
-import { Platform } from 'react-native';
+import { Platform } from 'react-native'
 
 export const Colors = {
     buttonColor: '#72063c',
     smallButtonColor: '#4E0329',
     bgColor: '#d8c072',
     lightgray: '#E3E3E355',
+
+    foodBG: '#24180f',
 
     black: '#000000',
     white: '#FFFFFF',
@@ -39,7 +41,7 @@ export const Colors = {
     lineColor: "rgba(255,255,255,0.5)",
     inputText: '#55555E',
     selectionColor: Platform.select({
-        ios: '#55555E',
         android: '#55555E80',
+        ios: '#55555E',
     }),
-};
+}

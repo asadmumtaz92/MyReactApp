@@ -1,90 +1,144 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
-    ImageBackground,
+    TouchableOpacity,
     StyleSheet,
+    StatusBar,
+    Image,
+    Text,
     View,
 } from 'react-native'
 
-import { gStyles } from './app/styles/globalStyle'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationContainer } from '@react-navigation/native'
+
 import { Colors } from './app/styles/color'
 
-import Title from './app/game/ui/Title'
+import AppRoute from './app/AppRoute'
+import Game from './app/game/index'
+import Food from './app/FoodApp/index'
+import MealsOverview from './app/FoodApp/MealsOverviewScreen'
+import MealDetails from './app/FoodApp/MealDetails'
 
-import StartGameScreen from './app/game/StartScreen'
-import GameScreen from './app/game/GameScreen'
-import GameOverScree from './app/game/GameOverScree'
-
-let background = require('./app/assets/background.png')
-const background2 = require('./app/assets/sea.jpg')
+const Stack = createNativeStackNavigator()
 
 const App = () => {
 
-    const [choosenNumber, setChoosenNumber] = useState(null)
-    const [gameOver, setGameOver] = useState(false)
-    
-    const handleUserNumber = (number) => {
-        setChoosenNumber(number)
+    const myLink = (title, onPress, img) => {
+        return (
+            title !=null && < TouchableOpacity onPress={onPress} activeOpacity={0.9} style={styles.link} >
+                {img != null && <Image source={img} style={styles.img} />}
+                {title && <Text style={styles.linkText}>{title}</Text>}
+            </TouchableOpacity >
+        )
     }
-    
-    const [guessedData, setGuessedData] = useState([])
-    const storeData = ( newRndNum ) => {
-        setGuessedData((currentGoal) => [
-            { id: guessedData.length, num: newRndNum },
-            ...currentGoal,
-        ])
-    }
-
-    const reStartGame = () => {
-        setChoosenNumber(null)
-        setGameOver(false)
-        setGuessedData([])
-    }
-
-    const gameOvers = () => {
-        setGameOver(true)
-    }
-
-    let screen;
-    if (choosenNumber == null) {
-        screen = <StartGameScreen pickedNumber={handleUserNumber} />
-    }
-    else if (choosenNumber != null) {
-        screen = <GameScreen choosenNumber={choosenNumber} gameOvers={gameOvers} storeDatas={storeData} />
-    }
-
-    if (gameOver == true) {
-        // background = background2
-        screen = <GameOverScree reStartGame={reStartGame} choosenNumber={choosenNumber} noOfRounds={guessedData.length} />
+    const myTitle = (title) => {
+        return (
+            title && <Text style={styles.title}>{title}</Text>
+        )
     }
 
     return (
-        <ImageBackground 
-            source={gameOver == true ? background2 : background} resizeMode="cover"
-            style={styles.contanier} imageStyle={styles.backgroundImage}
-        >
-            <View style={styles.view}>
+        <View style={styles.contanier}>
+            <StatusBar barStyle='light-content' />
 
-                {screen}
+            <NavigationContainer>
+                <Stack.Navigator
+                    initialRouteName='AppRoute'
+                    screenOptions={{
+                        headerTitleStyle: styles.headerTitleStyle,
+                        headerStyle: styles.headerStyle,
+                        headerBackTitleVisible: false, // hide backScreen name
+                        headerTintColor: Colors.white,
+                        headerTitleAlign: 'center',
+                        headerShadowVisible: false,
+                        headerShown: true,
+                    }}
+                >
+                    <Stack.Screen
+                        name='AppRoute'
+                        component={AppRoute}
+                        options={{ 
+                            // title: 'INITIAL SCREEN',
+                            headerTitle: () => myTitle(`Initial Screen`),
+                            headerLeft: () => myLink('', () => { console.log('left') }),
+                            headerRight: () => myLink('',() => {console.log('right')}),
+                        }}
+                    />
+                    <Stack.Screen
+                        name='Game'
+                        component={Game}
+                        options={{
+                            headerTitle: () => myTitle(`GAME APP`),
+                        }}
+                    />
+                    <Stack.Screen
+                        name='Food'
+                        component={Food}
+                        options={{
+                            headerTitle: () => myTitle(`FOOD APP`),
+                        }}
+                    />
+                    <Stack.Screen
+                        name='MealsOverview'
+                        component={MealsOverview}
+                        options={{
+                            headerTitle: () => myTitle(''),
+                        }}
+                        // options={({ route, navigation }) => {
+                        //     const item = route.params.item
+                        //     return {
+                        //         // headerTitle: () => myTitle(item.title),
+                        //     }
+                        // }}
+                    />
+                    <Stack.Screen
+                        name='MealDetails'
+                        component={MealDetails}
+                        options={{
+                            headerTitle: () => myTitle('Meal Details'),
+                        }}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>  
+        </View>
 
-                {choosenNumber != null && gameOver == false
-                    && <Title style={{paddingTop: 0}} title={`Your Choosen Number is: ${choosenNumber}`} />
-                }
-            </View>
-        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
     contanier: {
-        backgroundColor: Colors.bgColor,
         flex: 1,
     },
-    backgroundImage: {
-        opacity: 0.65,
+    title: {
+        textTransform: 'uppercase',
+        textAlign: 'center',
+        color: Colors.white,
+        fontWeight: '500',
+        fontSize: 16,
     },
-    view: {
-        marginBottom: 15,
-        flex: 1,
+    link: {
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    img: {
+        marginRight: 8
+    },
+    linkText: {
+        textTransform: 'uppercase',
+        textAlign: 'center',
+        color: Colors.white,
+        fontWeight: '500',
+        fontSize: 14,
+    },
+    headerStyle: {
+        backgroundColor: Colors.buttonColor,
+    },
+    headerTitleStyle: {
+        textTransform: 'uppercase',
+        textAlign: 'center',
+        color: Colors.white,
+        fontWeight: '500',
+        fontSize: 16,
     },
 })
 

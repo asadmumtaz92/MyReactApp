@@ -32,7 +32,7 @@ const genrateRandomNumber = (min, max, exclude) => {
     }
 }
 
-const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound=() => { } }) => {
+const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound = () => { } }) => {
 
     useEffect(() => {
         minBoundary = 1
@@ -48,7 +48,7 @@ const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound=() =
             (direction === 'greater' && currentGuess > choosenNumber)
         ) {
             Alert.alert(`Don't lie!`,
-                '\nYou know that this is wrong...',
+                '\nYou know that this is wrong number...',
                 [{text: 'Sorry!', style:'cancel'}]
             )
             return; 
@@ -116,9 +116,7 @@ const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound=() =
                 data={guessedData}
                 keyExtractor={item => item.id}
                 renderItem={(item)=> {
-                    return (
-                        <Item id={item.item.id} num={item.item.num} />
-                    )
+                    return <Item id={item.item.id} num={item.item.num} />
                 }}
             />
 
@@ -135,9 +133,9 @@ const styles = StyleSheet.create({
     logBox: {
         width: width < 390 ? '80%' : '90%',
         alignSelf: 'center',
-        marginTop: 20,
+        paddingBottom: 15,
+        marginTop: 10,
         flex: 1,
-        paddingHorizontal: 5
     },
 })
 
