@@ -1,12 +1,10 @@
 import {
     TouchableOpacity,
     StyleSheet,
-    Platform,
-    View,
     Text,
 } from 'react-native'
 
-function CategoryGridTile({ title, color, onPress }) {
+const CategoryGridTile = ({ title, color, onPress }) => {
 
     return (
         <TouchableOpacity

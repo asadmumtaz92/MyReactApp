@@ -5,7 +5,6 @@ import {
     StyleSheet,
     ScrollView,
     TextInput,
-    StatusBar,
     Keyboard,
     Alert,
     View,
@@ -49,7 +48,7 @@ const StartGameScreen = ({ pickedNumber }) => {
 
     return (
         <SafeAreaView>
-            <StatusBar barStyle='dark-content' />
+
             <KeyboardAvoidingView behavior='position'>
                 <ScrollView>
                     <Title title={`Guess My Number`} />

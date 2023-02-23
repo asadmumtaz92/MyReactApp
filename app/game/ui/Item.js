@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.bgColor,
         justifyContent: 'space-between',
         paddingHorizontal: 10,
+        marginHorizontal: 10,
         paddingVertical: 10,
         flexDirection: 'row',
         marginVertical: 6,
@@ -40,4 +41,5 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
 })
+
 export default Item

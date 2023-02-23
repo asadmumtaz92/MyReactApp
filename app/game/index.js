@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import {
     ImageBackground,
     StyleSheet,
+    Platform,
     View,
 } from 'react-native'
 
 import { Colors } from '../styles/color'
 
 import Title from '../game/ui/Title'
-
 import StartGameScreen from './StartScreen'
 import GameScreen from './GameScreen'
 import GameOverScree from './GameOverScree'
@@ -23,6 +23,7 @@ const Index = () => {
     const handleUserNumber = (number) => {
         setChoosenNumber(number)
     }
+
     const [guessedData, setGuessedData] = useState([])
     const storeData = (newRndNum) => {
         setGuessedData((currentGoal) => [
@@ -30,14 +31,17 @@ const Index = () => {
             ...currentGoal,
         ])
     }
+
     const reStartGame = () => {
         setChoosenNumber(null)
         setGameOver(false)
         setGuessedData([])
     }
+
     const gameOvers = () => {
         setGameOver(true)
     }
+
     let screen;
     if (choosenNumber == null) {
         screen = <StartGameScreen pickedNumber={handleUserNumber} />
@@ -46,7 +50,6 @@ const Index = () => {
         screen = <GameScreen choosenNumber={choosenNumber} gameOvers={gameOvers} storeDatas={storeData} />
     }
     if (gameOver == true) {
-        // background = background2
         screen = <GameOverScree reStartGame={reStartGame} choosenNumber={choosenNumber} noOfRounds={guessedData.length} />
     }
 
@@ -57,12 +60,10 @@ const Index = () => {
         >
             <View style={styles.view}>
 
-                <>
-                    {screen}
-                </> 
+                <>{screen}</> 
 
                 {choosenNumber != null && gameOver == false
-                    && <Title style={{ paddingTop: 0 }} title={`Your Choosen Number is: ${choosenNumber}`} />
+                    && <Title style={{ marginTop: 5 }} title={`Your Choosen Number is: ${choosenNumber}`} />
                 }
             </View>
         </ImageBackground>
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
         opacity: 0.65,
     },
     view: {
-        marginBottom: 15,
+        marginBottom: Platform.OS == 'ios' ? 20 : 5,
         flex: 1,
     },
 })
