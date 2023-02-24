@@ -1,3 +1,5 @@
+// LINK:  https://www.udemy.com/course/react-native-the-practical-guide/learn/lecture/31197710#overview
+// LINK:  https://www.udemy.com/course/react-native-the-practical-guide/learn/lecture/31197712#overview
 import React from 'react'
 import {
     TouchableOpacity,
@@ -15,7 +17,7 @@ import AppRoute from './AppRoute'
 import Game from './game/index'
 import Food from './FoodApp/index'
 import MealsOverview from './FoodApp/MealsOverviewScreen'
-import MealDetails from './FoodApp/MealDetails'
+import MealDetails from './FoodApp/MealDetails'                                                             
 
 const Stack = createNativeStackNavigator()
 
@@ -36,65 +38,65 @@ const myNav = () => {
     }
 
     return (
-            <NavigationContainer>
-                <Stack.Navigator
-                    initialRouteName='AppRoute'
-                    screenOptions={{
-                        headerTitleStyle: styles.headerTitleStyle,
-                        headerStyle: styles.headerStyle,
-                        headerBackTitleVisible: false, // hide backScreen name
-                        headerTintColor: Colors.white,
-                        headerTitleAlign: 'center',
-                        headerShadowVisible: false,
-                        headerShown: true,
+        <NavigationContainer>
+            <Stack.Navigator
+                initialRouteName='AppRoute'
+                screenOptions={{
+                    headerTitleStyle: styles.headerTitleStyle,
+                    headerStyle: styles.headerStyle,
+                    headerBackTitleVisible: false, // hide backScreen name
+                    headerTintColor: Colors.white,
+                    headerTitleAlign: 'center',
+                    headerShadowVisible: false,
+                    headerShown: true,
+                }}
+            >
+                <Stack.Screen
+                    name='AppRoute'
+                    component={AppRoute}
+                    options={{
+                        // title: 'INITIAL SCREEN',
+                        headerTitle: () => myTitle(`Initial Screen`),
+                        headerLeft: () => myLink('', () => { console.log('left') }),
+                        headerRight: () => myLink('', () => { console.log('right') }),
                     }}
-                >
-                    <Stack.Screen
-                        name='AppRoute'
-                        component={AppRoute}
-                        options={{
-                            // title: 'INITIAL SCREEN',
-                            headerTitle: () => myTitle(`Initial Screen`),
-                            headerLeft: () => myLink('', () => { console.log('left') }),
-                            headerRight: () => myLink('', () => { console.log('right') }),
-                        }}
-                    />
-                    <Stack.Screen
-                        name='Game'
-                        component={Game}
-                        options={{
-                            headerTitle: () => myTitle(`GAME APP`),
-                        }}
-                    />
-                    <Stack.Screen
-                        name='Food'
-                        component={Food}
-                        options={{
-                            headerTitle: () => myTitle(`FOOD APP`),
-                        }}
-                    />
-                    <Stack.Screen
-                        name='MealsOverview'
-                        component={MealsOverview}
-                        options={{
-                            headerTitle: () => myTitle(''),
-                        }}
-                        // options={({ route, navigation }) => {
-                        //     const item = route.params.item
-                        //     return {
-                        //         // headerTitle: () => myTitle(item.title),
-                        //     }
-                        // }}
-                    />
-                    <Stack.Screen
-                        name='MealDetails'
-                        component={MealDetails}
-                        options={{
-                            headerTitle: () => myTitle('Meal Details'),
-                        }}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
+                />
+                <Stack.Screen
+                    name='Game'
+                    component={Game}
+                    options={{
+                        headerTitle: () => myTitle(`GAME APP`),
+                    }}
+                />
+                <Stack.Screen
+                    name='Food'
+                    component={Food}
+                    options={{
+                        headerTitle: () => myTitle(`FOOD APP`),
+                    }}
+                />
+                <Stack.Screen
+                    name='MealsOverview'
+                    component={MealsOverview}
+                    options={{
+                        headerTitle: () => myTitle(''),
+                    }}
+                    // options={({ route, navigation }) => {
+                    //     const item = route.params.item
+                    //     return {
+                    //         // headerTitle: () => myTitle(item.title),
+                    //     }
+                    // }}
+                />
+                <Stack.Screen
+                    name='MealDetails'
+                    component={MealDetails}
+                    options={{
+                        headerTitle: () => myTitle('Meal Details'),
+                    }}
+                />
+            </Stack.Navigator>
+        </NavigationContainer>
     )
 }
 
