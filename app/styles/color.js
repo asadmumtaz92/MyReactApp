@@ -7,6 +7,14 @@ export const Colors = {
     lightgray: '#E3E3E355',
 
     foodBG: '#24180f',
+    inputBG: '#30303022',
+    inputplaceholder: '#30303088',
+    selectionColor: Platform.select({
+        android: '#55555E80',
+        ios: '#55555E',
+    }),
+
+
 
     black: '#000000',
     white: '#FFFFFF',
@@ -17,9 +25,7 @@ export const Colors = {
 
 
     loginBtn: '#00b241',
-    inputBoxBG: '#555555',
     inputLabel: '#127bb2',
-    inputplaceholder: '#a8a8a8',
     inputColor: '#505050',
     orange: '#ffa300',
     cardcolor: '#424242',
@@ -40,8 +46,4 @@ export const Colors = {
     divider: '#D8D8D8',
     lineColor: "rgba(255,255,255,0.5)",
     inputText: '#55555E',
-    selectionColor: Platform.select({
-        android: '#55555E80',
-        ios: '#55555E',
-    }),
 }

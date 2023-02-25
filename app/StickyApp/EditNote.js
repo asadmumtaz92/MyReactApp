@@ -58,16 +58,18 @@ const EditNote = (props) => {
     }, [props.navigation, title, note, isEdit])
 
     return (
-        <SafeAreaView style={[styles.contanier, isEdit && { alignItems: 'center', }]}>
-            {isEdit 
-                ? <>
+        <SafeAreaView style = { [styles.contanier, isEdit == true && { alignItems: 'center' }]} >
+            <KeyboardAvoidingView style={{ marginTop: 1}}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'positions'}
+            >
+                {isEdit &&
                     <TextInput
                         onChangeText={(text) => { titleInputHandler(text) }}
-                        selectionColor={Colors.buttonColor} // for courser
+                        selectionColor={Colors.selectionColor} // for courser
+                        style={[styles.ip, { marginTop: 10, height: 44, }]}
+                        placeholderTextColor={Colors.inputplaceholder}
                         onSubmitEditing={() => Keyboard.dismiss}
-                        style={[styles.ip, { marginTop: 10 }]}
                         placeholder={`Write your title...`}
-                        placeholderTextColor={'#30303088'}
                         onBlur={() => Keyboard.dismiss}
                         selectTextOnFocus={false}
                         keyboardType='default'
@@ -76,40 +78,38 @@ const EditNote = (props) => {
                         numberOfLines={1}
                         multiline={false}
                         spellCheck={true}
-                        autoFocus={false}
+                        autoFocus={true}
                         inputMode='text'
                         maxLength={200}
                         value={title}
                     />
+                }
 
-                    <KeyboardAvoidingView behavior='position' style={{ marginTop: 1, flex: 1 }}>
-
-                        {title &&
-                            <TextInput
-                                onSubmitEditing={() => Keyboard.dismiss}
-                                onChangeText={(text) => { noteInputHandler(text) }}
-                                placeholderTextColor='#30303088'//{Colors.black}
-                                onBlur={() => { Keyboard.dismiss }}
-                                selectionColor={Colors.buttonColor} // for courser
-                                style={[styles.ip, { flex: 1 }]}
-                                selectTextOnFocus={false}
-                                keyboardType='default'
-                                autoCapitalize='none'
-                                value={note}
-                                autoCorrect={false}
-                                inputMode='text'
-                                numberOfLines={1}
-                                multiline={true}
-                                // spellCheck={true}
-                                autoFocus={false}
-                                maxLength={2000}
-                                placeholder={`Enter note title`}
-                            />
-                        }
-
-                    </KeyboardAvoidingView>
-                </>
-                : <View style={styles.box}>
+                {title && isEdit 
+                    && < TextInput
+                        onChangeText={(text) => { noteInputHandler(text) }}
+                        selectionColor={Colors.selectionColor} // for courser
+                        placeholderTextColor={Colors.inputplaceholder}
+                        onSubmitEditing={() => Keyboard.dismiss}
+                        onBlur={() => Keyboard.dismiss}
+                        placeholder={`Enter note title`}
+                        style={[styles.ip, { flex: 1 }]}
+                        selectTextOnFocus={false}
+                        keyboardType='default'
+                        autoCapitalize='none'
+                        autoCorrect={false}
+                        spellCheck={false}
+                        autoFocus={false}
+                        maxLength={2000}
+                        multiline={true}
+                        inputMode='text'
+                        value={note}
+                    />
+                }
+            </KeyboardAvoidingView>
+            
+            {!isEdit 
+                && <View style={styles.box}>
                     <View style={styles.titleBox}>
                         <Text style={styles.title} >{title}</Text>
                     </View>
@@ -129,10 +129,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     ip: {
-        backgroundColor: '#30303022',
+        backgroundColor: Colors.inputBG,
+        textAlignVertical: 'top',
         textAlign: 'justify',
         color: Colors.black,
         width: width * 0.95,
+        letterSpacing: 0.5,
         marginBottom: 10,
         borderRadius: 5,
         fontSize: 16,
@@ -163,3 +165,5 @@ const styles = StyleSheet.create({
 })
 
 export default EditNote
+
+// {/* <SafeAreaView style={[styles.contanier, isEdit == true && { alignItems: 'center' }]}> */ }

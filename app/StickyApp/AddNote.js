@@ -7,17 +7,16 @@ import {
     StyleSheet,
     TextInput,
     Keyboard,
+    Platform,
     Text,
 } from 'react-native'
 
 import { Colors } from '../styles/color'
-
 const { width } = Dimensions.get('window')
 
 const AddNote = (props) => {
 
     const { storeMyNote } = props.route.params
-
     const [title, setTitle] = useState(null)
     const [note, setNote] = useState(null)
 
@@ -46,55 +45,51 @@ const AddNote = (props) => {
 
     return (
         <SafeAreaView style={styles.contanier}>
-            
-            <TextInput
-                onChangeText={(text) => { titleInputHandler(text) }}
-                selectionColor={Colors.buttonColor} // for courser
-                onSubmitEditing={() => Keyboard.dismiss}
-                style={[styles.ip, { marginTop: 10 }]}
-                placeholder={`Write your title...`}
-                placeholderTextColor={'#30303088'}
-                onBlur={() => Keyboard.dismiss}
-                selectTextOnFocus={false}
-                keyboardType='default'
-                autoCapitalize='none'
-                autoCorrect={false}
-                numberOfLines={1}
-                multiline={false}
-                spellCheck={true}
-                autoFocus={true}
-                inputMode='text'
-                maxLength={200}
-                value={title}
-            />
-                
-            <KeyboardAvoidingView behavior='position' style={{ marginTop: 1, flex: 1}}>
-
+            <KeyboardAvoidingView style={{ marginTop: 1 }}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            >
+                <TextInput
+                    selectionColor={Colors.selectionColor} // for courser
+                    style={[styles.ip, { marginTop: 10, height: 44, }]}
+                    onChangeText={(text) => titleInputHandler(text) }
+                    placeholderTextColor={Colors.inputplaceholder}
+                    onSubmitEditing={() => Keyboard.dismiss }
+                    placeholder={`Write your title...`}
+                    onBlur={() => Keyboard.dismiss }
+                    selectTextOnFocus={false}
+                    keyboardType='default'
+                    autoCapitalize='none'
+                    autoCorrect={false}
+                    numberOfLines={1}
+                    multiline={false}
+                    spellCheck={true}
+                    autoFocus={true}
+                    inputMode='text'
+                    maxLength={200}
+                    value={title}
+                />
                 {title && 
                     <TextInput
-                        onSubmitEditing={() => Keyboard.dismiss}
-                        onChangeText={(text) => { noteInputHandler(text) }}
-                        placeholderTextColor='#30303088'//{Colors.black}
-                        onBlur={() => { Keyboard.dismiss }}
-                        selectionColor={Colors.buttonColor} // for courser
+                        selectionColor={Colors.selectionColor} // for courser
+                        onChangeText={(text) => noteInputHandler(text) }
+                        placeholderTextColor={Colors.inputplaceholder}
+                        onSubmitEditing={() => Keyboard.dismiss }
+                        onBlur={() => Keyboard.dismiss }
+                        placeholder={`Enter note title`}
                         style={[styles.ip, { flex:1 }]}
                         selectTextOnFocus={false}
                         keyboardType='default'
                         autoCapitalize='none'
-                        value={note}
-                        autoCorrect={false}
-                        inputMode='text'
-                        numberOfLines={1}
-                        multiline={true}
-                        // spellCheck={true}
+                        autoCorrect={true}
+                        spellCheck={false}
                         autoFocus={false}
+                        multiline={true}
                         maxLength={2000}
-                        placeholder={`Enter note title`}
+                        inputMode='text'
+                        value={note}
                     />
                 }
-                
             </KeyboardAvoidingView>
-               
         </SafeAreaView>
     )
 }
@@ -107,10 +102,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     ip: {
-        backgroundColor: '#30303022',
+        backgroundColor: Colors.inputBG,
+        textAlignVertical: 'top',
         textAlign: 'justify',
         color: Colors.black,
         width: width * 0.95,
+        letterSpacing: 0.5,
         marginBottom: 10,
         borderRadius: 5,
         fontSize: 16,
