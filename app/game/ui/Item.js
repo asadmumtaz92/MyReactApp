@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     itemText: {
         color: Colors.buttonColor,
         fontWeight: '700',
-        borderRadius: 8,
     },
 })
 

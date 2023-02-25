@@ -5,7 +5,7 @@ import {
     View,
 } from 'react-native'
 
-import MyNav from './app/MyNavigation'
+import MyNav from './app/navigations/MyNavigation'
 
 const App = () => {
 

@@ -11,13 +11,19 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 
-import { Colors } from './styles/color'
+import { Colors } from '../styles/color'
 
-import AppRoute from './AppRoute'
-import Game from './game/index'
-import Food from './FoodApp/index'
-import MealsOverview from './FoodApp/MealsOverviewScreen'
-import MealDetails from './FoodApp/MealDetails'                                                             
+import AppRoute from '../AppRoute'
+import Game from '../game/index'
+
+import Food from '../FoodApp/index'
+import MealsOverview from '../FoodApp/MealsOverviewScreen'
+import MealDetails from '../FoodApp/MealDetails'
+
+import StickyApp from '../StickyApp/index'
+import AddNote from '../StickyApp/AddNote'
+import ViewNote from '../StickyApp/ViewNote'
+import EditNote from '../StickyApp/EditNote'
 
 const Stack = createNativeStackNavigator()
 
@@ -68,6 +74,7 @@ const myNav = () => {
                         headerTitle: () => myTitle(`GAME APP`),
                     }}
                 />
+                
                 <Stack.Screen
                     name='Food'
                     component={Food}
@@ -95,6 +102,35 @@ const myNav = () => {
                         headerTitle: () => myTitle('Meal Details'),
                     }}
                 />
+
+                <Stack.Screen
+                    name='StickyApp'
+                    component={StickyApp}
+                    options={{
+                        headerTitle: () => myTitle('Sticky Notes'),
+                    }}
+                />
+                <Stack.Screen
+                    name='AddNote'
+                    component={AddNote}
+                    options={{
+                        headerTitle: () => myTitle('Add Note'),
+                    }}
+                />
+                <Stack.Screen
+                    name='ViewNote'
+                    component={ViewNote}
+                    options={{
+                        headerTitle: () => myTitle('View Note'),
+                    }}
+                />
+                <Stack.Screen
+                    name='EditNote'
+                    component={EditNote}
+                    options={{
+                        headerTitle: () => myTitle('Edit Note'),
+                    }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     )
@@ -116,7 +152,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     img: {
-        marginRight: 8
+        marginRight: 8,
     },
     linkText: {
         textTransform: 'uppercase',

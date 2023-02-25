@@ -9,7 +9,6 @@ import {
 import { Colors } from './styles/color'
 import { StatusBar } from 'react-native'
 
-
 const AppRoute = ({ navigation }) => {
 
     const changeScreen = (appStatus) => {
@@ -22,16 +21,20 @@ const AppRoute = ({ navigation }) => {
 
             <View style={styles.view}>
                 <TouchableOpacity onPress={() => changeScreen('Game')} style={styles.btn} activeOpacity={0.9}>
-                    <Text style={styles.btnText}>Game App</Text>
+                    <Text style={styles.btnText}>Game</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => changeScreen('Food')} style={styles.btn} activeOpacity={0.9}>
-                    <Text style={styles.btnText}>Food App</Text>
+                    <Text style={styles.btnText}>Food</Text>
                 </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => changeScreen('StickyApp')} style={styles.btn} activeOpacity={0.9}>
+                    <Text style={styles.btnText}>Sticky Note</Text>
+                </TouchableOpacity>
+
             </View>
 
         </View>
-
     )
 }
 
