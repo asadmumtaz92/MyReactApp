@@ -7,23 +7,28 @@ import {
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
+import { connect, useDispatch } from 'react-redux'
+import { setSelectedMeal } from '../../redux/actions/foodRecipe'
+
 import { Colors } from '../../styles/color'
-import MealShortDetail from '../components/MealShortDetail'
+import MealShortDetail from './MealShortDetail'
 
 const { width } = Dimensions.get('window')
 
-const MealItem = ({ itemData }) => {
+const MealItem = ({ itemData, ...props}) => {
 
     const navigation = useNavigation()
+    const dispatch = useDispatch()
 
     const meailDetailNavigate = () => {
-        navigation.navigate('MealDetails', { itemData: itemData })
+        dispatch(props?.setSelectedMeal(itemData))
+        navigation.navigate('MealDetails')
     }
 
     return (
         <TouchableOpacity
             activeOpacity={0.9} style={styles.box}
-            onPress={meailDetailNavigate}
+            onPress={meailDetailNavigate} key={Date.now()}
         >
             <Image source={{ uri: itemData.imageUrl }} style={styles.img} resizeMode="cover" />
 
@@ -69,6 +74,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 10,
     },
-});
+})
 
-export default MealItem
+const mapStateToProps = ({ foodReducer }) => ({ foodReducer })
+
+export default connect(mapStateToProps, {
+    setSelectedMeal,
+})(MealItem)

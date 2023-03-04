@@ -3,7 +3,6 @@ import {
     Text,
     View,
 } from 'react-native'
-
 import { Colors } from '../../styles/color'
 
 const List = ({ title, data }) => {
@@ -30,7 +29,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     heading: {
-        color: Colors.buttonColor,
+        color: Colors.primery,
         fontWeight: '700',
         marginBottom: 5,
         fontSize: 19,
@@ -41,19 +40,19 @@ const styles = StyleSheet.create({
         marginLeft: 30,
     },
     circle: {
-        backgroundColor: Colors.buttonColor,
+        backgroundColor: Colors.primery,
         marginRight: 10,
         borderRadius: 5,
         height: 8,
         width: 8,
     },
     text: {
-        color: Colors.buttonColor,
+        color: Colors.primery,
         fontWeight: '500',
         marginVertical: 4,
         fontSize: 14,
         flex: 1,
     },
-});
+})
 
 export default List

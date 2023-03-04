@@ -1,6 +1,7 @@
 import { Platform } from 'react-native'
 
 export const Colors = {
+    primery: '#72063c', 
     buttonColor: '#72063c',
     smallButtonColor: '#4E0329',
     bgColor: '#d8c072',
@@ -13,7 +14,6 @@ export const Colors = {
         android: '#55555E80',
         ios: '#55555E',
     }),
-
 
 
     black: '#000000',

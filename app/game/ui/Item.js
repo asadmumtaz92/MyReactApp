@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         },
     },
     itemText: {
-        color: Colors.buttonColor,
+        color: Colors.primery,
         fontWeight: '700',
     },
 })

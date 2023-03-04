@@ -60,9 +60,9 @@ const StartGameScreen = ({ pickedNumber }) => {
                         <TextInput
                             onSubmitEditing={() => { Keyboard.dismiss; confirmGame()} }
                             onChangeText={(text) => { numberInputHandler(text) }}
+                            selectionColor={Colors.lightgray} // for courser
                             placeholderTextColor={Colors.lightgray}
                             onBlur={() => { Keyboard.dismiss }}
-                            selectionColor={Colors.lightgray} // for courser
                             selectTextOnFocus={true}
                             keyboardType='numeric'
                             autoCapitalize='none'

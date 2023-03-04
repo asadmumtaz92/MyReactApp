@@ -9,7 +9,7 @@ const CategoryGridTile = ({ title, color, onPress }) => {
     return (
         <TouchableOpacity
             style={[styles.button, { backgroundColor: color }]}
-            onPress={onPress} activeOpacity={0.8}
+            onPress={onPress} activeOpacity={0.9}
         >
             <Text style={styles.title}>{title}</Text>
         </TouchableOpacity>
@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
         elevation: 4,
         shadowColor: 'black',
         shadowOpacity: 0.25,
-        shadowRadius: 8,
+        shadowRadius: 3,
         shadowOffset: {
+            height: 0,
             width: 0,
-            height: 2,
         },
     },
     title: {

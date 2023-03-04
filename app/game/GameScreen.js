@@ -16,11 +16,6 @@ import GuessBox from './ui/GuessBox'
 import Title from './ui/Title'
 import Item from './ui/Item'
 
-const width = Dimensions.get('window').width
-
-let minBoundary = 1
-let maxBoundary = 100
-
 const genrateRandomNumber = (min, max, exclude) => {
     const rndNum = Math.floor(Math.random() * (max - min)) + min
 
@@ -31,6 +26,10 @@ const genrateRandomNumber = (min, max, exclude) => {
         return rndNum
     }
 }
+
+const width = Dimensions.get('window').width
+let minBoundary = 1
+let maxBoundary = 100
 
 const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound = () => { } }) => {
 
@@ -96,7 +95,6 @@ const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound = ()
             <View style={[gStyles.card, { marginTop: '10%'}]}>
 
                 <Instruction text={`Higher or lower?`} />
-
                 <View style={[gStyles.btnBox]}>
                     <MyButton
                         title='-' onPress={checkNumber.bind(this, 'lower')}

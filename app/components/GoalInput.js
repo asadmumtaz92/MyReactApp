@@ -18,7 +18,9 @@ const GoalInput = props =>  {
 
     const addCourseGoal = () => {
         props.onAddGoal(courseGoalText)
-        setCourseGoalText('')
+        setTimeout(() => {
+            setCourseGoalText('')
+        }, 100)
     }
 
     return (

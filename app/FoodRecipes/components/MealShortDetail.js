@@ -9,12 +9,12 @@ const MealShortDetail = ({ title, duration, complexity, affordability }) => {
 
     return (
         <View style={styles.detailBox}>
-            <Text style={styles.title}>{title}</Text>
+            {title && <Text style={styles.title}>{title}</Text>}
 
             <View style={styles.desc}>
-                <Text style={styles.text}>{duration} mint</Text>
-                <Text style={styles.text}>{complexity}</Text>
-                <Text style={styles.text}>{affordability}</Text>
+                {duration && <Text style={styles.text}>{duration} mint</Text>}
+                {complexity && <Text style={styles.text}>{complexity}</Text>}
+                {affordability && <Text style={styles.text}>{affordability}</Text>}
             </View>
         </View>
     )
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     title: {
-        color: Colors.buttonColor,
+        color: Colors.primery,
         alignSelf: 'center',
         textAlign: 'center',
         fontWeight: '700',
@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
     },
     text: {
         textTransform: 'capitalize',
-        color: Colors.buttonColor,
+        color: Colors.primery,
         alignSelf: 'center',
         textAlign: 'center',
         fontWeight: '600',
         fontSize: 14,
     },
-});
+})
 
 export default MealShortDetail

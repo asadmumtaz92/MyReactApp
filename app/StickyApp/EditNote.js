@@ -144,13 +144,13 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     titleBox: {
-        borderBottomColor: Colors.buttonColor,
+        borderBottomColor: Colors.primery,
         borderBottomWidth: 0.9,
         padding: 5,
     },
     title: {
         textTransform: 'capitalize',
-        color: Colors.buttonColor,
+        color: Colors.primery,
         fontWeight: '600',
         textAlign: 'left',
         fontSize: 18,
@@ -165,5 +165,3 @@ const styles = StyleSheet.create({
 })
 
 export default EditNote
-
-// {/* <SafeAreaView style={[styles.contanier, isEdit == true && { alignItems: 'center' }]}> */ }

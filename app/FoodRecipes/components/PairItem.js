@@ -6,24 +6,23 @@ import {
 
 import { Colors } from '../../styles/color'
 
-const List = ({ title, val }) => {
+const List = ({ title, val = null }) => {
 
     return (
-        <View style={styles.itemView}>
-            <Text style={styles.itemViewText}>{title}</Text>
-            <Text style={[styles.itemViewText, { fontWeight: '600', fontSize: 18 }]}>
-                {val ? ' YES' : ' No'}
-            </Text>
+        <View style={[styles.itemView, val != null && { flexDirection: 'row', justifyContent: 'space-between', }]}>
+            {title && <Text style={styles.itemViewText}>{title}</Text>}
+            {val != null 
+                && <Text style={[styles.itemViewText, { fontWeight: '600', fontSize: 18 }]}>
+                    {val ? ' YES' : ' No'}
+                </Text>}
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     itemView: {
-        backgroundColor: Colors.buttonColor,
-        justifyContent: 'space-between',
+        backgroundColor: Colors.primery,
         paddingHorizontal: 12,
-        flexDirection: 'row',
         paddingVertical: 7,
         marginVertical: 7,
         borderRadius: 8,

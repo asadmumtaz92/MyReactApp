@@ -5,9 +5,9 @@ import {
     Text,
 } from 'react-native'
 
-const width = Dimensions.get('window').width
-
 import { Colors } from '../../styles/color'
+
+const width = Dimensions.get('window').width
 
 const Summary = ({ style, choosenNumber, noOfRounds }) => {
 
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     guessNum: {
         textDecorationLine: 'underline',
         fontSize: width < 390 ? 20 : 26,
-        color: Colors.buttonColor,
+        color: Colors.primery,
         fontStyle: 'italic',
         fontWeight: '800',
     },

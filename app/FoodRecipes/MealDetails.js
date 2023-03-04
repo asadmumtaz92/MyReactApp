@@ -1,74 +1,83 @@
-import React, { useState, useEffect, useLayoutEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     ActivityIndicator,
-    TouchableOpacity,
+    SafeAreaView,
     ScrollView,
     StyleSheet,
     Dimensions,
+    StatusBar,
     Image,
-    Alert,
-    Text,
     View,
 } from 'react-native'
 
 import { Colors } from '../styles/color'
-
-const heart = require('../assets/heart.png')
-const back_white = require('../assets/back_white.png')
+import { connect, useDispatch } from 'react-redux'
+import { addFavoriteMeal } from '../redux/actions/foodRecipe'
 
 import MealShortDetail from './components/MealShortDetail'
 import List from './components/List'
 import PairItem from './components/PairItem'
+import Header from './components/Header'
 
 const { width } = Dimensions.get('window')
 
-const MealDetails = ({ route, navigation }) => {
+const MealDetails = ({ navigation, ...props }) => {
 
+    const dispatch = useDispatch()
     const [displayMeal, setDisplayMeal] = useState([])
+    const [fvrt, setFvrt] = useState(false)
 
     useEffect(() => {
-        const item = route.params.itemData
+        const data = props?.foodRecipeReducer?.selected_meal
 
         setTimeout(() => {
-            setDisplayMeal(item)
+            setDisplayMeal(data)
+            props?.foodRecipeReducer?.favoriteMeals.filter((items) => {
+                if (data.id == items?.id) {
+                    setFvrt(true)
+                }
+            })
+            navigation.setOptions({ headerTitle: data.title })
         }, 800)
-
-        navigation.setOptions({
-            headerTitle: item.title,
-        })
 
     }, [])
     
-    const headerButtonPressHandler = () => {
-        Alert.alert('Message!', '\n' + displayMeal.title + ' is added')
+    const rightFun = () => {
+        if (fvrt) {
+            const fvMeal = props?.foodRecipeReducer?.favoriteMeals.filter((item) => item.id != displayMeal.id)
+            dispatch(props?.addFavoriteMeal(fvMeal))
+            setTimeout(() => {
+                navigation.goBack()
+            }, 500)
+            // Alert.alert('Message!', '\n' + displayMeal.title + ' is removed from Favorite Meals.')
+        }
+        else {
+            let fvMeal = [props?.foodRecipeReducer?.selected_meal, ...props?.foodRecipeReducer?.favoriteMeals]
+            dispatch(props?.addFavoriteMeal(fvMeal))
+            // Alert.alert('Message!', '\n' + displayMeal.title + ' is added as your Favorite Meals.')
+        }
+        setFvrt(!fvrt)
+    }
+    const leftFun = () => {
+        navigation.goBack()
     }
 
-    // for navigation header
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerRight: () => { 
-                return (
-                    <TouchableOpacity onPress={headerButtonPressHandler} activeOpacity={0.8} >
-                        <Image source={heart} style={{height: 30, width: 30}} />
-                    </TouchableOpacity>
-                )
-            },
-            headerLeft: () => {
-                return (
-                    <TouchableOpacity onPress={() => { navigation.goBack()}} activeOpacity={0.8} style={{flexDirection: 'row', alignItems: 'center'}} >
-                        <Image source={back_white} style={{ height: 15, width: 10, marginRight: 5 }} />
-                        <Text style={{color: Colors.white,fontWeight: '600', fontSize: 16}}>Back</Text>
-                    </TouchableOpacity>
-                )
-            },
-        })
-    }, [navigation, headerButtonPressHandler])
-
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={[styles.container, displayMeal.title && { backgroundColor: Colors.primery }]}>
+            <StatusBar 
+                barStyle={displayMeal.title ? 'light-content' : 'dark-content'}
+            />
+
+            <Header
+                leftFun={leftFun}
+                title={displayMeal.title}
+                rightFun={rightFun}
+                status={displayMeal.title ? fvrt : null}
+            />
+
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
                 {!displayMeal.title
-                    ? <ActivityIndicator color={Colors.buttonColor} size='small' style={{ marginTop: 20 }} />
+                    ? <ActivityIndicator color={Colors.primery} size='small' style={{ marginTop: 20 }} />
                     : <View style={styles.box}>
                         <Image source={{ uri: displayMeal.imageUrl }} style={styles.img} resizeMode="cover" />
                         
@@ -101,7 +110,8 @@ const MealDetails = ({ route, navigation }) => {
                     </View>
                 }
             </ScrollView>
-        </View>
+
+        </SafeAreaView>
     )
 }
 
@@ -120,13 +130,17 @@ const styles = StyleSheet.create({
         width: width,
     },
     otherView: {
-        borderColor: Colors.buttonColor,
+        borderColor: Colors.primery,
         paddingHorizontal: 10,
         marginHorizontal: 30,
         borderTopWidth: 2,
         paddingTop: 10,
         marginTop: 20,
     },
-});
+})
 
-export default MealDetails
+const mapStateToProps = ({ foodRecipeReducer }) => ({ foodRecipeReducer })
+
+export default connect(mapStateToProps, {
+    addFavoriteMeal,
+})(MealDetails)

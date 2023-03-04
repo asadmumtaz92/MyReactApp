@@ -33,7 +33,7 @@ const List = ({ data, onPress }) => {
 
 const styles = StyleSheet.create({
     dataBox: {
-        backgroundColor: Colors.buttonColor,
+        backgroundColor: Colors.primery,
         alignItems: 'center',
         flexDirection: 'row',
         alignSelf: 'center',

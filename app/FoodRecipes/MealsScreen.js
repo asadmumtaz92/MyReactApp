@@ -8,52 +8,53 @@ import {
 
 import { Colors } from '../styles/color'
 import MealItem from './components/MealItem'
-import { MEALS } from './constantData/dummy_data'
 
-const MealsOverviewScreen = ({ route, navigation }) => {
+import { connect } from 'react-redux'
+
+const MealsScreen = ({ navigation, ...props }) => {
 
     const [displayMeal, setDisplayMeal] = useState([])
 
     useEffect(() => {
-        const item = route.params.item
-
-        navigation.setOptions({
-            headerTitle: item.title,
-        })
         setTimeout(() => {
-            const result = MEALS.filter((items) => {
-                return items.categoryIds.indexOf(item.id) >= 0
+            navigation.setOptions({
+                headerTitle: props?.foodRecipeReducer?.selected_category?.title,
+            })
+
+            const result = props?.foodRecipeReducer?.meals.filter((items) => {
+                return items.categoryIds.indexOf(props?.foodRecipeReducer?.selected_category?.id) >= 0
             })
             setDisplayMeal(result)
-        }, 800)
-
+        }, 500)
     }, [])
 
     const renderItem = (item) => {
-        let itemData = item.item
-        return <MealItem itemData={itemData} />
+        return <MealItem itemData={item.item} />
     }
 
     return (
         <View style={styles.container}>
             {!displayMeal.length 
-                ? <ActivityIndicator color={Colors.buttonColor} size='small' style={{ marginTop: 20 }} />
+                ? <ActivityIndicator color={Colors.primery} size='small' style={{ marginTop: 20 }} />
                 : <FlatList
                     data={displayMeal}
-                    keyExtractor={(item) => item.id}
                     renderItem={renderItem}
+                    keyExtractor={(item) => item.id}
                     showsVerticalScrollIndicator={false}
                 />
             }
         </View>
-    );
+    )
 }
-
-export default MealsOverviewScreen;
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: Colors.white,
         flex: 1,
     },
-});
+})
+
+const mapStateToProps = ({ foodRecipeReducer }) => ({ foodRecipeReducer })
+
+export default connect(mapStateToProps, {
+})(MealsScreen)

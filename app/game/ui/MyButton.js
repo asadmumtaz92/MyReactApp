@@ -6,9 +6,9 @@ import {
     Text,
 } from 'react-native'
 
-const width = Dimensions.get('window').width
-
 import { Colors } from '../../styles/color'
+
+const width = Dimensions.get('window').width
 
 const MyButton = ({ 
     title,
