@@ -28,7 +28,7 @@ import MyFavoriteMeals from '../FoodRecipes/MyFavoriteMeals'
 import StickyApp from '../StickyApp/index'
 import AddNote from '../StickyApp/AddNote'
 import ViewNote from '../StickyApp/ViewNote'
-import EditNote from '../StickyApp/EditNote'
+import EditNote from '../StickyApp/EditNote' 
 
 const Stack = createNativeStackNavigator()
 
