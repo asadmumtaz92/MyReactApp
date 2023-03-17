@@ -1,9 +1,9 @@
 import {
     TouchableOpacity,
-    StyleSheet,
-    Text,
     Dimensions,
-    Image
+    StyleSheet,
+    Image,
+    Text,
 } from 'react-native'
 
 import { Colors } from '../../styles/color'

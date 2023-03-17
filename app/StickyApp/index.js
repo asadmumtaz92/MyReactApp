@@ -25,7 +25,7 @@ const Index = ({ navigation }) => {
         ])
         setTimeout(() => {
             navigation.goBack()
-        }, 200)
+        }, 500)
     }
     // UPDATE EXISTING NOTE
     const updateMyNeote = (uniqueId, title, note) => {
@@ -42,11 +42,11 @@ const Index = ({ navigation }) => {
         // ])
         setTimeout(() => {
             navigation.navigate('StickyApp')
-        }, 200)
+        }, 500)
     }
 
     const addNoteHandler = () => {
-        navigation.navigate('AddNote', { 'storeMyNote': storeMyNote })
+        navigation.navigate('AddNote', { storeMyNote: storeMyNote })
     }
     const viewNoteHandler = () => {
         navigation.navigate('ViewNote', { myStoredNotes: myNotes, updateMyNeote: updateMyNeote })

@@ -7,13 +7,18 @@ import {
 
 import MyNav from './app/navigations/MyNavigation'
 
+import { Provider } from 'react-redux'
+import { store } from './app/redux/store';
+
 const App = () => {
 
     return (
-        <View style={styles.contanier}>
-            <StatusBar barStyle='light-content' />
-            <MyNav />
-        </View>
+        <Provider store={store}>
+            <View style={styles.contanier}>
+                <StatusBar barStyle='light-content' />
+                <MyNav />
+            </View>
+        </Provider>
     )
 }
 

@@ -9,12 +9,11 @@ import {
     View,
 } from 'react-native'
 
-const width = Dimensions.get('window').width
-
 import MyButton from './ui/MyButton'
 import Summary from './ui/Summary'
 
 const overImage = require('../assets/gameOver.png')
+const width = Dimensions.get('window').width
 
 const GameOverScreen = ({ reStartGame, choosenNumber, noOfRounds }) => {
 
@@ -46,11 +45,11 @@ const styles = StyleSheet.create({
         width: width * 0.9,
     },
     btnBox: {
+        width: width < 390 ? '70%' : '60%',
         marginTop: Platform.select({
             android: 6,
             ios: 5,
         }),
-        width: width < 390 ? '70%' : '60%',
         height: 40,
     },
 })

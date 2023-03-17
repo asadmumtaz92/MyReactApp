@@ -14,7 +14,7 @@ import GameScreen from './GameScreen'
 import GameOverScree from './GameOverScree'
 
 let background = require('../assets/background.png')
-let background2 = require('../assets/sea.jpg')
+let background2 = require('../assets/background2.jpg')
 
 const Index = () => {
 
@@ -37,7 +37,6 @@ const Index = () => {
         setGameOver(false)
         setGuessedData([])
     }
-
     const gameOvers = () => {
         setGameOver(true)
     }

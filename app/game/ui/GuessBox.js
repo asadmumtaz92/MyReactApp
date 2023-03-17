@@ -25,7 +25,7 @@ const GuessBox = ({ currentGuess }) => {
 const styles = StyleSheet.create({
     guessBox: {
         width: width < 390 ? '25%' : '35%',
-        borderColor: Colors.buttonColor,
+        borderColor: Colors.primery,
         height: width < 390 ? 70 : 90,
         justifyContent: 'center',
         borderStyle: 'dashed',
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
     guessBoxText: {
         fontSize: width < 390 ? 24 : 28,
-        color: Colors.buttonColor,
+        color: Colors.primery,
         marginHorizontal: 20,
         marginTop: 0,
     },

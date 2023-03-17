@@ -32,13 +32,13 @@ const ViewNote = ({route, navigation}) => {
     return (
         <SafeAreaView style={styles.contanier}>
             {loader 
-                ? <ActivityIndicator color={Colors.buttonColor} size='small'  style={{ marginTop: 20 }}/>
+                ? <ActivityIndicator color={Colors.primery} size='small'  style={{ marginTop: 20 }}/>
                 : myNotes.length > 0
                     ? <List data={myNotes} onPress={EditNoteHandler} />
                     : <View style={styles.noDataBox}>
                         <Text style={styles.noDataText}>{`You Don't Have Any Sticky Note.`}</Text>
                     </View>
-                }
+            }
         </SafeAreaView>
     )
 }
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     noDataText: {
-        color: Colors.buttonColor,
+        color: Colors.primery,
         alignSelf: 'center',
         textAlign: 'center',
         fontWeight: '500',

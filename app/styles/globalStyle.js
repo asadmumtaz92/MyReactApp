@@ -10,7 +10,7 @@ const width = Dimensions.get('window').width
 export const gStyles = StyleSheet.create({
     title: {
         fontSize: width < 390 ? 19 : 22,
-        color: Colors.buttonColor,
+        color: Colors.primery,
         alignSelf: 'center',
         fontWeight: '700',
         marginTop: 20,
@@ -19,7 +19,7 @@ export const gStyles = StyleSheet.create({
         paddingVertical: width < 390 ? 15 : 25,
         marginTop: width < 390 ? '15%' : '25%',
         paddingBottom: width < 390 ? 20 : 30,
-        backgroundColor: Colors.buttonColor,
+        backgroundColor: Colors.primery,
         width: width < 390 ? '80%' : '90%',
         shadowColor: Colors.black,
         paddingHorizontal: 20,
@@ -52,5 +52,9 @@ export const gStyles = StyleSheet.create({
         height: 40,
         padding: 0,
         width: 45,
+    },
+    centerAlign: {
+        alignItems: 'center',
+        justifyContent: 'center'
     },
 });

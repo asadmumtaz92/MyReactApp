@@ -14,16 +14,21 @@ import { NavigationContainer } from '@react-navigation/native'
 import { Colors } from '../styles/color'
 
 import AppRoute from '../AppRoute'
+
+// GAME NAVIGATIONS
 import Game from '../game/index'
 
-import Food from '../FoodApp/index'
-import MealsOverview from '../FoodApp/MealsOverviewScreen'
-import MealDetails from '../FoodApp/MealDetails'
+// FOOD RECIPE NAVIGATIONS
+import FoodRecipes from '../FoodRecipes/index'
+import MealsScreen from '../FoodRecipes/MealsScreen'
+import MealDetails from '../FoodRecipes/MealDetails'
+import MyFavoriteMeals from '../FoodRecipes/MyFavoriteMeals'
 
+// STICKY NAVIGATIONS
 import StickyApp from '../StickyApp/index'
 import AddNote from '../StickyApp/AddNote'
 import ViewNote from '../StickyApp/ViewNote'
-import EditNote from '../StickyApp/EditNote'
+import EditNote from '../StickyApp/EditNote' 
 
 const Stack = createNativeStackNavigator()
 
@@ -76,15 +81,15 @@ const myNav = () => {
                 />
                 
                 <Stack.Screen
-                    name='Food'
-                    component={Food}
+                    name='FoodRecipes'
+                    component={FoodRecipes}
                     options={{
-                        headerTitle: () => myTitle(`FOOD APP`),
+                        headerTitle: () => myTitle(`FOOD RECIPES`),
                     }}
                 />
                 <Stack.Screen
-                    name='MealsOverview'
-                    component={MealsOverview}
+                    name='MealsScreen'
+                    component={MealsScreen}
                     options={{
                         headerTitle: () => myTitle(''),
                     }}
@@ -99,7 +104,15 @@ const myNav = () => {
                     name='MealDetails'
                     component={MealDetails}
                     options={{
-                        headerTitle: () => myTitle('Meal Details'),
+                        headerTitle: () => myTitle(' '),
+                        headerShown: false
+                    }}
+                />
+                <Stack.Screen
+                    name='MyFavoriteMeals'
+                    component={MyFavoriteMeals}
+                    options={{
+                        headerTitle: () => myTitle('Favorite Meals'),
                     }}
                 />
 
@@ -162,7 +175,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     headerStyle: {
-        backgroundColor: Colors.buttonColor,
+        backgroundColor: Colors.primery,
     },
     headerTitleStyle: {
         textTransform: 'uppercase',

@@ -6,7 +6,7 @@ import {
 
 import { gStyles } from '../../styles/globalStyle'
 
-const MyTextInput = ({ placeholder, onSubmit, }) => {
+const MyTextInput = ({ placeholder, onSubmit, ...props }) => {
 
     const [val, setVal] = useState(null)
 
