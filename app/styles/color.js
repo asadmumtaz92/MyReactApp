@@ -15,6 +15,12 @@ export const Colors = {
         ios: '#55555E',
     }),
 
+    // Slack card
+    inProgress: '#58b7f1',
+    inComplete: '#ffd039',
+    complete: '#65be1e',
+    backLog: '#55555E88',
+
 
     black: '#000000',
     white: '#FFFFFF',

@@ -37,6 +37,10 @@ const AppRoute = (props) => {
                     </TouchableOpacity> */}
                 </>
 
+                <TouchableOpacity onPress={() => changeScreen('SlackApp')} style={styles.btn} activeOpacity={0.9}>
+                    <Text style={styles.btnText}>Slack App</Text>
+                </TouchableOpacity>
+                
                 <TouchableOpacity onPress={() => changeScreen('Game')} style={styles.btn} activeOpacity={0.9}>
                     <Text style={styles.btnText}>GAME</Text>
                 </TouchableOpacity>

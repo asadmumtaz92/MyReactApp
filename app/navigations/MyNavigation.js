@@ -28,7 +28,13 @@ import MyFavoriteMeals from '../FoodRecipes/MyFavoriteMeals'
 import StickyApp from '../StickyApp/index'
 import AddNote from '../StickyApp/AddNote'
 import ViewNote from '../StickyApp/ViewNote'
-import EditNote from '../StickyApp/EditNote' 
+import EditNote from '../StickyApp/EditNote'
+
+// SLACK APP
+import SlackApp from '../Slack_app/index'
+import Register from '../Slack_app/Register'
+import Forgot from '../Slack_app/Forgot'
+import Home from '../Slack_app/Home'
 
 const Stack = createNativeStackNavigator()
 
@@ -142,6 +148,35 @@ const myNav = () => {
                     component={EditNote}
                     options={{
                         headerTitle: () => myTitle('Edit Note'),
+                    }}
+                />
+
+                <Stack.Screen
+                    name='SlackApp'
+                    component={SlackApp}
+                    options={{
+                        headerTitle: () => myTitle(''),
+                    }}
+                />
+                <Stack.Screen
+                    name='Register'
+                    component={Register}
+                    options={{
+                        headerTitle: () => myTitle(''),
+                    }}
+                />
+                <Stack.Screen
+                    name='Forgot'
+                    component={Forgot}
+                    options={{
+                        headerTitle: () => myTitle(''),
+                    }}
+                />
+                <Stack.Screen
+                    name='Home'
+                    component={Home}
+                    options={{
+                        headerTitle: () => myTitle(''),
                     }}
                 />
             </Stack.Navigator>
