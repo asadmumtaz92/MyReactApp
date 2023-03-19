@@ -2,7 +2,9 @@ import React, { useState, useLayoutEffect } from "react";
 import {
     KeyboardAvoidingView,
     TouchableOpacity,
+    ImageBackground,
     StyleSheet,
+    StatusBar,
     TextInput,
     Keyboard,
     Platform,
@@ -11,16 +13,22 @@ import {
     View,
     Text,
 } from "react-native";
+
 import { Colors } from "../styles/color"
 import { gStyles } from "./styles/globle"
 
-import LogoBox from "./components/logoBox"
+import {
+    bgCover,
+    at_sign,
+    lock_sign,
+    user_sign,
+} from './constant/images'
 
 const Register = ({ navigation }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [company, setCompany] = useState('')
+    const [fullname, setFullname] = useState('')
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -42,7 +50,7 @@ const Register = ({ navigation }) => {
     }, [navigation])
 
     const loginHandler = () => {
-        navigation.navigate('SlackApp')
+        navigation.navigate('Login')
     }
 
     const emailHandler = (text) => {
@@ -51,13 +59,13 @@ const Register = ({ navigation }) => {
     const passwordHandler = (text) => {
         setPassword(text)
     }
-    const companyHandler = (text) => {
-        setCompany(text)
+    const fullnameHandler = (text) => {
+        setFullname(text)
     }
     
     const registerHandler = () => {
-        if (!email.length || !password.length || !company.length) {
-            Alert.alert('Warnging Message', '\nPlease enter email, Password & company name first!')
+        if (!email.length || !password.length || !fullname.length) {
+            Alert.alert('Warnging Message', '\nPlease Enter Email, Password & Full Name First!')
         }
         else {
             Keyboard.dismiss();
@@ -65,14 +73,19 @@ const Register = ({ navigation }) => {
     }
 
     return (
-        <View style={gStyles.container}>
-            <KeyboardAvoidingView style={{ flex: 1 }}
+        <ImageBackground source={bgCover} style={gStyles.bgCover}>
+            <StatusBar
+                animated={true}
+                backgroundColor={Colors.buttonColor}
+                barStyle='light-content'
+            />
+
+            <KeyboardAvoidingView style={gStyles.bgCover}
                 behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             >
-                <LogoBox />
-
                 <View style={gStyles.bottomView}>
 
+                    {/* HEADING */}
                     <Text style={gStyles.heading}>
                         {`Register New Account`}
                     </Text>
@@ -80,19 +93,18 @@ const Register = ({ navigation }) => {
                     {/* EMAIL */}
                     <View style={gStyles.ipItem}>
                         <Image
-                            source={require('../assets/slack/username.jpg')}
-                            style={gStyles.icon}
-                            resizeMode='contain'
+                            source={at_sign}
+                            style={gStyles.icon} esizeMode='contain'
                         />
                         <TextInput
-                            placeholderTextColor={Colors.inputplaceholder}
+                            placeholderTextColor={'rgba(34, 34, 34, 0.3)'}
                             onChangeText={(text) => emailHandler(text)}
                             onSubmitEditing={() => Keyboard.dismiss}
                             selectionColor={Colors.selectionColor}
                             onBlur={() => Keyboard.dismiss}
+                            keyboardType='email-address'
                             placeholder="YOUR E-MAIL"
                             selectTextOnFocus={false}
-                            keyboardType='default'
                             autoCapitalize='none'
                             autoCorrect={false}
                             spellCheck={false}
@@ -100,7 +112,7 @@ const Register = ({ navigation }) => {
                             autoFocus={false}
                             numberOfLines={1}
                             multiline={false}
-                            inputMode='text'
+                            inputMode='email'
                             maxLength={200}
                             value={email}
                         />
@@ -109,12 +121,11 @@ const Register = ({ navigation }) => {
                     {/* PASSWORD */}
                     <View style={gStyles.ipItem}>
                         <Image
-                            source={require('../assets/slack/password.png')}
-                            style={[gStyles.icon, { marginHorizontal: 5, height: 20, width: 20 }]}
-                            resizeMode='contain'
+                            source={lock_sign}
+                            style={gStyles.icon} resizeMode='contain'
                         />
                         <TextInput
-                            placeholderTextColor={Colors.inputplaceholder}
+                            placeholderTextColor={'rgba(34, 34, 34, 0.3)'}
                             onChangeText={(text) => passwordHandler(text)}
                             onSubmitEditing={() => Keyboard.dismiss}
                             selectionColor={Colors.selectionColor}
@@ -136,24 +147,22 @@ const Register = ({ navigation }) => {
                         />
                     </View>
 
-                    {/* Company */}
+                    {/* FULL NAME */}
                     <View style={gStyles.ipItem}>
                         <Image
-                            source={require('../assets/slack/company.jpg')}
-                            style={[gStyles.icon, { marginHorizontal: 5, height: 20, width: 20, opacity: 0.7 }]}
-                            resizeMode='contain'
+                            source={user_sign}
+                            style={[gStyles.icon, {opacity:0.6}]} esizeMode='contain'
                         />
                         <TextInput
-                            placeholderTextColor={Colors.inputplaceholder}
-                            onChangeText={(text) => companyHandler(text)}
+                            placeholderTextColor={'rgba(34, 34, 34, 0.3)'}
+                            onChangeText={(text) => fullnameHandler(text)}
                             onSubmitEditing={() => Keyboard.dismiss}
                             selectionColor={Colors.selectionColor}
                             onBlur={() => Keyboard.dismiss}
-                            placeholder="COMPANY NAME"
+                            placeholder="FULL NAME"
                             selectTextOnFocus={false}
-                            secureTextEntry={true}
                             keyboardType='default'
-                            autoCapitalize='none'
+                            autoCapitalize='words'
                             autoCorrect={false}
                             style={gStyles.ip}
                             spellCheck={false}
@@ -161,7 +170,7 @@ const Register = ({ navigation }) => {
                             numberOfLines={1}
                             multiline={false}
                             inputMode='text'
-                            value={company}
+                            value={fullname}
                             maxLength={200}
                         />
                     </View>
@@ -189,13 +198,13 @@ const Register = ({ navigation }) => {
 
                     {/* NOTE */}
                     <Text style={styles.text}>
-                        <Text style={styles.note}>{`Note:  `}</Text>
-                        {`Please enter valid email, password & after submit check your email for varification.`}
+                        <Text style={styles.note}>{`Note: `}</Text>
+                        {`Please enter valid email, password & full name, After submit check your email for varification.`}
                     </Text>
 
                 </View>
             </KeyboardAvoidingView>
-        </View>
+        </ImageBackground>
     )
 }
 
@@ -224,9 +233,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
         textAlign: 'center',
         fontWeight: '400',
-        lineHeight: 20,
-        marginTop: 25,
-        fontSize: 16,
+        lineHeight: 18,
+        fontSize: 15.4,
+        marginTop: 10,
     },
     note: {
         fontWeight: '700',

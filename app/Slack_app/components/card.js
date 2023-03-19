@@ -6,12 +6,17 @@ import {
     View,
     Text,
 } from 'react-native'
+
 import { Colors } from '../../styles/color'
 
-const Card = ({item, navigat}) => {
+import {
+    clock_sign
+} from '../constant/images'
+
+const Card = ({ item, navigat }) => {
 
     return (
-        <TouchableOpacity //key={index}
+        <TouchableOpacity
             style={[
                 styles.card, {
                     borderRightColor:
@@ -21,22 +26,22 @@ const Card = ({item, navigat}) => {
                                 ? Colors.inComplete
                                 : item.type == 'BACKLOG'
                                     ? Colors.backLog
-                                    : Colors.complete
+                                    : item.type == 'COMPLETE'
+                                        ? Colors.complete
+                                        : Colors.white
                 }
             ]}
             activeOpacity={0.7}
             onPress={navigat}
         >
-
             <View style={styles.innerCard}>
                 <Text numberOfLines={2} style={styles.heading}>{item.heading}</Text>
 
                 <View style={styles.bottom}>
                     <Image
-                        source={require('../../assets/slack/username.jpg')}
-                        style={styles.icon} resizeMode='cover'
+                        source={clock_sign} style={styles.icon} resizeMode='cover'
                     />
-                    <Text>{item.time}</Text>
+                    <Text style={styles.time}>{item.time}</Text>
                 </View>
             </View>
 
@@ -44,44 +49,44 @@ const Card = ({item, navigat}) => {
                 <Text
                     style={[
                         styles.type,
-                        item.type == 'IN PROGRESS' && { color: Colors.inProgress, marginRight: -37 },
-                        item.type == 'IN COMPLETE' && { color: Colors.inComplete, marginRight: -37 },
-                        item.type == 'COMPLETE' && { color: Colors.complete, marginRight: -28 },
-                        item.type == 'BACKLOG' && { color: Colors.backLog, marginRight: -24 }
+                        item.type == 'IN PROGRESS' && { color: Colors.inProgress, marginRight: -35 },
+                        item.type == 'IN COMPLETE' && { color: Colors.inComplete, marginRight: -36 },
+                        item.type == 'COMPLETE' && { color: Colors.complete, marginRight: -27 },
+                        item.type == 'BACKLOG' && { color: Colors.backLog, marginRight: -22 }
                     ]}
                 >
                     {item.type}
                 </Text>
             </View>
-
         </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     card: {
+        borderRightColor: Colors.white,
         backgroundColor: Colors.white,
-        borderRightColor: Colors.inProgress,
-        borderBottomRightRadius: 7,
-        shadowColor: Colors.gray,
-        borderTopRightRadius: 7,
+        borderBottomRightRadius: 8,
+        shadowColor: Colors.black,
+        borderTopRightRadius: 8,
         marginHorizontal: 20,
         borderRightWidth: 8,
         flexDirection: 'row',
-        marginVertical: 10,
-        shadowOpacity: 0.8,
-        borderRadius: 5,
+        marginVertical: 12,
+        shadowOpacity: 0.6,
+        borderRadius: 6,
         shadowRadius: 3,
+        minHeight: 105,
         shadowOffset: {
             height: 0,
             width: 0,
         },
-        height: 100,
+        elevation: 5,
     },
     innerCard: {
         justifyContent: 'space-between',
         flexDirection: 'column',
-        marginRight: 15,
+        marginRight: 20,
         padding: 10,
         flex: 1,
     },
@@ -97,14 +102,19 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     icon: {
-        borderRadius: 10,
-        marginRight: 2,
-        height: 25,
-        width: 25,
+        marginRight: 5,
+        marginTop: 2,
+        height: 15,
+        width: 15,
+    },
+    time: {
+        color: Colors.time,
+        lineHeight: 18,
+        fontSize: 14,
     },
     typeBox: {
-        marginTop: 42,
         position: 'absolute',
+        marginTop: 40,
         right: 0,
     },
     type: {

@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react'
 import {
+    StyleSheet,
+    Dimensions,
     Animated,
     Easing,
     Image,
     View,
 } from 'react-native'
-import { gStyles } from "../styles/globle"
+
+import {
+    app_logo
+} from '../constant/images'
+
+const deviceWidth = Dimensions.get('window').width
 
 const LogoBox = () => {
 
@@ -30,13 +37,27 @@ const LogoBox = () => {
     }, [])
 
     return (
-        <View style={gStyles.logoBox}>
+        <View style={styles.logoBox}>
             <Animated.Image
-                source={require('../../assets/slack/app_logo.jpg')}
-                style={[gStyles.logo, { transform: [{ rotate: rotateData }] }]} resizeMode="cover"
+                source={app_logo}
+                style={[styles.logo, { transform: [{ rotate: rotateData }] }]} resizeMode="cover"
             />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    logoBox: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: deviceWidth,
+        flex: 1,
+    },
+    logo: {
+        height: deviceWidth * 0.3,
+        width: deviceWidth * 0.3,
+        alignSelf: 'center',
+    },
+})
 
 export default LogoBox

@@ -31,10 +31,14 @@ import ViewNote from '../StickyApp/ViewNote'
 import EditNote from '../StickyApp/EditNote'
 
 // SLACK APP
-import SlackApp from '../Slack_app/index'
+import Login from '../Slack_app/index'
 import Register from '../Slack_app/Register'
 import Forgot from '../Slack_app/Forgot'
 import Home from '../Slack_app/Home'
+import Profile from '../Slack_app/Profile'
+import AboutApp from '../Slack_app/AboutApp'
+import ChangeEmail from '../Slack_app/ChangeEmail'
+import ChangePassword from '../Slack_app/ChangePassword'
 
 const Stack = createNativeStackNavigator()
 
@@ -57,7 +61,7 @@ const myNav = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName='AppRoute'
+                initialRouteName='Login'
                 screenOptions={{
                     headerTitleStyle: styles.headerTitleStyle,
                     headerStyle: styles.headerStyle,
@@ -66,6 +70,7 @@ const myNav = () => {
                     headerTitleAlign: 'center',
                     headerShadowVisible: false,
                     headerShown: true,
+                    headerBackVisible: false, // hide back arrrow icon
                 }}
             >
                 <Stack.Screen
@@ -78,6 +83,8 @@ const myNav = () => {
                         headerRight: () => myLink('', () => { console.log('right') }),
                     }}
                 />
+
+                {/* GAME */}
                 <Stack.Screen
                     name='Game'
                     component={Game}
@@ -85,7 +92,8 @@ const myNav = () => {
                         headerTitle: () => myTitle(`GAME APP`),
                     }}
                 />
-                
+
+                {/* Food Recipes APP */}
                 <Stack.Screen
                     name='FoodRecipes'
                     component={FoodRecipes}
@@ -122,6 +130,7 @@ const myNav = () => {
                     }}
                 />
 
+                {/* STICKY NOTE APP */}
                 <Stack.Screen
                     name='StickyApp'
                     component={StickyApp}
@@ -151,9 +160,10 @@ const myNav = () => {
                     }}
                 />
 
+                {/* SLACK APP */}
                 <Stack.Screen
-                    name='SlackApp'
-                    component={SlackApp}
+                    name='Login'
+                    component={Login}
                     options={{
                         headerTitle: () => myTitle(''),
                     }}
@@ -179,6 +189,35 @@ const myNav = () => {
                         headerTitle: () => myTitle(''),
                     }}
                 />
+                <Stack.Screen
+                    name='Profile'
+                    component={Profile}
+                    options={{
+                        headerTitle: () => myTitle(''),
+                    }}
+                />
+                <Stack.Screen
+                    name='AboutApp'
+                    component={AboutApp}
+                    options={{
+                        headerTitle: () => myTitle('About App'),
+                    }}
+                />
+                <Stack.Screen
+                    name='ChangePassword'
+                    component={ChangePassword}
+                    options={{
+                        headerTitle: () => myTitle(''),
+                    }}
+                />
+                <Stack.Screen
+                    name='ChangeEmail'
+                    component={ChangeEmail}
+                    options={{
+                        headerTitle: () => myTitle(''),
+                    }}
+                />
+                
             </Stack.Navigator>
         </NavigationContainer>
     )

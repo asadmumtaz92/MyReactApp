@@ -2,7 +2,9 @@ import React, { useState, useLayoutEffect } from "react";
 import {
     KeyboardAvoidingView,
     TouchableOpacity,
+    ImageBackground,
     StyleSheet,
+    StatusBar,
     TextInput,
     Keyboard,
     Platform,
@@ -10,11 +12,14 @@ import {
     Alert,
     View,
     Text,
-} from "react-native";
+} from "react-native"
+
 import { Colors } from "../styles/color"
 import { gStyles } from "./styles/globle"
-
-import LogoBox from "./components/logoBox"
+import {
+    bgCover,
+    at_sign,
+} from './constant/images'
 
 const Forgot = ({ navigation }) => {
 
@@ -40,7 +45,7 @@ const Forgot = ({ navigation }) => {
     }, [navigation])
 
     const loginHandler = () => {
-        navigation.navigate('SlackApp')
+        navigation.navigate('Login')
     }
     const emailHandler = (text) => {
         setEmail(text)
@@ -55,14 +60,19 @@ const Forgot = ({ navigation }) => {
     }
 
     return (
-        <View style={gStyles.container}>
-            <KeyboardAvoidingView style={{ flex: 1,}}
+        <ImageBackground source={bgCover} style={gStyles.bgCover}>
+            <StatusBar
+                animated={true}
+                backgroundColor={Colors.buttonColor}
+                barStyle='light-content'
+            />
+
+            <KeyboardAvoidingView style={gStyles.bgCover}
                 behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             >
-                <LogoBox />
-
                 <View style={gStyles.bottomView}>
 
+                    {/* HEADING */}
                     <Text style={gStyles.heading}>
                         {`Forgot Password`}
                     </Text>
@@ -70,19 +80,18 @@ const Forgot = ({ navigation }) => {
                     {/* EMAIL */}
                     <View style={gStyles.ipItem}>
                         <Image
-                            source={require('../assets/slack/username.jpg')}
-                            style={gStyles.icon}
-                            resizeMode='contain'
+                            source={at_sign}
+                            style={gStyles.icon} resizeMode='contain'
                         />
                         <TextInput
-                            placeholderTextColor={Colors.inputplaceholder}
+                            placeholderTextColor={'rgba(34, 34, 34, 0.3)'}
                             onChangeText={(text) => emailHandler(text)}
                             onSubmitEditing={() => Keyboard.dismiss}
                             selectionColor={Colors.selectionColor}
                             onBlur={() => Keyboard.dismiss}
+                            keyboardType='email-address'
                             selectTextOnFocus={false}
                             placeholder="YOUR E-MAIL"
-                            keyboardType='default'
                             autoCapitalize='none'
                             autoCorrect={false}
                             spellCheck={false}
@@ -90,7 +99,7 @@ const Forgot = ({ navigation }) => {
                             autoFocus={false}
                             numberOfLines={1}
                             multiline={false}
-                            inputMode='text'
+                            inputMode='email'
                             maxLength={200}
                             value={email}
                         />
@@ -111,7 +120,7 @@ const Forgot = ({ navigation }) => {
 
                 </View>
             </KeyboardAvoidingView>
-        </View>
+        </ImageBackground >
     )
 }
 
@@ -122,10 +131,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: '400',
         lineHeight: 20,
-        marginTop: 25,
+        marginTop: 10,
         fontSize: 16,
     },
-    note: { 
+    note: {
         fontWeight: '700',
         lineHeight: 25,
         fontSize: 20,

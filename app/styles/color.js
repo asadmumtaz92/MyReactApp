@@ -20,6 +20,7 @@ export const Colors = {
     inComplete: '#ffd039',
     complete: '#65be1e',
     backLog: '#55555E88',
+    time: '#22222288',
 
 
     black: '#000000',
