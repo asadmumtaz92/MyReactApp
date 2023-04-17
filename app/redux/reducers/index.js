@@ -2,10 +2,12 @@ import { combineReducers } from 'redux'
 
 import calculatorReducer from './calculator'
 import foodRecipeReducer from './foodRecipe'
+import dataDrivenReducer from './dataDriven'
 
 const rootReducer = combineReducers({
     calculatorReducer: calculatorReducer,
     foodRecipeReducer: foodRecipeReducer,
+    dataDrivenReducer: dataDrivenReducer,
 })
 
 export default rootReducer;

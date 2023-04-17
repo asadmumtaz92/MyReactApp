@@ -40,6 +40,10 @@ import AboutApp from '../Slack_app/AboutApp'
 import ChangeEmail from '../Slack_app/ChangeEmail'
 import ChangePassword from '../Slack_app/ChangePassword'
 
+// DataDriven
+import DataDriven from '../DataDriven/index'
+import DealItemDetail from '../DataDriven/DealItemDetail'
+
 const Stack = createNativeStackNavigator()
 
 const myNav = () => {
@@ -61,7 +65,7 @@ const myNav = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName='Login'
+                initialRouteName='DataDriven'
                 screenOptions={{
                     headerTitleStyle: styles.headerTitleStyle,
                     headerStyle: styles.headerStyle,
@@ -217,6 +221,25 @@ const myNav = () => {
                         headerTitle: () => myTitle(''),
                     }}
                 />
+
+                {/* DataDriven */}
+                <Stack.Screen
+                    name='DataDriven'
+                    component={DataDriven}
+                    options={{
+                        headerTitle: () => myTitle(''),
+                    }}
+                />
+                <Stack.Screen
+                    name='DealItemDetail'
+                    component={DealItemDetail}
+                    options={{
+                        headerTitle: () => myTitle(''),
+                        headerBackVisible: true,
+                        headerShown: true,
+                    }}
+                />
+                
                 
             </Stack.Navigator>
         </NavigationContainer>

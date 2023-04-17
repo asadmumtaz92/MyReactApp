@@ -7,3 +7,9 @@ export const ADD_FAVORITE_MEAL = 'ADD_FAVORITE_MEAL' // done
 export const INCREEMENT = 'INCREEMENT' // done
 
 export const DECREEMENT = 'DECREEMENT' // done
+
+
+// DATA DRIVEN APP
+export const GET_ALL_DEALS = 'GET_ALL_DEALS'
+
+export const SELECTED_DEAL = 'SELECTED_DEAL'

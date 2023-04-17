@@ -57,6 +57,10 @@ const AppRoute = (props) => {
                     <Text style={styles.btnText}>STICKT NOTE</Text>
                 </TouchableOpacity>
 
+                <TouchableOpacity onPress={() => changeScreen('DataDriven')} style={styles.btn} activeOpacity={0.9}>
+                    <Text style={styles.btnText}>Data Driven</Text>
+                </TouchableOpacity>
+
             </View>
 
         </View>
