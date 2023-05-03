@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
+    ActivityIndicator,
     StyleSheet,
     FlatList,
     Platform,
@@ -7,24 +8,30 @@ import {
 } from 'react-native'
 
 import { Colors } from '../styles/color'
-import { BAKESALE_API } from '../enviroments/index' 
+import { BAKESALE_API } from './enviroments/index' 
 import DealItem from './components/dealItem'
 
 const Blog = (props) => {
     
     const [allDeals, setAllDeals] = useState()
+    const [loader, setLoader] = useState(false)
 
-    useEffect(() => {
+    const getDetail = () => {
+        setLoader(true)
         fetch(BAKESALE_API)
             .then(response => response.json())
             .then(response => {
                 if (!response['errors']) {
                     setAllDeals(response)
+                    setLoader(false)
                 }
             })
             .catch(error => {
                 console.log('API fetch data failed:', error);
             });
+    }
+    useEffect(() => {
+        getDetail()
     }, [])
 
     const renderItem = (item) => {
@@ -37,18 +44,23 @@ const Blog = (props) => {
 
     return (
         <View style={styles.contanier}>
-            <FlatList
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={{
-                    paddingBottom: Platform.select({
-                        android: 5,
-                        ios: 15
-                    })
-                }}
-                data={allDeals}
-                keyExtractor={item => item.key }
-                renderItem={renderItem}
-            />
+            {loader
+                ? <View style={styles.loaderView}>
+                    <ActivityIndicator color={Colors.primery} size={'large'} />
+                </View>
+                : <FlatList
+                    showsVerticalScrollIndicator={false}
+                    contentContainerStyle={{
+                        paddingBottom: Platform.select({
+                            android: 5,
+                            ios: 15
+                        })
+                    }}
+                    data={allDeals}
+                    keyExtractor={item => item.key}
+                    renderItem={renderItem}
+                />
+            }
         </View>
     )
 }

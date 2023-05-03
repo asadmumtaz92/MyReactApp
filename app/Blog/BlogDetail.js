@@ -13,7 +13,7 @@ import { Colors } from '../styles/color'
 
 import { connect, } from 'react-redux'
 import { setSelectedDeal } from '../redux/actions/dataDriven'
-import { BAKESALE_API } from '../enviroments/index'
+import { BAKESALE_API } from './enviroments/index'
 
 import { priceDisplay } from './utlz/index'
 import ImageSlider from './components/ImageSlider'

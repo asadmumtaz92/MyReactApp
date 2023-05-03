@@ -1,9 +1,3 @@
-// DATA DRIVEN
-
-export const BAKESALE = 'https://bakesaleforgood.com'
-export const BAKESALE_API = 'https://bakesaleforgood.com/api/deals'
-
-
 export const API = 'http://ec2-3-225-241-56.compute-1.amazonaws.com:3000'; // development server
 // export const API = 'http://ec2-54-229-246-108.eu-west-1.compute.amazonaws.com:4002' //production server
 // export const API = 'http://192.168.18.223:4002';
