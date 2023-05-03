@@ -1,9 +1,11 @@
-import React, { useState, useLayoutEffect } from "react"
+import React, { useLayoutEffect, useState } from "react"
 import {
     TouchableOpacity,
+    ActivityIndicator,
     StyleSheet,
     Dimensions,
     StatusBar,
+    Platform,
     FlatList,
     Alert,
     Image,
@@ -17,64 +19,61 @@ import { gStyles } from "./styles/globle"
 import {
     logout_sign,
     asadMalick,
-    back_sign,
     edit_sign,
     next_sign,
 } from './constant/images'
 
 import {
-    link
+    link,
 } from './constant/tabData'
+
+import CustomLoaderModal from './utlz/CustomLoaderModal'
 
 const deviceWidth = Dimensions.get('window').width
 
 const Profile = ({ navigation }) => {
+
+    const [loader, setLoader] = useState(false)
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => {
                 return (
                     <TouchableOpacity
+                        disabled={loader ? true : false} style={[gStyles.navBtn, styles.nav]}
                         onPress={() => logoutHandler()} activeOpacity={0.9}
-                        style={[gStyles.navBtn, styles.nav]}
                     >
-                        <Image
-                            source={logout_sign} resizeMode='cover' style={styles.logoutIcon}
-                        />
-                        <Text style={[gStyles.navBtnText, { fontSize: 16, }]}>{`Logout`}</Text>
-                    </TouchableOpacity>
-                )
-            },
-            headerLeft: () => {
-                return (
-                    <TouchableOpacity
-                        onPress={() => navigation.goBack() } activeOpacity={0.9}
-                        style={[gStyles.navBtn, styles.nav]}
-                    >
-                        <Image
-                            source={back_sign} resizeMode='cover' style={styles.navImg}
-                        />
-                        <Text style={[gStyles.navBtnText, { fontSize: 16, }]}>{`BACK`}</Text>
+                        {loader
+                            ? <ActivityIndicator size={'small'} color={Colors.white} style={{ marginRight: 10 }} />
+                            : <>
+                                <Image source={logout_sign} resizeMode='cover' style={styles.logoutIcon} />
+                                <Text style={[gStyles.navBtnText, { fontSize: 16, }]}>{`LOGOUT`}</Text>
+                            </>
+                        }
                     </TouchableOpacity>
                 )
             },
         })
-    }, [navigation])
+    }, [navigation, loader])
 
     const logoutHandler = () => {
+        setLoader(true)
         setTimeout(() => {
-            navigation.navigate('Login')
-        }, 1000)
+            setLoader(false)
+            setTimeout(() => {
+                navigation.navigate('MPW_Login')
+            }, 100);
+        }, 2000)
     }
     const editProfileHandler = () => {
-        Alert.alert('Edit Name & Photo','\nOpen modal and update.')
+        Alert.alert('Name & Profile Photo', '\nAvailable in next release.')
     }
     const randerItem = (items) => {
         let item = items.item
         return (
             <TouchableOpacity style={styles.item} onPress={item.nav} activeOpacity={0.8}>
                 <Text style={styles.itemText}>{item.title}</Text>
-                <Image  source={next_sign} style={styles.itemImg} resizeMode='cover' />
+                <Image source={next_sign} style={styles.itemImg} resizeMode='cover' />
             </TouchableOpacity>
         )
     }
@@ -85,32 +84,41 @@ const Profile = ({ navigation }) => {
                 animated={true}
                 backgroundColor={Colors.buttonColor}
                 barStyle='light-content'
+                StatusBarAnimation='fade'
             />
-
             <Image source={asadMalick} style={styles.userProfileImage} resizeMode='cover' />
 
             <View style={styles.nameBox}>
-
                 <Text style={styles.name}>{`Malick Asad`}</Text>
 
-                <TouchableOpacity 
-                    onPress={() => editProfileHandler() }
-                    style={{ alignItems: 'center'}} activeOpacity={0.8}
+                <TouchableOpacity
+                    onPress={() => editProfileHandler()}
+                    style={{ alignItems: 'center' }} activeOpacity={0.8}
                 >
                     <Image source={edit_sign} style={{ marginLeft: 8, }} resizeMode='cover' />
                 </TouchableOpacity>
             </View>
 
-           {/* LINK LIST */}
+            {/* LINK LIST */}
             <View style={{ flex: 1 }}>
                 <FlatList
                     contentContainerStyle={{ paddingBottom: 20 }}
-                    data={link}
+                    keyExtractor={(item, index) => index }
                     showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index}
                     renderItem={randerItem}
+                    data={link}
                 />
             </View>
+
+            {!loader &&
+                <Text style={styles.appVersionText}>
+                    {`App version 2.2.0 (43)`}
+                </Text>
+            }
+
+            {loader &&
+                <CustomLoaderModal />
+            }
         </View>
     )
 }
@@ -126,11 +134,6 @@ const styles = StyleSheet.create({
         height: 19,
         width: 19,
     },
-    navImg: {
-        marginRight: 2, 
-        height: 14,
-        width: 14,
-    },
 
     userProfileImage: {
         borderRadius: (deviceWidth * 0.3) / 2,
@@ -139,40 +142,53 @@ const styles = StyleSheet.create({
         width: deviceWidth * 0.3,
         alignSelf: 'center',
         marginBottom: 10,
-        borderWidth: 3,
+        borderWidth: 2,
         marginTop: 30,
     },
     nameBox: {
         alignItems: 'center',
         alignSelf: 'center',
         flexDirection: 'row',
-        marginBottom: 30,
+        marginBottom: 40,
     },
     name: {
         color: Colors.buttonColor,
-        fontWeight: '600',
+        fontWeight: '700',
         fontSize: 18,
     },
 
     item: {
         justifyContent: 'space-between',
-        flexDirection: 'row',
-        marginHorizontal: 20,
-        marginVertical: 10,
-        borderBottomWidth: 0.2,
-        paddingBottom: 6,
         borderColor: Colors.primery,
-        alignItems:'center'
+        borderBottomWidth: 0.2,
+        alignItems: 'center',
+        marginHorizontal: 30,
+        flexDirection: 'row',
+        paddingVertical: 8,
+        marginVertical: 7,
     },
     itemText: {
+        textTransform: 'uppercase',
         color: Colors.primery,
         fontWeight: '600',
+        paddingLeft: 2,
         fontSize: 18,
     },
     itemImg: {
-        height: 20,
-        width: 20,
-        marginRight: 5
+        marginRight: 2,
+        height: 17,
+        width: 17,
+    },
+
+    appVersionText: {
+        marginBottom: Platform.select({
+            android: 10,
+            ios: 20,
+        }),
+        color: Colors.buttonDisabled,
+        alignSelf: 'center',
+        fontWeight: '700',
+        fontSize: 15,
     },
 })
 

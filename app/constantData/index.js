@@ -8,7 +8,7 @@ export const Projects = [
     {
         title: 'My Perfect Words',
         desc: 'This is my short description about this project.',
-        navName: 'Login',
+        navName: 'MPW_Login',
         image: require('../assets/projectLogos/myPerfectWords.png'),
     },
     {

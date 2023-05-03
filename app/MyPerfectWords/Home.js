@@ -18,15 +18,15 @@ import moment from "moment"
 import Card from "./components/card"
 
 import {
-    asadMalick,
+    userProfile,
 } from './constant/images'
 
 import {
-    tabData,
     taskList,
+    tabData,
 } from './constant/tabData'
 
-const Forgot = ({ navigation }) => {
+const Home = ({ navigation }) => {
 
     const [activeTab, setActiveTab] = useState(0)
 
@@ -34,22 +34,17 @@ const Forgot = ({ navigation }) => {
         navigation.setOptions({
             headerRight: () => {
                 return (
-                    <Text style={gStyles.navBtnText}>
-                        {moment().format("ddd DD MMMM, YYYY")}
-                    </Text>
+                    <Text style={gStyles.navBtnText}>{moment().format("ddd DD MMMM, YYYY")}</Text>
                 )
             },
             headerLeft: () => {
                 return (
                     <TouchableOpacity
                         onPress={() => profileHandler()} activeOpacity={0.9}
-                        style={[gStyles.navBtn, styles.nav]}
+                        style={[gStyles.navBtn, styles.nav, { paddingLeft: 0, marginLeft: -7, }]}
                     >
-                        <Image
-                            source={asadMalick}
-                            style={styles.userImage} resizeMode='cover'
-                        />
-                        <Text style={[gStyles.navBtnText, { fontSize: 16, }]}>{`Malick Asad`}</Text>
+                        <Image source={userProfile} style={styles.userImage} resizeMode='cover' />
+                        <Text style={[gStyles.navBtnText, { fontSize: 16, }]}>{`userName`}</Text>
                     </TouchableOpacity>
                 )
             },
@@ -57,22 +52,32 @@ const Forgot = ({ navigation }) => {
     }, [navigation])
 
     const profileHandler = () => {
-        navigation.navigate('Profile')
+        navigation.navigate('MPW_Profile')
     }
     const tabHandler = (val) => {
         setActiveTab(val)
     }
+    const renderTabs = (items) => {
+        let item = items.item
+        return (
+            <TouchableOpacity
+                onPress={() => { tabHandler(item.id) }} activeOpacity={0.9}
+                style={[styles.tab, activeTab == item.id && styles.activeTab]}
+            >
+                <Text style={styles.tabText}>{item.name}</Text>
+            </TouchableOpacity>
+        )
+    }
     const renderTasks = (items) => {
         let item = items.item
-
         const nav = () => {
             // navigation.navigate('Forgot')
-            Alert.alert('UPDATE', '\nProfile show in next release.')
+            Alert.alert('UPDATE', '\nTask detail show in next release.')
         }
         if (activeTab == item.id) {
             return <Card item={item} navigat={nav} />
         }
-    } 
+    }
 
     return (
         <View style={gStyles.container}>
@@ -80,34 +85,29 @@ const Forgot = ({ navigation }) => {
                 animated={true}
                 backgroundColor={Colors.buttonColor}
                 barStyle='light-content'
+                StatusBarAnimation='fade'
             />
-
             {/* TABS */}
             <View style={styles.header}>
-                {tabData.map((item) => {
-                    return (
-                        <TouchableOpacity
-                            key={item.id} activeOpacity={0.9}
-                            style={[styles.tab, activeTab == item.id && styles.activeTab]}
-                            onPress={() => { tabHandler(item.id) }}
-                        >
-                            <Text style={styles.tabText}>{item.name}</Text>
-                        </TouchableOpacity>
-                    )
-                })}
-            </View>
-
-            {/* TASK LIST */}
-            <View style={{ paddingTop: 10, flex: 1}}>
                 <FlatList
-                    contentContainerStyle={{ paddingBottom: 20}}
-                    data={taskList}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index }
-                    renderItem={renderTasks}
+                    showsHorizontalScrollIndicator={false}
+                    keyExtractor={item => item.name }
+                    renderItem={renderTabs}
+                    data={tabData}
+                    numColumns={4}
                 />
             </View>
 
+            {/* TASK LIST */}
+            <View style={{flex: 1}}>
+                <FlatList
+                    contentContainerStyle={{ paddingBottom: 20 }}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index }
+                    renderItem={renderTasks}
+                    data={taskList}
+                />
+            </View>
         </View>
     )
 }
@@ -159,4 +159,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default Forgot
+export default Home
