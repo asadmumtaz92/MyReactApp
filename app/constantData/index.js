@@ -38,15 +38,15 @@ export const Projects = [
         image: require('../assets/projectLogos/foodDelivery.png'),
     },
     {
-        title: 'Guess Number Game',
-        desc: 'This is my short description about this project.',
-        navName: 'Game',
-        image: require('../assets/projectLogos/guessNumberGame.png'),
-    },
-    {
         title: 'Custom Relation Managemente',
         desc: 'This is my short description about this project.',
         navName: '',
         image: require('../assets/projectLogos/crm.png'),
+    },
+    {
+        title: 'Guess Number Game',
+        desc: 'This is my short description about this project.',
+        navName: 'GuessNumberGame',
+        image: require('../assets/projectLogos/guessNumberGame.png'),
     },
 ]

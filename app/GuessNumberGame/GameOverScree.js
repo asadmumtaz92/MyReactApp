@@ -12,7 +12,7 @@ import {
 import MyButton from './ui/MyButton'
 import Summary from './ui/Summary'
 
-const overImage = require('../assets/gameOver.png')
+const overImage = require('./assets/gameOver.png')
 const width = Dimensions.get('window').width
 
 const GameOverScreen = ({ reStartGame, choosenNumber, noOfRounds }) => {

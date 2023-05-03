@@ -14,7 +14,7 @@ import { gStyles } from '../styles/globalStyle.js'
 import { Colors } from '../styles/color.js'
 
 import MyButton from './ui/MyButton.js'
-import Title from './ui/Title'
+import Title from './ui/Title.js'
 
 const StartGameScreen = ({ pickedNumber }) => {
 

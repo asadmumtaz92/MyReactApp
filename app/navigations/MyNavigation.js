@@ -15,14 +15,35 @@ import { Colors } from '../styles/color'
 
 import AppRoute from '../AppRoute'
 
-// GAME NAVIGATIONS
-import Game from '../game/index'
+// IBRAHIM ASSOCIATE NAVIGATIONS
 
-// FOOD RECIPE NAVIGATIONS
+
+// MY PERFECT WORDS NAVIGATIONS
+
+
+// DATA DRIVEN NAVIGATIONS
+
+
+// STICKY NOTES NAVIGATIONS
+
+
+// KITCHEN RECIPE NAVIGATIONS DONE
 import KitchenRecipe from '../KitchenRecipe/index'
 import AllMealsScreen from '../KitchenRecipe/AllMealsScreen'
 import MealDetails from '../KitchenRecipe/MealDetails'
 import MyFavoriteMeals from '../KitchenRecipe/MyFavoriteMeals'
+
+
+// FOOD DELIVERY NAVIGATIONS
+
+
+// CRM NAVIGATIONS
+
+
+// GUESS NUMBER GAME NAVIGATIONS
+import GuessNumberGame from '../GuessNumberGame/index'
+
+
 
 // STICKY NAVIGATIONS
 import StickyApp from '../StickyApp/index'
@@ -127,8 +148,8 @@ const myNav = () => {
                     GAME APP
                 ============================= */}
                 <Stack.Screen
-                    name='Game'
-                    component={Game}
+                    name='GuessNumberGame'
+                    component={GuessNumberGame}
                     options={{
                         headerTitle: () => myTitle(`guess number GAME`),
                     }}

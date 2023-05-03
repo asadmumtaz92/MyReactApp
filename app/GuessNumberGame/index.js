@@ -8,13 +8,13 @@ import {
 
 import { Colors } from '../styles/color'
 
-import Title from '../game/ui/Title'
+import Title from './ui/Title'
 import StartGameScreen from './StartScreen'
 import GameScreen from './GameScreen'
 import GameOverScree from './GameOverScree'
 
-let background = require('../assets/background.png')
-let background2 = require('../assets/background2.jpg')
+let background = require('./assets/background.png')
+let background2 = require('./assets/background2.jpg')
 
 const Index = () => {
 
