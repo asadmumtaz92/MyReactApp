@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import {
-    SafeAreaView,
     StyleSheet,
     Dimensions,
     FlatList,
@@ -86,14 +85,12 @@ const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound = ()
     }, [choosenNumber, currentGuess])
 
     return (
-        <SafeAreaView style={{flex:1}}>
+        <View style={{flex:1}}>
 
             <Title title={`Opponent's Guess`} />
-
             <GuessBox currentGuess={currentGuess} />
 
             <View style={[gStyles.card, { marginTop: '10%'}]}>
-
                 <Instruction text={`Higher or lower?`} />
                 <View style={[gStyles.btnBox]}>
                     <MyButton
@@ -105,7 +102,6 @@ const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound = ()
                         textStyle={styles.textStyle}
                     />
                 </View>
-
             </View>
 
             <FlatList
@@ -117,8 +113,7 @@ const GameScreen = ({ choosenNumber, gameOvers, storeDatas, handleNoOfRound = ()
                     return <Item id={item.item.id} num={item.item.num} />
                 }}
             />
-
-        </SafeAreaView>
+        </View>
     )
 }
 

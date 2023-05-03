@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import {
     KeyboardAvoidingView,
-    SafeAreaView,
     StyleSheet,
-    ScrollView,
     TextInput,
     Keyboard,
     Alert,
@@ -47,50 +45,43 @@ const StartGameScreen = ({ pickedNumber }) => {
     }
 
     return (
-        <SafeAreaView>
+        <KeyboardAvoidingView behavior='position'>
+            <Title title={`Guess My Number`} />
 
-            <KeyboardAvoidingView behavior='position'>
-                <ScrollView>
-                    <Title title={`Guess My Number`} />
+            <View style={gStyles.card}>
 
-                    <View style={gStyles.card}>
+                <Title title={`Enter a Number`} style={styles.title} />
 
-                        <Title title={`Enter a Number`} style={styles.title} />
+                <TextInput
+                    onSubmitEditing={() => { Keyboard.dismiss; confirmGame()} }
+                    onChangeText={(text) => { numberInputHandler(text) }}
+                    selectionColor={Colors.lightgray} // for courser
+                    placeholderTextColor={Colors.lightgray}
+                    onBlur={() => { Keyboard.dismiss }}
+                    selectTextOnFocus={true}
+                    keyboardType='numeric'
+                    autoCapitalize='none'
+                    value={enteredNumber}
+                    autoCorrect={false}
+                    inputMode='numeric'
+                    style={gStyles.ip}
+                    numberOfLines={1}
+                    multiline={false}
+                    spellCheck={true}
+                    autoFocus={false}
+                    maxLength={2}
+                />
 
-                        <TextInput
-                            onSubmitEditing={() => { Keyboard.dismiss; confirmGame()} }
-                            onChangeText={(text) => { numberInputHandler(text) }}
-                            selectionColor={Colors.lightgray} // for courser
-                            placeholderTextColor={Colors.lightgray}
-                            onBlur={() => { Keyboard.dismiss }}
-                            selectTextOnFocus={true}
-                            keyboardType='numeric'
-                            autoCapitalize='none'
-                            value={enteredNumber}
-                            autoCorrect={false}
-                            inputMode='numeric'
-                            style={gStyles.ip}
-                            numberOfLines={1}
-                            multiline={false}
-                            spellCheck={true}
-                            autoFocus={false}
-                            maxLength={2}
-                        />
-
-                        <View style={gStyles.btnBox}>
-                            <MyButton
-                                title="Reset" onPress={resetGame}
-                            />
-                            <MyButton
-                                title="Confirm" onPress={confirmGame}
-                            />
-                        </View>
-                    </View>
-
-                </ScrollView>
-            </KeyboardAvoidingView>
-
-        </SafeAreaView>
+                <View style={gStyles.btnBox}>
+                    <MyButton
+                        title="Reset" onPress={resetGame}
+                    />
+                    <MyButton
+                        title="Confirm" onPress={confirmGame}
+                    />
+                </View>
+            </View>
+        </KeyboardAvoidingView>
     )
 }
 
