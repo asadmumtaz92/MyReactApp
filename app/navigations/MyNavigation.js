@@ -84,7 +84,7 @@ const myNav = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName='MPW_Login'
+                initialRouteName='App_Route'
                 screenOptions={{
                     headerBackTitleVisible: false, // hide back Screen title
                     headerBackVisible: true, // hide back arrrow icon
