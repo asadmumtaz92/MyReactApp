@@ -116,7 +116,7 @@ const myNav = () => {
 
 
                 {/* =============================
-                    MY PERFECT WORDS APP
+                    MY PERFECT WORDS APP DONE
                 ============================= */}
                 <>
                     <Stack.Screen
@@ -199,67 +199,8 @@ const myNav = () => {
                     />
                 </>
                 {/* =============================
-                    APP ROUTE
+                    STICKY NOTES APP
                 ============================= */}
-                {/* =============================
-                    APP ROUTE
-                ============================= */}
-                {/* =============================
-                    APP ROUTE
-                ============================= */}
-                {/* =============================
-                    APP ROUTE
-                ============================= */}
-                {/* =============================
-                    APP ROUTE
-                ============================= */}
-
-
-                {/* =============================
-                    KITCHEN RECIPE APP
-                ============================= */}
-                <Stack.Screen
-                    name='KitchenRecipe'
-                    component={KitchenRecipe}
-                    options={{
-                        headerTitle: () => myTitle(`Kitchen RECIPES`),
-                    }}
-                />
-                <Stack.Screen
-                    name='AllMealsScreen'
-                    component={AllMealsScreen}
-                    options={{
-                        headerTitle: () => myTitle(''),
-                    }}
-                />
-                <Stack.Screen
-                    name='MealDetails'
-                    component={MealDetails}
-                    options={{
-                        headerTitle: () => myTitle(' '),
-                        headerShown: false
-                    }}
-                />
-                <Stack.Screen
-                    name='MyFavoriteMeals'
-                    component={MyFavoriteMeals}
-                    options={{
-                        headerTitle: () => myTitle('Favorite Meals'),
-                    }}
-                />
-
-                {/* =============================
-                    GAME APP
-                ============================= */}
-                <Stack.Screen
-                    name='GuessNumberGame'
-                    component={GuessNumberGame}
-                    options={{
-                        headerTitle: () => myTitle(`guess number GAME`),
-                    }}
-                />
-
-                {/* STICKY NOTE APP */}
                 <Stack.Screen
                     name='StickyApp'
                     component={StickyApp}
@@ -288,8 +229,52 @@ const myNav = () => {
                         headerTitle: () => myTitle('Edit Note'),
                     }}
                 />
-
-                {/* SLACK APP */}
+                {/* =============================
+                    KITCHEN RECIPE APP
+                ============================= */}
+                <>
+                    <Stack.Screen
+                        name='KitchenRecipe'
+                        component={KitchenRecipe}
+                        options={{
+                            headerTitle: () => myTitle(`Kitchen RECIPES`),
+                        }}
+                    />
+                    <Stack.Screen
+                        name='AllMealsScreen'
+                        component={AllMealsScreen}
+                        options={{
+                            headerTitle: () => myTitle(''),
+                        }}
+                    />
+                    <Stack.Screen
+                        name='MealDetails'
+                        component={MealDetails}
+                        options={{
+                            headerTitle: () => myTitle(' '),
+                            headerShown: false
+                        }}
+                    />
+                    <Stack.Screen
+                        name='MyFavoriteMeals'
+                        component={MyFavoriteMeals}
+                        options={{
+                            headerTitle: () => myTitle('Favorite Meals'),
+                        }}
+                    />
+                </>
+                {/* =============================
+                    GUESS NUMBER GAME APP
+                ============================= */}
+                <>
+                    <Stack.Screen
+                        name='GuessNumberGame'
+                        component={GuessNumberGame}
+                        options={{
+                            headerTitle: () => myTitle(`guess number GAME`),
+                        }}
+                    />
+                </>
                 
             </Stack.Navigator>
         </NavigationContainer>
