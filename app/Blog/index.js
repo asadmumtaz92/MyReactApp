@@ -10,7 +10,7 @@ import { Colors } from '../styles/color'
 import { BAKESALE_API } from '../enviroments/index' 
 import DealItem from './components/dealItem'
 
-const DataDriven = (props) => {
+const Blog = (props) => {
     
     const [allDeals, setAllDeals] = useState()
 
@@ -29,7 +29,7 @@ const DataDriven = (props) => {
 
     const renderItem = (item) => {
         const navigate = () => {
-            props.navigation.navigate('DealItemDetail')
+            props.navigation.navigate('BlogDetail')
         }
 
         return <DealItem dealData={item?.item} navigate={navigate}/>
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default DataDriven
+export default Blog

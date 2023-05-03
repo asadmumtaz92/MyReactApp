@@ -1,5 +1,3 @@
-const images_1 = require('../assets/projectLogos/ibrahimAssociate.png');
-const images_2 = require('../assets/projectLogos/ibrahimAssociate.png');
 export const Projects = [
     {
         title: 'ibrahim Associates',
@@ -14,10 +12,10 @@ export const Projects = [
         image: require('../assets/projectLogos/myPerfectWords.png'),
     },
     {
-        title: 'Data Driven',
+        title: 'My Blog',
         desc: 'This is my short description about this project.',
-        navName: 'DataDriven',
-        image: require('../assets/projectLogos/dataDriven.png'),
+        navName: 'Blog',
+        image: require('../assets/projectLogos/blog.png'),
     },
     {
         title: 'My Sticky Notes',

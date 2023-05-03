@@ -21,7 +21,9 @@ import AppRoute from '../AppRoute'
 // MY PERFECT WORDS NAVIGATIONS
 
 
-// DATA DRIVEN NAVIGATIONS
+// BLOG NAVIGATIONS
+import Blog from '../Blog/index'
+import BlogDetail from '../Blog/BlogDetail'
 
 
 // STICKY NOTES NAVIGATIONS
@@ -40,7 +42,7 @@ import MyFavoriteMeals from '../KitchenRecipe/MyFavoriteMeals'
 // CRM NAVIGATIONS
 
 
-// GUESS NUMBER GAME NAVIGATIONS
+// GUESS NUMBER GAME NAVIGATIONS DONE
 import GuessNumberGame from '../GuessNumberGame/index'
 
 
@@ -62,8 +64,8 @@ import ChangeEmail from '../Slack_app/ChangeEmail'
 import ChangePassword from '../Slack_app/ChangePassword'
 
 // DataDriven
-import DataDriven from '../DataDriven/index'
-import DealItemDetail from '../DataDriven/DealItemDetail'
+// import DataDriven from '../DataDriven/index'
+// import DealItemDetail from '../DataDriven/DealItemDetail'
 
 const Stack = createNativeStackNavigator()
 
@@ -245,15 +247,15 @@ const myNav = () => {
 
                 {/* DataDriven */}
                 <Stack.Screen
-                    name='DataDriven'
-                    component={DataDriven}
+                    name='Blog'
+                    component={Blog}
                     options={{
                         headerTitle: () => myTitle('latest Blog post'),
                     }}
                 />
                 <Stack.Screen
-                    name='DealItemDetail'
-                    component={DealItemDetail}
+                    name='BlogDetail'
+                    component={BlogDetail}
                     options={{
                         headerTitle: () => myTitle(''),
                         headerBackVisible: true,

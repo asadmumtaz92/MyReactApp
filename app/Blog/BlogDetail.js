@@ -18,7 +18,7 @@ import { BAKESALE_API } from '../enviroments/index'
 import { priceDisplay } from './utlz/index'
 import ImageSlider from './components/ImageSlider'
 
-const DealItemDetail = (props) => {
+const BlogDetail = (props) => {
 
     const [data, setData] = useState()
     const [loader, setLoader] = useState(false)
@@ -157,4 +157,4 @@ const mapStateToProps = ({ dataDrivenReducer }) => ({ dataDrivenReducer })
 
 export default connect(mapStateToProps, {
     setSelectedDeal,
-})(DealItemDetail)
+})(BlogDetail)
