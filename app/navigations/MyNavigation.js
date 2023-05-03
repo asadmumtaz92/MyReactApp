@@ -65,7 +65,7 @@ const myNav = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName='DataDriven'
+                initialRouteName='AppRoute'
                 screenOptions={{
                     headerTitleStyle: styles.headerTitleStyle,
                     headerStyle: styles.headerStyle,
@@ -74,7 +74,7 @@ const myNav = () => {
                     headerTitleAlign: 'center',
                     headerShadowVisible: false,
                     headerShown: true,
-                    headerBackVisible: false, // hide back arrrow icon
+                    headerBackVisible: true, // hide back arrrow icon
                 }}
             >
                 <Stack.Screen
@@ -82,7 +82,7 @@ const myNav = () => {
                     component={AppRoute}
                     options={{
                         // title: 'INITIAL SCREEN',
-                        headerTitle: () => myTitle(`Initial Screen`),
+                        headerTitle: () => myTitle(`my apps`),
                         headerLeft: () => myLink('', () => { console.log('left') }),
                         headerRight: () => myLink('', () => { console.log('right') }),
                     }}
@@ -93,7 +93,7 @@ const myNav = () => {
                     name='Game'
                     component={Game}
                     options={{
-                        headerTitle: () => myTitle(`GAME APP`),
+                        headerTitle: () => myTitle(`guess number GAME`),
                     }}
                 />
 
@@ -102,7 +102,7 @@ const myNav = () => {
                     name='FoodRecipes'
                     component={FoodRecipes}
                     options={{
-                        headerTitle: () => myTitle(`FOOD RECIPES`),
+                        headerTitle: () => myTitle(`Kitchen RECIPES`),
                     }}
                 />
                 <Stack.Screen
@@ -227,7 +227,7 @@ const myNav = () => {
                     name='DataDriven'
                     component={DataDriven}
                     options={{
-                        headerTitle: () => myTitle(''),
+                        headerTitle: () => myTitle('latest Blog post'),
                     }}
                 />
                 <Stack.Screen
