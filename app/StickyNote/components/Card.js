@@ -9,7 +9,7 @@ import {
 import { Colors } from '../../styles/color'
 
 const { width } = Dimensions.get('window')
-const rightArrow = require('../../assets/rightArrow_black.png')
+const rightArrow = require('../assets/rightArrow_black.png')
 
 const Card = ({ title, onPress }) => {
 

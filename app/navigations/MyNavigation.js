@@ -37,7 +37,10 @@ import BlogDetail from '../Blog/BlogDetail'
 
 
 // STICKY NOTES NAVIGATIONS
-
+import StickyNote from '../StickyNote/StickyNote'
+import AddNote from '../StickyNote/AddNote'
+import ViewNote from '../StickyNote/ViewNote'
+import EditNote from '../StickyNote/EditNote'
 
 // KITCHEN RECIPE NAVIGATIONS DONE
 import KitchenRecipe from '../KitchenRecipe/index'
@@ -54,14 +57,6 @@ import MyFavoriteMeals from '../KitchenRecipe/MyFavoriteMeals'
 
 // GUESS NUMBER GAME NAVIGATIONS DONE
 import GuessNumberGame from '../GuessNumberGame/index'
-
-
-
-// STICKY NAVIGATIONS
-import StickyApp from '../StickyApp/index'
-import AddNote from '../StickyApp/AddNote'
-import ViewNote from '../StickyApp/ViewNote'
-import EditNote from '../StickyApp/EditNote'
 
 const Stack = createNativeStackNavigator()
 
@@ -201,34 +196,36 @@ const myNav = () => {
                 {/* =============================
                     STICKY NOTES APP
                 ============================= */}
-                <Stack.Screen
-                    name='StickyApp'
-                    component={StickyApp}
-                    options={{
-                        headerTitle: () => myTitle('Sticky Notes'),
-                    }}
-                />
-                <Stack.Screen
-                    name='AddNote'
-                    component={AddNote}
-                    options={{
-                        headerTitle: () => myTitle('Add Note'),
-                    }}
-                />
-                <Stack.Screen
-                    name='ViewNote'
-                    component={ViewNote}
-                    options={{
-                        headerTitle: () => myTitle('View Note'),
-                    }}
-                />
-                <Stack.Screen
-                    name='EditNote'
-                    component={EditNote}
-                    options={{
-                        headerTitle: () => myTitle('Edit Note'),
-                    }}
-                />
+                <>
+                    <Stack.Screen
+                        name='StickyNote'
+                        component={StickyNote}
+                        options={{
+                            headerTitle: () => myTitle('Sticky Note'),
+                        }}
+                    />
+                    <Stack.Screen
+                        name='AddNote'
+                        component={AddNote}
+                        options={{
+                            headerTitle: () => myTitle('Add Note'),
+                        }}
+                    />
+                    <Stack.Screen
+                        name='ViewNote'
+                        component={ViewNote}
+                        options={{
+                            headerTitle: () => myTitle('View Note'),
+                        }}
+                    />
+                    <Stack.Screen
+                        name='EditNote'
+                        component={EditNote}
+                        options={{
+                            headerTitle: () => myTitle(''),
+                        }}
+                    />
+                </>
                 {/* =============================
                     KITCHEN RECIPE APP
                 ============================= */}

@@ -7,7 +7,7 @@ import {
 import { Colors } from '../styles/color'
 import Card from './components/Card'
 
-const Index = ({ navigation }) => {
+const StickyNote = ({ navigation }) => {
 
     const [myNotes, setMyNote] = useState([])
 
@@ -28,7 +28,7 @@ const Index = ({ navigation }) => {
         }, 500)
     }
     // UPDATE EXISTING NOTE
-    const updateMyNeote = (uniqueId, title, note) => {
+    const updateMyNote = (uniqueId, title, note) => {
         console.log('Updtae: \nTitle:', title, '\nNote:', note, '\nID:', uniqueId)
 
         // setMyNote((currentNote) => [
@@ -41,7 +41,7 @@ const Index = ({ navigation }) => {
         //     },
         // ])
         setTimeout(() => {
-            navigation.navigate('StickyApp')
+            navigation.navigate('StickyNote')
         }, 500)
     }
 
@@ -49,13 +49,13 @@ const Index = ({ navigation }) => {
         navigation.navigate('AddNote', { storeMyNote: storeMyNote })
     }
     const viewNoteHandler = () => {
-        navigation.navigate('ViewNote', { myStoredNotes: myNotes, updateMyNeote: updateMyNeote })
+        navigation.navigate('ViewNote', { myStoredNotes: myNotes, updateMyNote: updateMyNote })
     }
 
     return (
         <SafeAreaView style={styles.contanier}>
-            <Card title='Add new note' onPress={addNoteHandler} />
-            <Card title='view all note' onPress={viewNoteHandler} />
+            <Card title='CreATE note' onPress={addNoteHandler} />
+            <Card title='view noteS' onPress={viewNoteHandler} />
         </SafeAreaView>
     )
 }
@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default Index
+export default StickyNote

@@ -20,7 +20,7 @@ export const Projects = [
     {
         title: 'My Sticky Notes',
         desc: 'This is my short description about this project.',
-        navName: 'StickyApp',
+        navName: 'StickyNote',
         image: require('../assets/projectLogos/stickyNote.png'),
     },
     {

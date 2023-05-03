@@ -35,7 +35,9 @@ const AddNote = (props) => {
         props.navigation.setOptions({
             headerRight: () => {
                 return (
-                    title && note && <TouchableOpacity onPress={saveData} activeOpacity={0.9} style={{ flexDirection: 'row', alignItems: 'center' }} >
+                    title && note && <TouchableOpacity onPress={saveData} activeOpacity={0.9}
+                        style={{ flexDirection: 'row', alignItems: 'center' }}
+                    >
                         <Text style={{ color: Colors.white, fontWeight: '600', fontSize: 16 }}>SAVE</Text>
                     </TouchableOpacity>
                 )

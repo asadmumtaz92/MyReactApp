@@ -26,7 +26,7 @@ const ViewNote = ({route, navigation}) => {
     }, [])
 
     const EditNoteHandler = (data) => {
-        navigation.navigate('EditNote', { data: data, updateMyNeote: route.params.updateMyNeote })
+        navigation.navigate('EditNote', { data: data, updateMyNote: route.params.updateMyNote })
     }
 
     return (
@@ -36,7 +36,7 @@ const ViewNote = ({route, navigation}) => {
                 : myNotes.length > 0
                     ? <List data={myNotes} onPress={EditNoteHandler} />
                     : <View style={styles.noDataBox}>
-                        <Text style={styles.noDataText}>{`You Don't Have Any Sticky Note.`}</Text>
+                        <Text style={styles.noDataText}>{`Your Note Box Is Empty.`}</Text>
                     </View>
             }
         </SafeAreaView>

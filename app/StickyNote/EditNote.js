@@ -17,7 +17,7 @@ const { width } = Dimensions.get('window')
 
 const EditNote = (props) => {
 
-    const { data, updateMyNeote } = props.route.params
+    const { data, updateMyNote } = props.route.params
 
     const [title, setTitle] = useState(data.title)
     const [note, setNote] = useState(data.note)
@@ -34,7 +34,7 @@ const EditNote = (props) => {
     const editNoteHandler = () => {
         if (isEdit) {
             console.log('run')
-            updateMyNeote(uniqueId, title, note)
+            updateMyNote(uniqueId, title, note)
         }
         setIsEdit(!isEdit)
     }
@@ -91,8 +91,8 @@ const EditNote = (props) => {
                         selectionColor={Colors.selectionColor} // for courser
                         placeholderTextColor={Colors.inputplaceholder}
                         onSubmitEditing={() => Keyboard.dismiss}
-                        onBlur={() => Keyboard.dismiss}
                         placeholder={`Enter note title`}
+                        onBlur={() => Keyboard.dismiss}
                         style={[styles.ip, { flex: 1 }]}
                         selectTextOnFocus={false}
                         keyboardType='default'
