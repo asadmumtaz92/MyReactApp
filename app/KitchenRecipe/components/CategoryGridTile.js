@@ -26,10 +26,10 @@ const styles = StyleSheet.create({
         margin: 16,
         flex: 1,
 
-        elevation: 4,
+        elevation: 3,
         shadowColor: 'black',
-        shadowOpacity: 0.25,
-        shadowRadius: 3,
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
         shadowOffset: {
             height: 0,
             width: 0,
@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 20,
+        color: '#00000099'
     },
 });
 

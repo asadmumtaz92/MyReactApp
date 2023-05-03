@@ -19,10 +19,10 @@ import AppRoute from '../AppRoute'
 import Game from '../game/index'
 
 // FOOD RECIPE NAVIGATIONS
-import FoodRecipes from '../FoodRecipes/index'
-import MealsScreen from '../FoodRecipes/MealsScreen'
-import MealDetails from '../FoodRecipes/MealDetails'
-import MyFavoriteMeals from '../FoodRecipes/MyFavoriteMeals'
+import KitchenRecipe from '../KitchenRecipe/index'
+import AllMealsScreen from '../KitchenRecipe/AllMealsScreen'
+import MealDetails from '../KitchenRecipe/MealDetails'
+import MyFavoriteMeals from '../KitchenRecipe/MyFavoriteMeals'
 
 // STICKY NAVIGATIONS
 import StickyApp from '../StickyApp/index'
@@ -67,56 +67,45 @@ const myNav = () => {
             <Stack.Navigator
                 initialRouteName='AppRoute'
                 screenOptions={{
+                    headerBackTitleVisible: false, // hide back Screen title
+                    headerBackVisible: true, // hide back arrrow icon
                     headerTitleStyle: styles.headerTitleStyle,
                     headerStyle: styles.headerStyle,
-                    headerBackTitleVisible: false, // hide backScreen name
                     headerTintColor: Colors.white,
                     headerTitleAlign: 'center',
                     headerShadowVisible: false,
                     headerShown: true,
-                    headerBackVisible: true, // hide back arrrow icon
                 }}
             >
+                {/* =============================
+                    APP ROUTE
+                ============================= */}
                 <Stack.Screen
                     name='AppRoute'
                     component={AppRoute}
                     options={{
-                        // title: 'INITIAL SCREEN',
                         headerTitle: () => myTitle(`my apps`),
                         headerLeft: () => myLink('', () => { console.log('left') }),
                         headerRight: () => myLink('', () => { console.log('right') }),
                     }}
                 />
 
-                {/* GAME */}
+                {/* =============================
+                    KITCHEN RECIPE APP
+                ============================= */}
                 <Stack.Screen
-                    name='Game'
-                    component={Game}
-                    options={{
-                        headerTitle: () => myTitle(`guess number GAME`),
-                    }}
-                />
-
-                {/* Food Recipes APP */}
-                <Stack.Screen
-                    name='FoodRecipes'
-                    component={FoodRecipes}
+                    name='KitchenRecipe'
+                    component={KitchenRecipe}
                     options={{
                         headerTitle: () => myTitle(`Kitchen RECIPES`),
                     }}
                 />
                 <Stack.Screen
-                    name='MealsScreen'
-                    component={MealsScreen}
+                    name='AllMealsScreen'
+                    component={AllMealsScreen}
                     options={{
                         headerTitle: () => myTitle(''),
                     }}
-                    // options={({ route, navigation }) => {
-                    //     const item = route.params.item
-                    //     return {
-                    //         // headerTitle: () => myTitle(item.title),
-                    //     }
-                    // }}
                 />
                 <Stack.Screen
                     name='MealDetails'
@@ -131,6 +120,17 @@ const myNav = () => {
                     component={MyFavoriteMeals}
                     options={{
                         headerTitle: () => myTitle('Favorite Meals'),
+                    }}
+                />
+
+                {/* =============================
+                    GAME APP
+                ============================= */}
+                <Stack.Screen
+                    name='Game'
+                    component={Game}
+                    options={{
+                        headerTitle: () => myTitle(`guess number GAME`),
                     }}
                 />
 

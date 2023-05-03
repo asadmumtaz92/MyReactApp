@@ -28,7 +28,7 @@ export const Projects = [
     {
         title: 'Kitchen recipes',
         desc: 'This is my short description about this project.',
-        navName: 'FoodRecipes',
+        navName: 'KitchenRecipe',
         image: require('../assets/projectLogos/foodRecipe.png'),
     },
     {

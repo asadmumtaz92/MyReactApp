@@ -11,7 +11,7 @@ import MealItem from './components/MealItem'
 
 import { connect } from 'react-redux'
 
-const MealsScreen = ({ navigation, ...props }) => {
+const AllMealsScreen = ({ navigation, ...props }) => {
 
     const [displayMeal, setDisplayMeal] = useState([])
 
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = ({ foodRecipeReducer }) => ({ foodRecipeReducer })
 
 export default connect(mapStateToProps, {
-})(MealsScreen)
+})(AllMealsScreen)

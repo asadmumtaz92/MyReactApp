@@ -2,7 +2,7 @@ import * as types from '../actionTypes/index'
 import {
     CATEGORIES,
     MEALS,
-} from '../../FoodRecipes/constantData/dummy_data'
+} from '../../KitchenRecipe/constantData/dummy_data'
 
 const initialState = {
     login: false,

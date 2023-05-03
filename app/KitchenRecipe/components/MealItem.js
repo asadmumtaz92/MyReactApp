@@ -46,12 +46,12 @@ const MealItem = ({ itemData, ...props}) => {
 
 const styles = StyleSheet.create({
     box: {
+        marginHorizontal: width * 0.03,
         backgroundColor: Colors.white,
-        marginHorizontal: '5%',
-        width: width * 0.9,
+        width: width * 0.94,
         marginBottom: 20,
-        marginTop: 10,
         borderRadius: 8,
+        marginTop: 10,
 
         elevation: 10,
         shadowColor: Colors.black,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 8,
         height: width * 0.55,
         alignSelf: 'center',
-        width: width * 0.9,
+        width: width * 0.94,
     },
     desc: {
         justifyContent:'space-evenly',

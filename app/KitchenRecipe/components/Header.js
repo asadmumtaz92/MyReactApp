@@ -12,9 +12,9 @@ import {
 import { Colors } from '../../styles/color'
 import { gStyles } from '../../styles/globalStyle'
 
-const favorite = require('../../assets/favorite.png')
-const favorite_outline = require('../../assets/favorite_outline.png')
-const back_white = require('../../assets/back_white.png')
+const favorite = require('../assets/favorite.png')
+const favorite_outline = require('../assets/favorite_outline.png')
+const back_white = require('../assets/back_white.png')
 
 const { width } = Dimensions.get('window')
 
@@ -24,28 +24,6 @@ const Header = ({
     rightFun = () => { },
     status = false
 }) => {
-
-    // for navigation header
-    // useLayoutEffect(() => {
-    //     navigation.setOptions({
-    //         headerRight: () => { 
-    //             return (
-    //                 displayMeal.title && 
-    //                     <TouchableOpacity onPress={()=>{}} activeOpacity={0.8}>
-    //                         <Image source={fvrt == true ? favorite : favorite_outline} style={{ height: 30, width: 30 }} />
-    //                     </TouchableOpacity>
-    //             )
-    //         },
-    //         headerLeft: () => {
-    //             return (
-    //                 <TouchableOpacity onPress={() => { }} activeOpacity={0.8} style={{flexDirection: 'row', alignItems: 'center'}} >
-    //                     <Image source={back_white} style={{ height: 15, width: 10, marginRight: 5 }} />
-    //                     <Text style={{color: Colors.white,fontWeight: '600', fontSize: 16}}>Back</Text>
-    //                 </TouchableOpacity>
-    //             )
-    //         },
-    //     })
-    // }, [navigation])
 
     return (
         <View style={styles.header}>

@@ -10,7 +10,7 @@ import { connect, useDispatch } from 'react-redux'
 import { setSelectedCategory } from '../redux/actions/foodRecipe'
 import CategoryGridTile from './components/CategoryGridTile'
 
-const favorite = require('../assets/favorite.png')
+const favorite = require('./assets/favorite.png')
 
 const CategoriesScreen = (props) => {
 
@@ -38,7 +38,7 @@ const CategoriesScreen = (props) => {
 
         const pressHandler = () => {
             dispatch(props?.setSelectedCategory(itemData.item))
-            navigation.navigate('MealsScreen')
+            navigation.navigate('AllMealsScreen')
         }
 
         return (
