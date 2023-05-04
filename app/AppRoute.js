@@ -72,18 +72,6 @@ const AppRoute = (props) => {
                     </TouchableOpacity> */}
                 </>
 
-                
-
-               
-
-                {/* <TouchableOpacity onPress={() => changeScreen('FoodDelivery')} style={styles.btn} activeOpacity={0.9}>
-                    <Text style={styles.btnText}>Food Recipes</Text>
-                </TouchableOpacity> */}
-
-                <TouchableOpacity onPress={() => changeScreen('FoodRecipes')} style={styles.btn} activeOpacity={0.9}>
-                    <Text style={styles.btnText}>Food Delivery</Text>
-                </TouchableOpacity>
-
             </View>
 
             {/* FOOTER */}
@@ -104,9 +92,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     flatList: {
-        marginHorizontal: 15,
-        paddingBottom: 40,
-        marginTop: 10,
+        paddingBottom: Platform.select({
+            android: 15,
+            ios: 40,
+        }),
+        paddingHorizontal: 15,
+        paddingTop: 10,
     },
     project: {
         backgroundColor: Colors.white,
@@ -116,6 +107,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flex: 1,
 
+        elevation: 5,
         shadowColor: Colors.black,
         shadowOpacity: 0.3,
         shadowRadius: 1,
@@ -164,8 +156,8 @@ const styles = StyleSheet.create({
         borderColor: Colors.primery,
         justifyContent: 'center',
         alignItems: 'center',
-        borderTopWidth: 0.17,
         position: 'absolute',
+        borderTopWidth: 0.5,
         flexDirection: 'row',
         width: '100%',
         bottom: 0,

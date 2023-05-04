@@ -82,7 +82,7 @@ const myNav = () => {
                 initialRouteName='App_Route'
                 screenOptions={{
                     headerBackTitleVisible: false, // hide back Screen title
-                    headerBackVisible: true, // hide back arrrow icon
+                    // headerBackVisible: true, // hide back arrrow icon for android
                     headerTitleStyle: styles.headerTitleStyle,
                     headerStyle: styles.headerStyle,
                     headerTintColor: Colors.white,
