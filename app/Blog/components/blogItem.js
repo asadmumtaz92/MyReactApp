@@ -12,7 +12,7 @@ import { Colors } from '../../styles/color'
 import { priceDisplay } from '../utlz/index'
 
 import { connect, useDispatch } from 'react-redux'
-import { setSelectedDeal } from '../../redux/actions/dataDriven'
+import { setSelectedDeal } from '../../redux/actions/blog'
 
 const DealItem = ({ dealData, navigate }) => {
     const dispatch = useDispatch()

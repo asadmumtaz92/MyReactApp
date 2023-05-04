@@ -1,0 +1,42 @@
+export const Companies = [
+    {
+        id: 0,
+        name: `Web Technologies`,
+        phone: `+92 333-666-3896`,
+        location: `Brăila, Romania`,
+        companyTag: `This is note for Asad Mumtaz`,
+        image: `https://www.servcorp.com/media/29481/180427_servecorp_444_w-lake_st_4230.jpg`,
+    },
+    {
+        id: 1,
+        name: `StlllR Media`,
+        phone: `+92 333-844-4051`,
+        location: `London, UK`,
+        companyTag: `This is note for Shahmir Alam`,
+        image: `https://dm3z1jexb3zz4.cloudfront.net/public/images/core/Images/Wordpress-Archive/uploads/2016/01/CRM.png`,
+    },
+    {
+        id: 2,
+        name: `YSTL`,
+        phone: `+92 444-555-6666`,
+        location: `Rawalpindi, Pakistan`,
+        companyTag: `This is note for Munem Habib`,
+        image: ``, // `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQum03Clx7JnxQEx4ymPJdw9fkZwglumr1TFvNjHh1Lxl3exMc1B4p4iR6JnilsmnT7ciU&usqp=CAU`,
+    },
+    {
+        id: 3,
+        name: `Celfic`,
+        phone: `444-555-6666`,
+        location: `Islamabad, Pakistan`,
+        companyTag: `This is note for Munem Habib`,
+        image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQum03Clx7JnxQEx4ymPJdw9fkZwglumr1TFvNjHh1Lxl3exMc1B4p4iR6JnilsmnT7ciU&usqp=CAU`,
+    },
+    {
+        id: 4,
+        name: `CEO Transport`,
+        phone: `444-555-6666`,
+        location: `Hamelton City, Bermuada`,
+        companyTag: `This is note for Munem Habib`,
+        image: ``, // `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQum03Clx7JnxQEx4ymPJdw9fkZwglumr1TFvNjHh1Lxl3exMc1B4p4iR6JnilsmnT7ciU&usqp=CAU`,
+    },
+]

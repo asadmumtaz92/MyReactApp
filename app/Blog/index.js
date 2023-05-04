@@ -9,7 +9,7 @@ import {
 
 import { Colors } from '../styles/color'
 import { BAKESALE_API } from './enviroments/index' 
-import DealItem from './components/dealItem'
+import DealItem from './components/blogItem'
 
 const Blog = (props) => {
     

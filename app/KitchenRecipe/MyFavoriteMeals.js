@@ -24,7 +24,7 @@ const MyFavoriteMeal = ({ navigation, ...props }) => {
             setLoader(true)
 
             setTimeout(() => {
-                setDisplayMeal(props?.foodRecipeReducer?.favoriteMeals)
+                setDisplayMeal(props?.kitchenRecipeReducer?.favoriteMeals)
                 setLoader(false)
             }, 500)
         }
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     },
 })
 
-const mapStateToProps = ({ foodRecipeReducer }) => ({ foodRecipeReducer })
+const mapStateToProps = ({ kitchenRecipeReducer }) => ({ kitchenRecipeReducer })
 
 export default connect(mapStateToProps, {
 })(MyFavoriteMeal)

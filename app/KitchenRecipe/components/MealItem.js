@@ -8,7 +8,7 @@ import {
 import { useNavigation } from '@react-navigation/native'
 
 import { connect, useDispatch } from 'react-redux'
-import { setSelectedMeal } from '../../redux/actions/foodRecipe'
+import { setSelectedMeal } from '../../redux/actions/kitchenRecipeReducer'
 
 import { Colors } from '../../styles/color'
 import MealShortDetail from './MealShortDetail'

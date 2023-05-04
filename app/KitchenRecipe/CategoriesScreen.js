@@ -7,7 +7,7 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import { connect, useDispatch } from 'react-redux'
 
-import { setSelectedCategory } from '../redux/actions/foodRecipe'
+import { setSelectedCategory } from '../redux/actions/kitchenRecipeReducer'
 import CategoryGridTile from './components/CategoryGridTile'
 
 const favorite = require('./assets/favorite.png')
@@ -53,7 +53,7 @@ const CategoriesScreen = (props) => {
     return (
         <FlatList
             contentContainerStyle={{ paddingBottom: 20 }}
-            data={props.foodRecipeReducer.mealCategory}
+            data={props.kitchenRecipeReducer.mealCategory}
             showsVerticalScrollIndicator={false}
             keyExtractor={(item) => item.id}
             renderItem={renderCategoryItem}
@@ -62,7 +62,7 @@ const CategoriesScreen = (props) => {
     )
 }
 
-const mapStateToProps = ({ foodRecipeReducer }) => ({ foodRecipeReducer })
+const mapStateToProps = ({ kitchenRecipeReducer }) => ({ kitchenRecipeReducer })
 
 export default connect(mapStateToProps, {
     setSelectedCategory,

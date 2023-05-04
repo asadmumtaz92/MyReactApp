@@ -1,12 +1,11 @@
 import * as types from '../actionTypes/index'
 
 const initialState = {
-    counter: 0,
     allDeals: [],
     selectedDeal: {},
 }
 
-const dataDrivenReducer = (state = initialState, action) => {
+const blogReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case types.SELECTED_DEAL: {
@@ -47,4 +46,4 @@ const dataDrivenReducer = (state = initialState, action) => {
     }
 }
 
-export default dataDrivenReducer
+export default blogReducer

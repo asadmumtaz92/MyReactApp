@@ -9,7 +9,14 @@ export const INCREEMENT = 'INCREEMENT' // done
 export const DECREEMENT = 'DECREEMENT' // done
 
 
-// DATA DRIVEN APP
+// BLOG APP
 export const GET_ALL_DEALS = 'GET_ALL_DEALS'
 
 export const SELECTED_DEAL = 'SELECTED_DEAL'
+
+// CRM
+export const CRM = "CRM"
+
+export const SELECTED_PEOPLES = "SELECTED_PEOPLES"
+
+export const SELECTED_COMPANIES = "SELECTED_COMPANIES"

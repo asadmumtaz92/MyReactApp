@@ -10,6 +10,7 @@ import {
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
+const Stack = createNativeStackNavigator()
 
 import { Colors } from '../styles/color'
 
@@ -42,6 +43,7 @@ import AddNote from '../StickyNote/AddNote'
 import ViewNote from '../StickyNote/ViewNote'
 import EditNote from '../StickyNote/EditNote'
 
+
 // KITCHEN RECIPE NAVIGATIONS DONE
 import KitchenRecipe from '../KitchenRecipe/index'
 import AllMealsScreen from '../KitchenRecipe/AllMealsScreen'
@@ -53,12 +55,12 @@ import MyFavoriteMeals from '../KitchenRecipe/MyFavoriteMeals'
 
 
 // CRM NAVIGATIONS
+import CRM_People from '../CRM/screens/Peoples'
+import CRM_Companies from '../CRM/screens/companies'
 
 
 // GUESS NUMBER GAME NAVIGATIONS DONE
 import GuessNumberGame from '../GuessNumberGame/index'
-
-const Stack = createNativeStackNavigator()
 
 const myNav = () => {
 
@@ -82,7 +84,7 @@ const myNav = () => {
                 initialRouteName='App_Route'
                 screenOptions={{
                     headerBackTitleVisible: false, // hide back Screen title
-                    // headerBackVisible: true, // hide back arrrow icon for android
+                    // headerBackVisible: true, // hide back arrrow icon
                     headerTitleStyle: styles.headerTitleStyle,
                     headerStyle: styles.headerStyle,
                     headerTintColor: Colors.white,
@@ -194,7 +196,7 @@ const myNav = () => {
                     />
                 </>
                 {/* =============================
-                    STICKY NOTES APP
+                    STICKY NOTES APP DONE
                 ============================= */}
                 <>
                     <Stack.Screen
@@ -227,7 +229,7 @@ const myNav = () => {
                     />
                 </>
                 {/* =============================
-                    KITCHEN RECIPE APP
+                    KITCHEN RECIPE APP DONE
                 ============================= */}
                 <>
                     <Stack.Screen
@@ -261,7 +263,28 @@ const myNav = () => {
                     />
                 </>
                 {/* =============================
-                    GUESS NUMBER GAME APP
+                    CRM APP DONE
+                ============================= */}
+                <>
+                    <Stack.Screen
+                        name='CRM_Peoples'
+                        component={CRM_People}
+                        options={{
+                            headerTitle: () => myTitle(`Peoples`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='CRM_Companies'
+                        component={CRM_Companies}
+                        options={{
+                            headerTitle: () => myTitle(`Companies`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                </>
+                {/* =============================
+                    GUESS NUMBER GAME APP DONE
                 ============================= */}
                 <>
                     <Stack.Screen

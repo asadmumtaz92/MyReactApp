@@ -38,7 +38,7 @@ export const Projects = [
     {
         title: 'Custom Relation Managemente',
         desc: 'This is my short description about this project.',
-        navName: '',
+        navName: 'CRM_Peoples',
         image: require('../assets/projectLogos/crm.png'),
     },
     {

@@ -18,11 +18,11 @@ const AllMealsScreen = ({ navigation, ...props }) => {
     useEffect(() => {
         setTimeout(() => {
             navigation.setOptions({
-                headerTitle: props?.foodRecipeReducer?.selected_category?.title,
+                headerTitle: props?.kitchenRecipeReducer?.selected_category?.title,
             })
 
-            const result = props?.foodRecipeReducer?.meals.filter((items) => {
-                return items.categoryIds.indexOf(props?.foodRecipeReducer?.selected_category?.id) >= 0
+            const result = props?.kitchenRecipeReducer?.meals.filter((items) => {
+                return items.categoryIds.indexOf(props?.kitchenRecipeReducer?.selected_category?.id) >= 0
             })
             setDisplayMeal(result)
         }, 500)
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
 })
 
-const mapStateToProps = ({ foodRecipeReducer }) => ({ foodRecipeReducer })
+const mapStateToProps = ({ kitchenRecipeReducer }) => ({ kitchenRecipeReducer })
 
 export default connect(mapStateToProps, {
 })(AllMealsScreen)

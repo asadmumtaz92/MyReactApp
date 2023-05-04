@@ -13,7 +13,7 @@ const initialState = {
     selected_meal: {}, // done
 }
 
-const foodRecipeReducer = (state = initialState, action) => {
+const kitchenRecipeReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
@@ -53,4 +53,4 @@ const foodRecipeReducer = (state = initialState, action) => {
     }
 }
 
-export default foodRecipeReducer
+export default kitchenRecipeReducer

@@ -12,7 +12,7 @@ import {
 
 import { Colors } from '../styles/color'
 import { connect, useDispatch } from 'react-redux'
-import { addFavoriteMeal } from '../redux/actions/foodRecipe'
+import { addFavoriteMeal } from '../redux/actions/kitchenRecipeReducer'
 
 import MealShortDetail from './components/MealShortDetail'
 import List from './components/List'
@@ -28,11 +28,11 @@ const MealDetails = ({ navigation, ...props }) => {
     const [fvrt, setFvrt] = useState(false)
 
     useEffect(() => {
-        const data = props?.foodRecipeReducer?.selected_meal
+        const data = props?.kitchenRecipeReducer?.selected_meal
 
         setTimeout(() => {
             setDisplayMeal(data)
-            props?.foodRecipeReducer?.favoriteMeals.filter((items) => {
+            props?.kitchenRecipeReducer?.favoriteMeals.filter((items) => {
                 if (data.id == items?.id) {
                     setFvrt(true)
                 }
@@ -44,7 +44,7 @@ const MealDetails = ({ navigation, ...props }) => {
     
     const rightFun = () => {
         if (fvrt) {
-            const fvMeal = props?.foodRecipeReducer?.favoriteMeals.filter((item) => item.id != displayMeal.id)
+            const fvMeal = props?.kitchenRecipeReducer?.favoriteMeals.filter((item) => item.id != displayMeal.id)
             dispatch(props?.addFavoriteMeal(fvMeal))
             setTimeout(() => {
                 navigation.goBack()
@@ -52,7 +52,7 @@ const MealDetails = ({ navigation, ...props }) => {
             // Alert.alert('Message!', '\n' + displayMeal.title + ' is removed from Favorite Meals.')
         }
         else {
-            let fvMeal = [props?.foodRecipeReducer?.selected_meal, ...props?.foodRecipeReducer?.favoriteMeals]
+            let fvMeal = [props?.kitchenRecipeReducer?.selected_meal, ...props?.kitchenRecipeReducer?.favoriteMeals]
             dispatch(props?.addFavoriteMeal(fvMeal))
             // Alert.alert('Message!', '\n' + displayMeal.title + ' is added as your Favorite Meals.')
         }
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     },
 })
 
-const mapStateToProps = ({ foodRecipeReducer }) => ({ foodRecipeReducer })
+const mapStateToProps = ({ kitchenRecipeReducer }) => ({ kitchenRecipeReducer })
 
 export default connect(mapStateToProps, {
     addFavoriteMeal,

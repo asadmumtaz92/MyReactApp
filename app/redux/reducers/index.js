@@ -1,16 +1,25 @@
 import { combineReducers } from 'redux'
 
 import calculatorReducer from './calculator'
-import foodRecipeReducer from './foodRecipe'
-import dataDrivenReducer from './dataDriven'
+import kitchenRecipeReducer from './kitchenRecipeReducer'
+// BLOG
+import blogReducer from './blog'
+// CRM
+import peopleReducer from './CRM_Peoples'
+import companiesReducer from './CRM_Companies'
 
 const rootReducer = combineReducers({
     calculatorReducer: calculatorReducer,
-    foodRecipeReducer: foodRecipeReducer,
-    dataDrivenReducer: dataDrivenReducer,
+    kitchenRecipeReducer: kitchenRecipeReducer,
+    // blog
+    blogReducer: blogReducer,
+    // FOR CRM APP
+    peopleReducer: peopleReducer,
+    companiesReducer: companiesReducer,
 })
 
 export default rootReducer;
+
 
 
 // import { createSlice } from '@reduxjs/toolkit'

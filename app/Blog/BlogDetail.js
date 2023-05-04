@@ -12,7 +12,7 @@ import {
 import { Colors } from '../styles/color'
 
 import { connect, } from 'react-redux'
-import { setSelectedDeal } from '../redux/actions/dataDriven'
+import { setSelectedDeal } from '../redux/actions/blog'
 import { BAKESALE_API } from './enviroments/index'
 
 import { priceDisplay } from './utlz/index'
@@ -25,7 +25,7 @@ const BlogDetail = (props) => {
 
     const getDetail = () => {
         setLoader(true)
-        fetch(`${BAKESALE_API}/${props?.dataDrivenReducer?.selectedDeal?.key}`)
+        fetch(`${BAKESALE_API}/${props?.blogReducer?.selectedDeal?.key}`)
             .then(response => response.json())
             .then(response => {
                 if (!response['errors']) {
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     },
 })
 
-const mapStateToProps = ({ dataDrivenReducer }) => ({ dataDrivenReducer })
+const mapStateToProps = ({ blogReducer }) => ({ blogReducer })
 
 export default connect(mapStateToProps, {
     setSelectedDeal,

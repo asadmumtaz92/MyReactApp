@@ -1,0 +1,5 @@
+export const CRM = "CRM"
+
+export const SELECTED_PEOPLES = "SELECTED_PEOPLES"
+
+export const SELECTED_COMPANIES = "SELECTED_COMPANIES"
