@@ -2,7 +2,7 @@ export const Projects = [
     {
         title: 'ibrahim Associates',
         desc: 'This is my short description about this project.',
-        navName: '',
+        navName: 'IbrahimAssociate',
         image: require('../assets/projectLogos/ibrahimAssociate.png'),
     },
     {
@@ -46,5 +46,11 @@ export const Projects = [
         desc: 'This is my short description about this project.',
         navName: 'GuessNumberGame',
         image: require('../assets/projectLogos/guessNumberGame.png'),
+    },
+    {
+        title: 'Vector Icons',
+        desc: 'This is my short description about how we integrate vector icon in iOS & android apps.',
+        navName: '',
+        image: require('../assets/projectLogos/v_icons.jpeg'),
     },
 ]

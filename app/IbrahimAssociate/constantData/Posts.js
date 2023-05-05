@@ -1,0 +1,63 @@
+  
+export const PostData = [
+    {
+        id: 1,
+        image: [
+            'https://newlaunch-my.ippstatic.com/live/MY/showunit/640/6543_321362_1683074914.jpg',
+            'https://cdn.globalpropertyguide.com/assets/USA-2/US-2023.jpg',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLBSguFJP6wh9cEcJ0Pw_Pprtu794cwvMoSA&usqp=CAU',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlv-oiUN0M4nT5e_Dxz9mUDEl6Gfu_mkzGpg&usqp=CAU',
+        ],
+        title: 'Luxary appartment for Sale in scetor A Bahria Enclave islamabad',
+        desc: 'House detail below vknrj kfjnvliu yu gcyt yct vyt vt vjyc mkiuiu yhuyrf buyure uubyyuv c reuyu jhbvhghh hb gug ftgtg tg ftgwug ufwg ef',
+        demand: 37000000,
+        sector: 'C1',
+        size: '8M',
+        type: 'Residential',
+    },
+    {
+        id: 2,
+        image: [
+            'https://cdn.globalpropertyguide.com/assets/USA-2/US-2023.jpg',
+            'https://newlaunch-my.ippstatic.com/live/MY/showunit/640/6543_321362_1683074914.jpg',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLBSguFJP6wh9cEcJ0Pw_Pprtu794cwvMoSA&usqp=CAU',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlv-oiUN0M4nT5e_Dxz9mUDEl6Gfu_mkzGpg&usqp=CAU',
+        ],
+        title: 'House for rent in sector H',
+        desc: '- House - road 2 - brand new - upper portion - only for small family',
+        demand: 50000,
+        sector: 'H',
+        size: '5M',
+        type: 'Commercial',
+    },
+    {
+        id: 3,
+        image: [
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLBSguFJP6wh9cEcJ0Pw_Pprtu794cwvMoSA&usqp=CAU',
+            'https://newlaunch-my.ippstatic.com/live/MY/showunit/640/6543_321362_1683074914.jpg',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlv-oiUN0M4nT5e_Dxz9mUDEl6Gfu_mkzGpg&usqp=CAU',
+            'https://cdn.globalpropertyguide.com/assets/USA-2/US-2023.jpg',
+        ],
+        title: 'Sale house in scetor N Bahria Enclave islamabad',
+        desc: 'House detail below vknrj kfjnvliu yu gcyt yct vyt vt vjyc mkiuiu yhuyrf buyure uubyyuv c reuyu jhbvhghh hb gug ftgtg tg ftgwug ufwg ef',
+        demand: 2500000,
+        sector: 'N',
+        size: '5M',
+        type: 'Residential',
+    },
+    {
+        id: 4,
+        image: [
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlv-oiUN0M4nT5e_Dxz9mUDEl6Gfu_mkzGpg&usqp=CAU',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLBSguFJP6wh9cEcJ0Pw_Pprtu794cwvMoSA&usqp=CAU',
+            'https://cdn.globalpropertyguide.com/assets/USA-2/US-2023.jpg',
+            'https://newlaunch-my.ippstatic.com/live/MY/showunit/640/6543_321362_1683074914.jpg',
+        ],
+        title: '2 bed appartment for rent.',
+        desc: '- House - road 2 - brand new - upper portion - only for small family',
+        demand: 70000,
+        sector: 'A',
+        size: '2000',
+        type: 'Commercial',
+    },
+]

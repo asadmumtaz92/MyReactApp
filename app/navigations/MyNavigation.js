@@ -19,6 +19,8 @@ import AppRoute from '../AppRoute'
 
 
 // IBRAHIM ASSOCIATE NAVIGATIONS
+import IbrahimAssociate from '../IbrahimAssociate/index'
+import IB_PostDetail from '../IbrahimAssociate/PostDetail'
 
 
 // MY PERFECT WORDS NAVIGATIONS
@@ -94,7 +96,7 @@ const myNav = () => {
                 }}
             >
                 {/* =============================
-                    APP ROUTE DONE
+                    APP ROUTE
                 ============================= */}
                 <>
                     <Stack.Screen
@@ -110,10 +112,27 @@ const myNav = () => {
                 {/* =============================
                     IBRAHIM ASSOCIATES APP
                 ============================= */}
-
+                <>
+                    <Stack.Screen
+                        name='IbrahimAssociate'
+                        component={IbrahimAssociate}
+                        options={{
+                            headerTitle: () => myTitle(`Ibrahim Associate`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='IB_PostDetail'
+                        component={IB_PostDetail}
+                        options={{
+                            headerTitle: () => myTitle(`Post detail`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                </>
 
                 {/* =============================
-                    MY PERFECT WORDS APP DONE
+                    MY PERFECT WORDS APP
                 ============================= */}
                 <>
                     <Stack.Screen
@@ -175,7 +194,7 @@ const myNav = () => {
                     />
                 </>
                 {/* =============================
-                    BLOG APP DONE
+                    BLOG APP
                 ============================= */}
                 <>
                     <Stack.Screen
@@ -196,7 +215,7 @@ const myNav = () => {
                     />
                 </>
                 {/* =============================
-                    STICKY NOTES APP DONE
+                    STICKY NOTES APP
                 ============================= */}
                 <>
                     <Stack.Screen
@@ -229,7 +248,7 @@ const myNav = () => {
                     />
                 </>
                 {/* =============================
-                    KITCHEN RECIPE APP DONE
+                    KITCHEN RECIPE APP
                 ============================= */}
                 <>
                     <Stack.Screen
@@ -263,7 +282,10 @@ const myNav = () => {
                     />
                 </>
                 {/* =============================
-                    CRM APP DONE
+                    BAHRIA DELIVERY APP
+                ============================= */}
+                {/* =============================
+                    CRM APP
                 ============================= */}
                 <>
                     <Stack.Screen
@@ -284,7 +306,7 @@ const myNav = () => {
                     />
                 </>
                 {/* =============================
-                    GUESS NUMBER GAME APP DONE
+                    GUESS NUMBER GAME APP
                 ============================= */}
                 <>
                     <Stack.Screen
