@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react"
+import React, { useState, useLayoutEffect, useEffect } from "react"
 import {
     KeyboardAvoidingView,
     ActivityIndicator,
@@ -21,6 +21,7 @@ import {
     bgCover,
     at_sign,
     lock_sign,
+    splash
 } from './constant/images'
 
 import CustomModal from './utlz/CustomModal'
@@ -33,6 +34,7 @@ const MyPerfectWords = ({ navigation }) => {
     const [error, setError] = useState(false)
     const [title, setTitle] = useState('')
     const [desc, setDesc] = useState('')
+    const [splashShow, setSplashShow] = useState(true)
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -46,6 +48,7 @@ const MyPerfectWords = ({ navigation }) => {
                     </TouchableOpacity>
                 )
             },
+            
         })
     }, [navigation, loader])
 
@@ -139,9 +142,17 @@ const MyPerfectWords = ({ navigation }) => {
     const registerHandler = () => {
         navigation.navigate('MPW_Register')
     }
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.setOptions({
+                headerShown: true,
+            })
+            setSplashShow(false)
+        }, 2000);
+    },[])
 
     return (
-        <ImageBackground source={bgCover} style={gStyles.bgCover}>
+        <>
             <StatusBar
                 backgroundColor={Colors.buttonColor}
                 StatusBarAnimation='fade'
@@ -149,135 +160,137 @@ const MyPerfectWords = ({ navigation }) => {
                 animated={true}
                 hidden={false}
             />
+            {splashShow
+                ? <ImageBackground source={splash} style={{ flex: 1 }} />
+                : <ImageBackground source={bgCover} style={gStyles.bgCover}>
+                    <KeyboardAvoidingView style={gStyles.bgCover} behavior={Platform.OS == 'ios' ? 'position' : loader ? 'position' : 'height'}>
+                        <View style={gStyles.bottomView}>
 
-            <KeyboardAvoidingView style={gStyles.bgCover} behavior={Platform.OS == 'ios' ? 'position' : loader ? 'position' : 'height'}>
-                <View style={gStyles.bottomView}>
+                            {/* HEADING */}
+                            <Text style={gStyles.heading}>{`WELCOME  BACK`}</Text>
 
-                    {/* HEADING */}
-                    <Text style={gStyles.heading}>{`WELCOME  BACK`}</Text>
+                            {/* EMAIL */}
+                            <View style={gStyles.ipItem}>
+                                <Image source={at_sign} style={gStyles.icon} resizeMode='contain' />
+                                <TextInput
+                                    placeholderTextColor={'rgba(34, 34, 34, 0.3)'}
+                                    onChangeText={(text) => emailHandler(text)}
+                                    onSubmitEditing={() => {
+                                        if (email.length > 5 && password.length > 4) {
+                                            loginHandler()
+                                        }
+                                        Keyboard.dismiss()
+                                    }}
+                                    selectionColor={Colors.selectionColor}
+                                    onBlur={() => Keyboard.dismiss}
+                                    keyboardType='email-address'
+                                    selectTextOnFocus={false}
+                                    autoCapitalize='none'
+                                    placeholder='E-MAIL'
+                                    autoCorrect={false}
+                                    style={gStyles.ip}
+                                    spellCheck={false}
+                                    numberOfLines={1}
+                                    autoFocus={false}
+                                    multiline={false}
+                                    inputMode='email'
+                                    maxLength={200}
+                                    value={email}
+                                />
+                            </View>
 
-                    {/* EMAIL */}
-                    <View style={gStyles.ipItem}>
-                        <Image source={at_sign} style={gStyles.icon} resizeMode='contain' />
-                        <TextInput
-                            placeholderTextColor={'rgba(34, 34, 34, 0.3)'}
-                            onChangeText={(text) => emailHandler(text)}
-                            onSubmitEditing={() => {
-                                if (email.length > 5 && password.length > 4) {
-                                    loginHandler()
+                            {/* PASSWORD */}
+                            <View style={gStyles.ipItem}>
+                                <Image source={lock_sign} style={gStyles.icon} resizeMode='contain' />
+                                <TextInput
+                                    placeholderTextColor={'rgba(34, 34, 34, 0.3)'}
+                                    onChangeText={(text) => passwordHandler(text)}
+                                    onSubmitEditing={() => {
+                                        if (email.length > 5 && password.length > 4) {
+                                            loginHandler()
+                                        }
+                                        Keyboard.dismiss()
+                                    }}
+                                    selectionColor={Colors.selectionColor}
+                                    onBlur={() => Keyboard.dismiss}
+                                    keyboardType='email-address'
+                                    selectTextOnFocus={false}
+                                    secureTextEntry={true}
+                                    placeholder='PASSWORD'
+                                    autoCapitalize='none'
+                                    autoCorrect={false}
+                                    style={gStyles.ip}
+                                    spellCheck={false}
+                                    autoFocus={false}
+                                    numberOfLines={1}
+                                    multiline={false}
+                                    value={password}
+                                    inputMode='none'
+                                    maxLength={200}
+                                />
+                            </View>
+
+                            {/* LOG IN */}
+                            <TouchableOpacity
+                                disabled={loader ? true : false} activeOpacity={0.9}
+                                onPress={() => loginHandler()} style={gStyles.largeBtn}
+                            >
+                                {loader
+                                    ? <ActivityIndicator size={'small'} color={Colors.white} />
+                                    : <Text style={gStyles.largeBtnText}>{`LOG IN`}</Text>
                                 }
-                                Keyboard.dismiss()
-                            }}
-                            selectionColor={Colors.selectionColor}
-                            onBlur={() => Keyboard.dismiss}
-                            keyboardType='email-address'
-                            selectTextOnFocus={false}
-                            autoCapitalize='none'
-                            placeholder='E-MAIL'
-                            autoCorrect={false}
-                            style={gStyles.ip}
-                            spellCheck={false}
-                            numberOfLines={1}
-                            autoFocus={false}
-                            multiline={false}
-                            inputMode='email'
-                            maxLength={200}
-                            value={email}
-                        />
-                    </View>
+                            </TouchableOpacity>
 
-                    {/* PASSWORD */}
-                    <View style={gStyles.ipItem}>
-                        <Image source={lock_sign} style={gStyles.icon} resizeMode='contain' />
-                        <TextInput
-                            placeholderTextColor={'rgba(34, 34, 34, 0.3)'}
-                            onChangeText={(text) => passwordHandler(text)}
-                            onSubmitEditing={() => {
-                                if (email.length > 5 && password.length > 4) {
-                                    loginHandler()
-                                }
-                                Keyboard.dismiss()
-                            }}
-                            selectionColor={Colors.selectionColor}
-                            onBlur={() => Keyboard.dismiss}
-                            keyboardType='email-address'
-                            selectTextOnFocus={false}
-                            secureTextEntry={true}
-                            placeholder='PASSWORD'
-                            autoCapitalize='none'
-                            autoCorrect={false}
-                            style={gStyles.ip}
-                            spellCheck={false}
-                            autoFocus={false}
-                            numberOfLines={1}
-                            multiline={false}
-                            value={password}
-                            inputMode='none'
-                            maxLength={200}
-                        />
-                    </View>
+                            {/* FORGOT */}
+                            <TouchableOpacity
+                                onPress={() => forgotHandler()} style={styles.forgotBtn} activeOpacity={0.9}
+                            >
+                                <Text style={styles.forgotText}>{`Forgot Password`}</Text>
+                            </TouchableOpacity>
 
-                    {/* LOG IN */}
-                    <TouchableOpacity
-                        disabled={loader ? true : false} activeOpacity={0.9}
-                        onPress={() => loginHandler()} style={gStyles.largeBtn}
-                    >
-                        {loader
-                            ? <ActivityIndicator size={'small'} color={Colors.white} />
-                            : <Text style={gStyles.largeBtnText}>{`LOG IN`}</Text>
-                        }
-                    </TouchableOpacity>
+                            {/* REGISTER NEW */}
+                            <>
+                                {/* <View style={styles.regBox}>
+                                        <Text style={gStyles.text}>{`Have no account yet?`}</Text>
+                                        <TouchableOpacity
+                                            onPress={() => registerHandler() }
+                                            style={styles.regBtn} activeOpacity={0.9}
+                                        >
+                                            <Text style={styles.regText}>{`REGISTER`}</Text>
+                                        </TouchableOpacity>
+                                    </View> */}
+                            </>
+                        </View>
 
-                    {/* FORGOT */}
-                    <TouchableOpacity
-                        onPress={() => forgotHandler()} style={styles.forgotBtn} activeOpacity={0.9}
-                    >
-                        <Text style={styles.forgotText}>{`Forgot Password`}</Text>
-                    </TouchableOpacity>
+                        {/* MODAL FOR LOGIN ERROR */}
+                        <>
+                            {error &&
+                                <CustomModal
+                                    title={title}
+                                    desc={desc}
 
-                    {/* REGISTER NEW */}
-                    <>
-                        {/* <View style={styles.regBox}>
-                                <Text style={gStyles.text}>{`Have no account yet?`}</Text>
-                                <TouchableOpacity
-                                    onPress={() => registerHandler() }
-                                    style={styles.regBtn} activeOpacity={0.9}
-                                >
-                                    <Text style={styles.regText}>{`REGISTER`}</Text>
-                                </TouchableOpacity>
-                            </View> */}
-                    </>
+                                    clickAbleRight={() => {
+                                        setError(false)
+                                        setLoader(false)
+                                    }}
+                                    buttonRightText='ok'
+                                    // buttonRightStyle={{}}
+                                    // buttonRightTextStyle={{}}
 
-                </View>
+                                    // clickAbleLeft={() => { setLoader(false) }}
+                                    // buttonLeftText='no'
+                                    // buttonLeftStyle={{}}
+                                    // buttonLeftTextStyle={{}}
 
-                {/* MODAL FOR LOGIN ERROR */}
-                <>
-                    {error &&
-                        <CustomModal
-                            title={title}
-                            desc={desc}
-
-                            clickAbleRight={() => {
-                                setError(false)
-                                setLoader(false)
-                            }}
-                            buttonRightText='ok'
-                            // buttonRightStyle={{}}
-                            // buttonRightTextStyle={{}}
-
-                            // clickAbleLeft={() => { setLoader(false) }}
-                            // buttonLeftText='no'
-                            // buttonLeftStyle={{}}
-                            // buttonLeftTextStyle={{}}
-
-                            // image={lock_sign}
-                            // imageStyle={{ width: 30, height: 30 }}
-                        />
-                    }
-                </>
-            </KeyboardAvoidingView>
-
-        </ImageBackground>
+                                    // image={lock_sign}
+                                    // imageStyle={{ width: 30, height: 30 }}
+                                />
+                            }
+                        </>
+                    </KeyboardAvoidingView>
+                </ImageBackground>
+            }
+        </>
     )
 }
 

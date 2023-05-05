@@ -140,6 +140,7 @@ const myNav = () => {
                         component={MPW_Login}
                         options={{
                             headerTitle: () => myTitle(''),
+                            headerShown: false,
                         }}
                     />
                     <Stack.Screen
