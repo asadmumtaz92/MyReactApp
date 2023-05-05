@@ -119,6 +119,7 @@ const myNav = () => {
                         options={{
                             headerTitle: () => myTitle(`Ibrahim Associate`),
                             headerStyle: { backgroundColor: Colors.crm },
+                            headerShown: false,
                         }}
                     />
                     <Stack.Screen

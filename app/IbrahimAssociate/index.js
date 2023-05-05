@@ -10,6 +10,7 @@ import {
     FlatList,
     View,
     Text,
+    ImageBackground,
 } from 'react-native'
 
 import { Colors } from '../styles/color'
@@ -22,6 +23,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 import PostCard from './components/postCard'
 
+const bgImage = require('./assets/ibrahimAss.png')
+
 const IbrahimAssociate = (props) => {
 
     // HOOKS
@@ -29,6 +32,7 @@ const IbrahimAssociate = (props) => {
     const [search, setSearch] = useState('')
     const [filteredData, setFilteredData] = useState([])
     const [errorText, setErrorText] = useState('')
+    const [splashShow, setSplashShow] = useState(true)
 
     // HEADER TOP ICON
     useLayoutEffect(() => {
@@ -47,6 +51,15 @@ const IbrahimAssociate = (props) => {
             },
         })
     }, [props?.navigation, visible])
+
+    useEffect(() => {
+        setTimeout(() => {
+            props?.navigation.setOptions({
+                headerShown: true,
+            })
+            setSplashShow(false)
+        }, 2000);
+    }, [])
 
     // SHOW & HIDE SEARCH
     const searchButtonHandler = () => {
@@ -114,50 +127,56 @@ const IbrahimAssociate = (props) => {
     }
 
     return (
-        <View style={styles.contanier}>
-            <StatusBar barStyle='light-content' backgroundColor={Colors.primery} />
+        <>
+            {splashShow
+                ? <ImageBackground source={bgImage} style={{ flex: 1 }} />
+                : <View style={styles.contanier}>
+                    <ImageBackground source={bgImage} style={{flex:1}} />
+                    <StatusBar barStyle='light-content' backgroundColor={Colors.primery} />
 
-            {visible &&
-                <TextInput
-                    onSubmitEditing={() => { Keyboard.dismiss(); setVisible(false) }}
-                    onBlur={() => { Keyboard.dismiss(); setVisible(false) }}
-                    onChangeText={(text) => searchInputHandler(text)}
-                    placeholderTextColor={'rgba(34, 34, 34, 0.3)'}
-                    selectionColor={Colors.selectionColor}
-                    selectTextOnFocus={false}
-                    placeholder="SEARCH POST..."
-                    keyboardType='default'
-                    autoCapitalize='none'
-                    autoCorrect={false}
-                    spellCheck={false}
-                    style={styles.ip}
-                    inputMode='search'
-                    numberOfLines={1}
-                    multiline={false}
-                    autoFocus={true}
-                    value={search}
-                    maxLength={50}
-                />
-            }
-            <View>
-                {errorText
-                    ? <View style={styles.errorView}>
-                        <Text style={styles.errorText}>{errorText}</Text>
-                    </View>
-                    : filteredData.length
-                        ? <FlatList
-                            contentContainerStyle={styles.flatlist}
-                            showsVerticalScrollIndicator={false}
-                            keyExtractor={(_, index) => index}
-                            renderItem={renderItem}
-                            data={filteredData}
+                    {visible &&
+                        <TextInput
+                            onSubmitEditing={() => { Keyboard.dismiss(); setVisible(false) }}
+                            onBlur={() => { Keyboard.dismiss(); setVisible(false) }}
+                            onChangeText={(text) => searchInputHandler(text)}
+                            placeholderTextColor={'rgba(34, 34, 34, 0.3)'}
+                            selectionColor={Colors.selectionColor}
+                            selectTextOnFocus={false}
+                            placeholder="SEARCH POST..."
+                            keyboardType='default'
+                            autoCapitalize='none'
+                            autoCorrect={false}
+                            spellCheck={false}
+                            style={styles.ip}
+                            inputMode='search'
+                            numberOfLines={1}
+                            multiline={false}
+                            autoFocus={true}
+                            value={search}
+                            maxLength={50}
                         />
-                        : <View style={styles.loaderView}>
-                            <ActivityIndicator color={Colors.crm} size={'large'} style={{ marginTop: -50 }} />
-                        </View>
-                }
-            </View>
-        </View>
+                    }
+                    <View>
+                        {errorText
+                            ? <View style={styles.errorView}>
+                                <Text style={styles.errorText}>{errorText}</Text>
+                            </View>
+                            : filteredData.length
+                                ? <FlatList
+                                    contentContainerStyle={styles.flatlist}
+                                    showsVerticalScrollIndicator={false}
+                                    keyExtractor={(_, index) => index}
+                                    renderItem={renderItem}
+                                    data={filteredData}
+                                />
+                                : <View style={styles.loaderView}>
+                                    <ActivityIndicator color={Colors.crm} size={'large'} style={{ marginTop: -50 }} />
+                                </View>
+                        }
+                    </View>
+                </View>
+            }
+        </>
     )
 }
 
