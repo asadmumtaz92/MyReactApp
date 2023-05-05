@@ -28,13 +28,13 @@ import CustomModal from './utlz/CustomModal'
 
 const MyPerfectWords = ({ navigation }) => {
 
+    const [splashShow, setSplashShow] = useState(true)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loader, setLoader] = useState(false)
     const [error, setError] = useState(false)
     const [title, setTitle] = useState('')
     const [desc, setDesc] = useState('')
-    const [splashShow, setSplashShow] = useState(true)
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -52,6 +52,15 @@ const MyPerfectWords = ({ navigation }) => {
         })
     }, [navigation, loader])
 
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.setOptions({
+                headerShown: true,
+            })
+            setSplashShow(false)
+        }, 2000);
+    }, [])
+    
     const emailHandler = (text) => {
         setEmail(text)
     }
@@ -142,14 +151,6 @@ const MyPerfectWords = ({ navigation }) => {
     const registerHandler = () => {
         navigation.navigate('MPW_Register')
     }
-    useEffect(() => {
-        setTimeout(() => {
-            navigation.setOptions({
-                headerShown: true,
-            })
-            setSplashShow(false)
-        }, 2000);
-    },[])
 
     return (
         <>
