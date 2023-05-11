@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 
 import { Colors } from '../../styles/color'
+import { gStyles } from '../styles/globle'
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
@@ -21,10 +22,10 @@ const PostCardDetail = ({ PostData }) => {
     const myLink = (link, icon, text) => {
         return (
             <TouchableOpacity
-                onPress={() => Linking.openURL({link})}
+                onPress={() => Linking.openURL(link)}
                 style={styles.link} activeOpacity={0.9}
             >
-                <FontAwesome5 name={icon} style={{ fontSize: 30, marginRight: 10 }} />
+                <FontAwesome5 name={icon} style={[gStyles.icon, { color: Colors.black }]} />
                 <Text style={styles.share}>{text}</Text>
             </TouchableOpacity>
         )
@@ -33,7 +34,7 @@ const PostCardDetail = ({ PostData }) => {
     return (
         <View style={styles.container}>
             {/* IMAGE SLIDER */}
-            <ImageSlider imageData={PostData?.images}/>
+            <ImageSlider imageData={PostData?.images} />
             
             {/* POST DETAIL */}
             <View style={styles.detailView}>
@@ -42,8 +43,8 @@ const PostCardDetail = ({ PostData }) => {
 
                 {/* CONTACT  &  SHARE */}
                 <View style={styles.shareView}>
-                    {myLink(`tel:${PostData?.contact }`, 'mobile', PostData?.contact)}
-                    {myLink(`tel:${PostData?.contact}`, 'whatsapp', 'Share')}
+                    {myLink(`tel:${PostData?.contact}`, 'mobile', PostData?.contact)}
+                    {myLink(PostData?.contact, 'whatsapp', 'Share')}
                 </View>
                 
                 {/* DETAIL LIST */}
@@ -97,6 +98,7 @@ const styles = StyleSheet.create({
         color: Colors.black,
         fontWeight: '700',
         textAlign: 'left',
+        marginLeft: 10,
         fontSize: 18,
     },
 

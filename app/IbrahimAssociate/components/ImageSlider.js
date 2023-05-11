@@ -12,7 +12,7 @@ import { Colors } from '../../styles/color'
 
 const { width, height } = Dimensions.get('window')
 const ITEM_WIDTH = width
-const ITEM_HEIGHT = height * 0.35
+const ITEM_HEIGHT = height * 0.4
 const DOT_SIZE = 6
 const DOT_SPACING = 6
 const DOT_INDICATOR_SIZE = DOT_SIZE + DOT_SPACING
@@ -41,14 +41,16 @@ const ImageSlider = ({ imageData, showDot = true }) => {
 
             {showDot && imageData.length > 1
                 && <View style={styles.pagination}>
-                    {imageData.map((item, index) => <View key={index} style={[styles.dot]} />)}
+                    {imageData.map((_, index) => <View key={index} style={[styles.dot]} />)}
 
                     <Animated.View
                         style={[styles.dotIndicator, {
                             transform: [{
-                                translateX: Animated.divide(ScrollX, ITEM_WIDTH).interpolate({
-                                    inputRange: [0, 1], outputRange: [0, DOT_INDICATOR_SIZE],
-                                })
+                                translateX: Animated.divide(ScrollX, ITEM_WIDTH)
+                                    .interpolate({
+                                        inputRange: [0, 1],
+                                        outputRange: [0, DOT_INDICATOR_SIZE],
+                                    })
                             }]
                         }]}
                     />
@@ -61,7 +63,7 @@ const ImageSlider = ({ imageData, showDot = true }) => {
 
 const styles = StyleSheet.create({
     imageView: {
-        height: ITEM_HEIGHT + 8,
+        height: ITEM_HEIGHT + 18,
         overflow: 'hidden',
     },
     image: {

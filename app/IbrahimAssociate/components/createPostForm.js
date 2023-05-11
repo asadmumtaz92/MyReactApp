@@ -9,6 +9,7 @@ import {
     FlatList,
 } from 'react-native'
 import { Colors } from '../../styles/color'
+import { gStyles } from '../styles/globle'
 
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 
@@ -229,7 +230,7 @@ const CreatePostComp = ({
                     activeOpacity={0.9} style={styles.chkbox}
                 >
                     <Image source={chkCategory == 'Residencial' ? checkbox_active : checkbox_inactive} style={styles.img} />
-                    <Text style={[styles.label, { marginLeft: 10, marginBottom: 0, }]}>Residencial</Text>
+                    <Text style={[gStyles.label, { marginLeft: 10, marginBottom: 0, }]}>Residencial</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -237,7 +238,7 @@ const CreatePostComp = ({
                     activeOpacity={0.9} style={styles.chkbox}
                 >
                     <Image source={chkCategory == 'Commercial' ? checkbox_active : checkbox_inactive} style={styles.img} />
-                    <Text style={[styles.label, { marginLeft: 10, marginBottom: 0, }]}>Commercial</Text>
+                    <Text style={[gStyles.label, { marginLeft: 10, marginBottom: 0, }]}>Commercial</Text>
                 </TouchableOpacity>
             </View>
 
@@ -248,7 +249,7 @@ const CreatePostComp = ({
                     activeOpacity={0.9} style={styles.chkbox}
                 >
                     <Image source={chkType == 'Sale' ? checkbox_active : checkbox_inactive} style={styles.img} />
-                    <Text style={[styles.label, { marginLeft: 10, marginBottom: 0, }]}>Sale</Text>
+                    <Text style={[gStyles.label, { marginLeft: 10, marginBottom: 0, }]}>Sale</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -256,7 +257,7 @@ const CreatePostComp = ({
                     activeOpacity={0.9} style={styles.chkbox}
                 >
                     <Image source={chkType == 'Rent' ? checkbox_active : checkbox_inactive} style={styles.img} />
-                    <Text style={[styles.label, { marginLeft: 10, marginBottom: 0, }]}>Rent</Text>
+                    <Text style={[gStyles.label, { marginLeft: 10, marginBottom: 0, }]}>Rent</Text>
                 </TouchableOpacity>
             </View>
 
@@ -267,7 +268,7 @@ const CreatePostComp = ({
                     activeOpacity={0.9} style={styles.chkbox}
                 >
                     <Image source={chkVisibility == 'Private' ? checkbox_active : checkbox_inactive} style={styles.img} />
-                    <Text style={[styles.label, { marginLeft: 10, marginBottom: 0, }]}>Private</Text>
+                    <Text style={[gStyles.label, { marginLeft: 10, marginBottom: 0, }]}>Private</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -275,13 +276,13 @@ const CreatePostComp = ({
                     activeOpacity={0.9} style={styles.chkbox}
                 >
                     <Image source={chkVisibility == 'Public' ? checkbox_active : checkbox_inactive} style={styles.img} />
-                    <Text style={[styles.label, { marginLeft: 10, marginBottom: 0, }]}>Public</Text>
+                    <Text style={[gStyles.label, { marginLeft: 10, marginBottom: 0, }]}>Public</Text>
                 </TouchableOpacity>
             </View>
 
             {/* IMAGES */}
             <View style={styles.mediaBox}>
-                <Text style={styles.label}>{`Attached Media:`}</Text>
+                <Text style={gStyles.label}>{`Attached Media:`}</Text>
                 {create
                     ? <View></View>
                     : <FlatList
@@ -306,18 +307,6 @@ const CreatePostComp = ({
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: Colors.white,
-        flex: 1,
-    },
-    label: {
-        color: Colors.black,
-        fontWeight: '700',
-        marginBottom: 5,
-        marginLeft: 3,
-        fontSize: 18,
-        opacity: 0.6,
-    },
     type: {
         justifyContent: 'space-between',
         marginHorizontal: 10,

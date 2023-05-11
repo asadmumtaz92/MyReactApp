@@ -24,7 +24,6 @@ const PostCard = ({ PostData, navigate }) => {
             navigate()
         }, 100);
     }
-
     const strong = (data) => {
         return <Text style={{ fontWeight: '700', fontSize: 18 }}>{data} </Text>
     }
