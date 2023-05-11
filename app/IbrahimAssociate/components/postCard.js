@@ -32,14 +32,14 @@ const PostCard = ({ PostData, navigate }) => {
     return (
         <View style={styles.item}>
             <TouchableOpacity onPress={() => { navigateHandler(PostData) }}  activeOpacity={0.9}>
-                <Image source={{ uri: PostData.image[0] }} style={styles.image} resizeMode='cover' />
+                <Image source={{ uri: PostData.images[0] }} style={styles.image} resizeMode='cover' />
 
                 <View style={styles.detailView}>
                     <Title title={PostData?.title} />
                     {/* <Text style={styles.desc} numberOfLines={2}>{PostData?.desc}</Text> */}
                     <View style={styles.section}>
                         <View style={styles.bottomView}>
-                            <Text style={[styles.text,styles.left]}>{strong('Type:')} {PostData?.type}</Text>
+                            <Text style={[styles.text,styles.left]}>{strong('Society:')} {PostData?.society}</Text>
                             <Text style={[styles.text,styles.right]}>{strong('Sector:')} {PostData?.sector}</Text>
                         </View>
                         <View style={[styles.bottomView, { marginTop: 10 }]}>

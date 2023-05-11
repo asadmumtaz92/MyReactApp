@@ -2,6 +2,7 @@ import React, { useEffect, useState, useLayoutEffect } from 'react'
 import {
     ActivityIndicator,
     TouchableOpacity,
+    ImageBackground,
     StyleSheet,
     StatusBar,
     TextInput,
@@ -10,7 +11,6 @@ import {
     FlatList,
     View,
     Text,
-    ImageBackground,
 } from 'react-native'
 
 import { Colors } from '../styles/color'
@@ -23,7 +23,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 import PostCard from './components/postCard'
 
-const bgImage = require('./assets/ibrahimAss.png')
+const bgImage = require('./assets/splash.png')
 
 const IbrahimAssociate = (props) => {
 
@@ -52,6 +52,7 @@ const IbrahimAssociate = (props) => {
         })
     }, [props?.navigation, visible])
 
+    // GET DATA & HIDE SPLASH SCREEN
     useEffect(() => {
         setTimeout(() => {
             props?.navigation.setOptions({
@@ -59,6 +60,10 @@ const IbrahimAssociate = (props) => {
             })
             setSplashShow(false)
         }, 2000);
+
+        setTimeout(() => {
+            setFilteredData(props?.IB_ASSO_Reducer?.allPost)
+        }, 1000)
     }, [])
 
     // SHOW & HIDE SEARCH
@@ -95,13 +100,6 @@ const IbrahimAssociate = (props) => {
         SearchPost()
     }, [search, visible])
 
-    // GET DATA
-    useEffect(() => {
-        setTimeout(() => {
-            setFilteredData(props?.IB_ASSO_Reducer?.allPost)
-        }, 1000)
-    }, [])
-
     // useEffect(() => {
     //     const getDetail = () => {
     //         fetch(API)
@@ -122,17 +120,27 @@ const IbrahimAssociate = (props) => {
         const navigate = () => {
             props.navigation.navigate('IB_PostDetail')
         }
+        if (item?.item?.visibility == 'Public') {
+            return <PostCard PostData={item?.item} navigate={navigate} />
+        }
+    }
 
-        return <PostCard PostData={item?.item} navigate={navigate} />
+    const createPost = () => {
+        setTimeout(() => {
+            props?.navigation.navigate('IB_Create')
+        }, 200);
     }
 
     return (
         <>
+            <StatusBar barStyle='light-content' backgroundColor={Colors.crm} />
             {splashShow
                 ? <ImageBackground source={bgImage} style={{ flex: 1 }} />
                 : <View style={styles.contanier}>
-                    <ImageBackground source={bgImage} style={{flex:1}} />
-                    <StatusBar barStyle='light-content' backgroundColor={Colors.primery} />
+                    <TouchableOpacity onPress={createPost} style={styles.createPostView} activeOpacity={0.96}>
+                        <SimpleLineIcons name="plus" style={styles.plusicon} />
+                        <Text style={styles.createPostText}>{`CREATE POST`}</Text>
+                    </TouchableOpacity>
 
                     {visible &&
                         <TextInput
@@ -156,7 +164,8 @@ const IbrahimAssociate = (props) => {
                             maxLength={50}
                         />
                     }
-                    <View>
+
+                    <View style={{flex:1}}>
                         {errorText
                             ? <View style={styles.errorView}>
                                 <Text style={styles.errorText}>{errorText}</Text>
@@ -185,6 +194,39 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.white,
         minWidth: '100%',
         flex: 1,
+    },
+    createPostView: {
+        bottom: Platform.select({
+            android: 20,
+            ios: 40,
+        }),
+        backgroundColor: Colors.crm,
+        borderBottomLeftRadius: 30,
+        borderColor: Colors.white,
+        borderTopLeftRadius: 30,
+        paddingHorizontal: 12,
+        position: 'absolute',
+        alignItems: 'center',
+        flexDirection: 'row',
+        borderRightWidth: 0,
+        paddingVertical: 6,
+        borderWidth: 2,
+        zIndex: 1,
+        right: 0,
+    
+    },
+    plusicon: {
+        color: Colors.white,
+        fontSize: 20,
+    },
+    createPostText: {
+        fontWeight: '700',
+        color: Colors.white,
+        flexWrap: 'wrap',
+        // lineHeight: 12,
+        marginLeft: 7,
+        fontSize: 11,
+        width: 50,
     },
     loaderView: {
         justifyContent: 'center',
@@ -223,6 +265,8 @@ const styles = StyleSheet.create({
     errorView: {
         justifyContent: 'center',
         alignItems: 'center',
+        flex: 1,
+        height:'100%'
     },
     errorText: {
         color: Colors.black,

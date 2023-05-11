@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useLayoutEffect } from 'react'
 import {
     ActivityIndicator,
     StyleSheet,
@@ -6,12 +6,17 @@ import {
     StatusBar,
     Platform,
     View,
+    Text,
+    TouchableOpacity,
 } from 'react-native'
 
 import { Colors } from '../styles/color'
 import { connect } from 'react-redux'
 
 // import { BASE_URL, API } from './enviroments/index'
+
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 import PostCardDetail from './components/postCardDetail'
 
@@ -28,6 +33,26 @@ const PostDetail = (props) => {
             setPostID(props?.IB_ASSO_Reducer?.selectedPost?.id)
         }, 1000)
     }, [])
+    
+    const editButtonHandler = () => {
+        props?.navigation.navigate('IB_Edit')
+    }
+
+    // HEADER TOP RIGHT ICON
+    useLayoutEffect(() => {
+        props.navigation.setOptions({
+            headerRight: () => {
+                return (
+                    <TouchableOpacity
+                        activeOpacity={0.9} style={styles.navBtn}
+                        onPress={() => editButtonHandler()}
+                    >
+                        <FontAwesome5 name="edit" style={styles.editIcon} />
+                    </TouchableOpacity>
+                )
+            },
+        })
+    }, [props?.navigation])
 
     // useEffect(() => {
     //     const getDetail = () => {
@@ -47,7 +72,7 @@ const PostDetail = (props) => {
 
     return (
         <View style={styles.contanier}>
-            <StatusBar barStyle='light-content' backgroundColor={Colors.primery} />
+            <StatusBar barStyle='light-content' backgroundColor={Colors.crm} />
 
             {data.title
                 ? <ScrollView showsVerticalScrollIndicator={false}>
@@ -67,6 +92,10 @@ const styles = StyleSheet.create({
         minWidth: '100%',
         flex: 1,
     },
+    editIcon: {
+        color: Colors.white,
+        fontSize: 22,
+    },
     loaderView: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -85,7 +114,7 @@ const styles = StyleSheet.create({
         zIndex: 1
     },
     searchIcon: {
-        color: Colors.white,
+        color: Colors.black,
         fontWeight: '300',
         fontSize: 20,
     },

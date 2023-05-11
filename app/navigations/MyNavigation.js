@@ -21,6 +21,8 @@ import AppRoute from '../AppRoute'
 // IBRAHIM ASSOCIATE NAVIGATIONS
 import IbrahimAssociate from '../IbrahimAssociate/index'
 import IB_PostDetail from '../IbrahimAssociate/PostDetail'
+import IB_Create from '../IbrahimAssociate/CreatePost'
+import IB_Edit from '../IbrahimAssociate/EditPost'
 
 
 // MY PERFECT WORDS NAVIGATIONS
@@ -127,6 +129,22 @@ const myNav = () => {
                         component={IB_PostDetail}
                         options={{
                             headerTitle: () => myTitle(`Post detail`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='IB_Create'
+                        component={IB_Create}
+                        options={{
+                            headerTitle: () => myTitle(`Create Post`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='IB_Edit'
+                        component={IB_Edit}
+                        options={{
+                            headerTitle: () => myTitle(`Edit Post`),
                             headerStyle: { backgroundColor: Colors.crm },
                         }}
                     />

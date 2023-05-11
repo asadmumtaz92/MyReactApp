@@ -33,7 +33,7 @@ const PostCardDetail = ({ PostData }) => {
     return (
         <View style={styles.container}>
             {/* IMAGE SLIDER */}
-            <ImageSlider imageData={PostData?.image}/>
+            <ImageSlider imageData={PostData?.images}/>
             
             {/* POST DETAIL */}
             <View style={styles.detailView}>
@@ -42,15 +42,18 @@ const PostCardDetail = ({ PostData }) => {
 
                 {/* CONTACT  &  SHARE */}
                 <View style={styles.shareView}>
-                    {myLink('tel:+923336663896', 'mobile', '+92 3336663896')}
-                    {myLink('tel:+923336663896', 'whatsapp', 'Share')}
+                    {myLink(`tel:${PostData?.contact }`, 'mobile', PostData?.contact)}
+                    {myLink(`tel:${PostData?.contact}`, 'whatsapp', 'Share')}
                 </View>
                 
                 {/* DETAIL LIST */}
-                <PairList title='TYPE:' value={PostData?.type} />
-                <PairList title='SECTOR:' value={PostData?.sector} />
-                <PairList title='SIZE:' value={PostData?.size} />
-                <PairList title='DEMAND:' value={PostData?.demand} />
+                <PairList title='Category:' value={PostData?.category} />
+                <PairList title='City:' value={PostData?.city} />
+                <PairList title='Society:' value={PostData?.society} />
+                <PairList title='Sector:' value={PostData?.sector} />
+                <PairList title='Size:' value={PostData?.size} />
+                <PairList title='Demand:' value={PostData?.demand} />
+                <PairList title='Type:' value={PostData?.type} />
             </View>
         </View>
     )
