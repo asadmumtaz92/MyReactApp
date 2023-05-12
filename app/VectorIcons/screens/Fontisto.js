@@ -11,7 +11,6 @@ import Icons from 'react-native-vector-icons/Fontisto'
 const Fontisto = () => {
 
     const renderItem = (items) => {
-        console.log("item: ",item)
         let item = items.item
 
         return (
@@ -24,9 +23,6 @@ const Fontisto = () => {
 
     return (
         <View style={gStyles.container}>
-            {/* {FontistoIconsList.map(item => {
-                console.log('DATA:', item)
-            })} */}
             <FlatList
                 renderItem={renderItem}
                 data={FontistoIconsList}
