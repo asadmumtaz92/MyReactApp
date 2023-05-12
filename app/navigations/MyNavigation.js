@@ -66,6 +66,26 @@ import CRM_Companies from '../CRM/screens/companies'
 // GUESS NUMBER GAME NAVIGATIONS DONE
 import GuessNumberGame from '../GuessNumberGame/index'
 
+
+// VECTOR ICONS
+import VectorIcons from '../VectorIcons/index'
+import VI_AntDesign from '../VectorIcons/screens/AntDesign'
+import VI_Entypo from '../VectorIcons/screens/Entypo';
+import VI_EvilIcons from '../VectorIcons/screens/EvilIcons'
+import VI_Feather from '../VectorIcons/screens/Feather'
+import VI_FontAwesome5 from '../VectorIcons/screens/Fontawesome5'
+import VI_FontAwesome5Brands from '../VectorIcons/screens/fontAwesome5Brands'
+import VI_FontAwesome5Regular from '../VectorIcons/screens/FontAwesome5Regular'
+import VI_FontAwesome5Solid from '../VectorIcons/screens/FontAwesome5Solid'
+import VI_Fontisto from '../VectorIcons/screens/Fontisto'
+import VI_Foundation from '../VectorIcons/screens/Foundation'
+import VI_IonicIcons from '../VectorIcons/screens/IonicIcons'
+import VI_MaterialCommunityIcons from '../VectorIcons/screens/MaterialCommunityIcons'
+import VI_MaterialIcons from '../VectorIcons/screens/MaterialIcons'
+import VI_OctIcons from '../VectorIcons/screens/OctIcons'
+import VI_SimpleLineIcons from '../VectorIcons/screens/SimpleLineIcons'
+import VI_Zocial from '../VectorIcons/screens/Zocial'
+
 const myNav = () => {
 
     const myLink = (title, onPress, img) => {
@@ -334,6 +354,148 @@ const myNav = () => {
                         component={GuessNumberGame}
                         options={{
                             headerTitle: () => myTitle(`guess number GAME`),
+                        }}
+                    />
+                </>
+                {/* =============================
+                    VECTOR ICONS APP
+                ============================= */}
+                <>
+                    <Stack.Screen
+                        name='VectorIcons'
+                        component={VectorIcons}
+                        options={{
+                            headerTitle: () => myTitle(`Vector Icons List`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+
+                    <Stack.Screen
+                        name='VI_AntDesign'
+                        component={VI_AntDesign}
+                        options={{
+                            headerTitle: () => myTitle(`AntDesign Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_Entypo'
+                        component={VI_Entypo}
+                        options={{
+                            headerTitle: () => myTitle(`Entypo Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_EvilIcons'
+                        component={VI_EvilIcons}
+                        options={{
+                            headerTitle: () => myTitle(`Evil Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_Feather'
+                        component={VI_Feather}
+                        options={{
+                            headerTitle: () => myTitle(`Feather Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_FontAwesome5'
+                        component={VI_FontAwesome5}
+                        options={{
+                            headerTitle: () => myTitle(`FontAwesome5 Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_FontAwesome5Brands'
+                        component={VI_FontAwesome5Brands}
+                        options={{
+                            headerTitle: () => myTitle(`FontAwesome Brand Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_FontAwesome5Regular'
+                        component={VI_FontAwesome5Regular}
+                        options={{
+                            headerTitle: () => myTitle(`FontAwesome Regular Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_FontAwesome5Solid'
+                        component={VI_FontAwesome5Solid}
+                        options={{
+                            headerTitle: () => myTitle(`FontAwesome Solid Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_Fontisto'
+                        component={VI_Fontisto}
+                        options={{
+                            headerTitle: () => myTitle(`Fontisto Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_Foundation'
+                        component={VI_Foundation}
+                        options={{
+                            headerTitle: () => myTitle(`Foundation Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_IonicIcons'
+                        component={VI_IonicIcons}
+                        options={{
+                            headerTitle: () => myTitle(`Ionic Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_MaterialCommunityIcons'
+                        component={VI_MaterialCommunityIcons}
+                        options={{
+                            headerTitle: () => myTitle(`Material Community Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_MaterialIcons'
+                        component={VI_MaterialIcons}
+                        options={{
+                            headerTitle: () => myTitle(`Material Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_OctIcons'
+                        component={VI_OctIcons}
+                        options={{
+                            headerTitle: () => myTitle(`Oct Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_SimpleLineIcons'
+                        component={VI_SimpleLineIcons}
+                        options={{
+                            headerTitle: () => myTitle(`Simple Line Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
+                        }}
+                    />
+                    <Stack.Screen
+                        name='VI_Zocial'
+                        component={VI_Zocial}
+                        options={{
+                            headerTitle: () => myTitle(`Zocial Icons`),
+                            headerStyle: { backgroundColor: Colors.crm },
                         }}
                     />
                 </>

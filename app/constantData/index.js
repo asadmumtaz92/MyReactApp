@@ -50,7 +50,7 @@ export const Projects = [
     {
         title: 'Vector Icons',
         desc: 'This is my short description about how we integrate vector icon in iOS & android apps.',
-        navName: '',
+        navName: 'VectorIcons',
         image: require('../assets/projectLogos/v_icons.jpeg'),
     },
 ]
