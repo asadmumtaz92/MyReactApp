@@ -49,7 +49,7 @@ const AppRoute = (props) => {
         <View style={styles.contanier}>
             <StatusBar barStyle='light-content' backgroundColor={Colors.primery}/>
 
-            {/* LIST OF PROJECTS */}
+            {/* LIST OF ALL PROJECTS */}
             <FlatList
                 contentContainerStyle={styles.flatList}
                 showsVerticalScrollIndicator={false}
