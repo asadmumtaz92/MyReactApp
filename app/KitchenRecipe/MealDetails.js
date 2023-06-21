@@ -49,12 +49,10 @@ const MealDetails = ({ navigation, ...props }) => {
             setTimeout(() => {
                 navigation.goBack()
             }, 500)
-            // Alert.alert('Message!', '\n' + displayMeal.title + ' is removed from Favorite Meals.')
         }
         else {
             let fvMeal = [props?.kitchenRecipeReducer?.selected_meal, ...props?.kitchenRecipeReducer?.favoriteMeals]
             dispatch(props?.addFavoriteMeal(fvMeal))
-            // Alert.alert('Message!', '\n' + displayMeal.title + ' is added as your Favorite Meals.')
         }
         setFvrt(!fvrt)
     }
@@ -63,9 +61,10 @@ const MealDetails = ({ navigation, ...props }) => {
     }
 
     return (
-        <SafeAreaView style={[styles.container, displayMeal.title && { backgroundColor: Colors.primery }]}>
+        <SafeAreaView style={[styles.container,  { backgroundColor: Colors.primery }]}>
             <StatusBar 
-                barStyle={displayMeal.title ? 'light-content' : 'dark-content'}
+                barStyle={'light-content'}
+                backgroundColor={Colors.primery}
             />
 
             <Header

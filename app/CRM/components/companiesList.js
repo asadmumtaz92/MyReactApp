@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: 20,
 
-        shadowColor: Colors.primery,
-        shadowOpacity: 0.3,
+        shadowColor: Colors.black,
+        shadowOpacity: 0.2,
         shadowRadius: 4,
         shadowOffset: {
             height: 0,
             width: 0,
         },
-        elevation: 3,
+        elevation: 5,
     },
     topBox: {
         alignContent: 'center',

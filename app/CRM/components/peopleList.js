@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import {
     TouchableOpacity,
     StyleSheet,
@@ -9,14 +9,12 @@ import {
 } from 'react-native'
 
 import { Colors } from '../styles/color'
-
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 import { connect, useDispatch } from 'react-redux'
 import { setPeopleDetail } from '../redux/actions/peoples'
 
-const PeopleList = ( props ) => {
-    // console.log()
+const PeopleList = (props) => {
 
     const dispatch = useDispatch()
 
@@ -34,7 +32,7 @@ const PeopleList = ( props ) => {
                 onPress={detailHandler}
             >
                 <View style={styles.topBox}>
-                    <View>
+                    <>
                         {item?.image
                             ? <Image source={{uri: item?.image}} style={styles.image} resizeMode="cover" />
                             : <View style={styles.imageTextBox}>
@@ -43,7 +41,7 @@ const PeopleList = ( props ) => {
                                 </Text>
                             </View>
                         }
-                    </View>
+                    </>
 
                     <View style={styles.nameBox}>
                         <Text style={styles.name}>
@@ -87,14 +85,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: 20,
 
-        shadowColor: Colors.primery,
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
+        shadowColor: Colors.black,
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
         shadowOffset: {
             height: 0,
             width:0,
         },
-        elevation: 3,
+        elevation: 5,
     },
     topBox: {
         alignContent: 'center',
