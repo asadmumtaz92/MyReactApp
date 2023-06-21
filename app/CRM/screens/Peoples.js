@@ -142,7 +142,7 @@ const Peoples = (props) => {
                     ? <View style={gStyles.errorView}>
                         <Text style={gStyles.errorText}>{errorText}</Text>
                     </View>
-                    : filteredData.length
+                    : filteredData?.length
                         ? <PeopleList data={filteredData} showPeoDetail={showPeoDetail} />
                         : <ActivityIndicator size='large' color={Colors.primery} style={{ flex: 1 }} />
                 }

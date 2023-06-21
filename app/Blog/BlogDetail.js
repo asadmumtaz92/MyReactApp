@@ -53,7 +53,7 @@ const BlogDetail = (props) => {
 
                     {/* IMAGE SLIDER */}
                     {data?.media && <ImageSlider imageData={data?.media} />}
-                        
+
                     <ScrollView showsVerticalScrollIndicator={false}>
 
                         <View style={styles.detailView}>

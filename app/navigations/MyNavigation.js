@@ -241,7 +241,7 @@ const myNav = () => {
                         name='Blog'
                         component={Blog}
                         options={{
-                            headerTitle: () => myTitle('latest Blog post'),
+                            headerTitle: () => myTitle('latest post'),
                         }}
                     />
                     <Stack.Screen
@@ -249,8 +249,6 @@ const myNav = () => {
                         component={BlogDetail}
                         options={{
                             headerTitle: () => myTitle(''),
-                            headerBackVisible: true,
-                            headerShown: true,
                         }}
                     />
                 </>
@@ -324,6 +322,7 @@ const myNav = () => {
                 {/* =============================
                     BAHRIA DELIVERY APP
                 ============================= */}
+                <></>
                 {/* =============================
                     CRM APP
                 ============================= */}

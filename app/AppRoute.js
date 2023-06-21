@@ -47,7 +47,7 @@ const AppRoute = (props) => {
 
     return (
         <View style={styles.contanier}>
-            <StatusBar barStyle='light-content' />
+            <StatusBar barStyle='light-content' backgroundColor={Colors.primery}/>
 
             {/* LIST OF PROJECTS */}
             <FlatList
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     },
     flatList: {
         paddingBottom: Platform.select({
-            android: 15,
+            android: 30,
             ios: 40,
         }),
         paddingHorizontal: 15,
@@ -103,17 +103,17 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.white,
         flexDirection: 'row',
         marginBottom: 20,
-        borderRadius: 5,
+        borderRadius: 8,
         width: '100%',
         flex: 1,
 
-        elevation: 5,
+        elevation: 3,
         shadowColor: Colors.black,
         shadowOpacity: 0.3,
         shadowRadius: 1,
         shadowOffset: {
             height: 0,
-            width: 0
+            width: 0,
         }
     },
     imageBox: {
