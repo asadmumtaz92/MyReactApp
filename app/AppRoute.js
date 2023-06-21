@@ -60,7 +60,7 @@ const AppRoute = (props) => {
             />
 
             <View>
-                <>
+                <> 
                     {/* <TouchableOpacity onPress={() => dispatch(addition()) } style={styles.btn} activeOpacity={0.9}>
                         <Text style={styles.btnText}>ADD</Text>
                     </TouchableOpacity>
