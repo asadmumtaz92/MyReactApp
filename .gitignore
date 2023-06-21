@@ -32,7 +32,8 @@ local.properties
 *.hprof
 .cxx/
 *.keystore
-!debug.keystore
+# !debug.keystore
+!my-upload-key.keystore
 
 # node.js
 #
