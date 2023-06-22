@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+
+	<key>CodePushDeploymentKey</key>
+	<!-- FOR DEVELOPMENT-->
+	<!-- <string>iK5t3bmyRnao1OMyT3uRknj_NIqeIDlNrurGb</string> -->
+	<!-- FOR PRODUCTION -->
+	<string>Jc_wie79oOM8551kiBs2IUlkaeCp4Q7KENkYj</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -25,7 +31,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Multi Apps</string>
+	<string>Malick's Portfolio</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
