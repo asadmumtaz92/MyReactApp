@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Malick's Portfolio</string>
+    <string name="app_name">Multi Apps</string>
     <!-- FOR DEVELOPMENT -->
     <string moduleConfig="true" name="CodePushDeploymentKey">iK5t3bmyRnao1OMyT3uRknj_NIqeIDlNrurGb</string>
     <!-- FOR PRODUCTION -->
