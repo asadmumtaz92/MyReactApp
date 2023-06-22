@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Malick's Portfolio</string>
     <!-- FOR DEVELOPMENT -->
-    <!-- <string moduleConfig="true" name="CodePushDeploymentKey">iK5t3bmyRnao1OMyT3uRknj_NIqeIDlNrurGb</string> -->
+    <string moduleConfig="true" name="CodePushDeploymentKey">iK5t3bmyRnao1OMyT3uRknj_NIqeIDlNrurGb</string>
     <!-- FOR PRODUCTION -->
-    <string moduleConfig="true" name="CodePushDeploymentKey">Jc_wie79oOM8551kiBs2IUlkaeCp4Q7KENkYj</string>
+    <!-- <string moduleConfig="true" name="CodePushDeploymentKey">Jc_wie79oOM8551kiBs2IUlkaeCp4Q7KENkYj</string> -->
 </resources>

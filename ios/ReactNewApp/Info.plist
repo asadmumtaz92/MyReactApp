@@ -5,9 +5,9 @@
 
 	<key>CodePushDeploymentKey</key>
 	<!-- FOR DEVELOPMENT-->
-	<!-- <string>iK5t3bmyRnao1OMyT3uRknj_NIqeIDlNrurGb</string> -->
+	<string>iK5t3bmyRnao1OMyT3uRknj_NIqeIDlNrurGb</string>
 	<!-- FOR PRODUCTION -->
-	<string>Jc_wie79oOM8551kiBs2IUlkaeCp4Q7KENkYj</string>
+	<!-- <string>Jc_wie79oOM8551kiBs2IUlkaeCp4Q7KENkYj</string> -->
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
