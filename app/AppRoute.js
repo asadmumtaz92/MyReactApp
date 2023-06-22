@@ -20,6 +20,7 @@ import { Projects } from './constantData/index'
 const AppRoute = (props) => {
 
     const dispatch = useDispatch()
+    console.log('Check for Auto build on APP Center!')
 
     const renderItem = (items) => {
         const item = items.item
