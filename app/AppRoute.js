@@ -51,7 +51,7 @@ const AppRoute = (props) => {
             <StatusBar barStyle='light-content' backgroundColor={Colors.primery}/>
 
             {/* LIST OF ALL PROJECTS */}
-            <FlatList
+            <FlatList 
                 contentContainerStyle={styles.flatList}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={item => item.title}
